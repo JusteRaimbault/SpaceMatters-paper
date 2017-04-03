@@ -173,6 +173,33 @@ Et on met le mod{\`e}le plus sioux avec toutes les réplications dans plein de c
 To illustrate the generic nature of our methodology, we apply it here to an other model implying a spatialized distribution of resources for which agents compete: the ``Sugarscape'' model, introduced in~\cite{epstein1996growing}. We extend the implementation with agents wealth distribution of~\cite{li2009netlogo}.
 
 
+%%%%%%%%%%%%%%%
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/fixed_phase_diagram}
+\caption{Phase diagram of the sugarscape model (final smoothed Gini indicator), for a basic bicentric spatial setup, with varying parameters population $N$, minimal sugar reload $s_{min}$ and maximal sugar reload $s_{max}$.}
+\label{fig:sugarscape-phasediagram}
+\end{figure}
+%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%
+\begin{figure}
+\centering
+%\includegraphics[width=\textwidth]{}
+\caption{Phase diagrams varying across the container morphological space. Around 10000 realistic ressources distribution were generated, and used as container landscape (patches sugar capacity) for the sugarscape model. Spatial configurations were classified by reducing the dimension from four morphological indicators to two principal components ($\simeq$80\% of variance), for which the resulting space was gridded into 10x10 bins. We show here for each cell the average phase diagram along $(N,s_{min})$, taken at $s_{max}=200$.}
+\label{fig:sugarscape-meta}
+\end{figure}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{figure}
+\centering
+%
+\caption{Meta phase diagram, i.e. phase diagram of phase diagram behavior, along parameters of spatial configuration generation ($\alpha$,$n_D$,$\beta$,$N_G$) \todo{described these somewhere}, aggregated for each as an Earth Mover Distance to a fixed reference (phase diagram of Fig.~\ref{fig:sugarscape-phasediagram}).}
+\label{fig:sugarscape-meta}
+\end{figure}
+%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%
