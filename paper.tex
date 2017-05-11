@@ -1,241 +1,223 @@
-\documentclass[a4paper,12pt]{article}
-\usepackage[french]{babel}
-\usepackage{amsfonts}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{latexsym}
+\documentclass[11pt]{article}
+\input{header.tex}
 
-\usepackage[margin=1.5cm]{geometry}
+\date{}
+\renewcommand\abstractname{\fontsize{14pt}{0}\textbf{Abstract}\selectfont}
+
+\usepackage[left=25mm, right=25mm, top=25mm, bottom=25mm, includehead=false, includefoot=false]{geometry}
 
 \usepackage{graphicx}
-
-%%%%%
-% variable to include comments or not in the compilation ; set to 1 to include
-\def \draft {1}
-%\def \draft {0}
-
-
-% writing utilities
-
-% comments and responses
-%  -> use this comment to ask questions on what other wrote/answer questions with optional arguments (up to 4 answers)
-\usepackage{xparse}
-\usepackage{ifthen}
-\DeclareDocumentCommand{\comment}{m o o o o}
-{\ifthenelse{\draft=1}{
-    \textcolor{red}{\textbf{C : }#1}
-    \IfValueT{#2}{\textcolor{blue}{\textbf{A1 : }#2}}
-    \IfValueT{#3}{\textcolor{ForestGreen}{\textbf{A2 : }#3}}
-    \IfValueT{#4}{\textcolor{red!50!blue}{\textbf{A3 : }#4}}
-    \IfValueT{#5}{\textcolor{Aquamarine}{\textbf{A4 : }#5}}
- }{}
-}
+\usepackage{url}
+\usepackage[round,semicolon]{natbib}  % Citation styles https://www.sharelatex.com/learn/Natbib_citation_styles
+\bibliographystyle{humannat}
+\renewcommand{\bibsection}{}
+\renewcommand{\bibhang}{\setlength{-1px}}
 
 
-% todo
-\newcommand{\todo}[1]{
-\ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
-}
+\usepackage{authblk} % For author lists
+\renewcommand\Authfont{\fontsize{11}{1}\selectfont}
+\renewcommand\Affilfont{\fontsize{9}{1}\selectfont}
+
+\renewcommand*\footnoterule{}
+
+\usepackage[table]{xcolor}
+\usepackage[parfill]{parskip} % Line between paragraphs
+\usepackage{amsmath}
+\pagenumbering{arabic} 
+
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+
+\usepackage[pdftex]{hyperref} 
+\hypersetup{pdfborder={0 0 0} }
 
 
+% **************  TITLE AND AUTHOR INFORMATION **************
 
+\title{\sffamily\fontsize{16}{0}\textbf{Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?}}
 
+\author[1]{Cl{\' e}mentine Cottineau\thanks{}}
+\author[2,4]{Juste Raimbault}
+\author[3]{Marion Le Texier}
+\author[4]{Florent Le N{\' e}chet}
+\author[2,5]{Romain Reuillon}
+\affil[1]{Centre for Advanced Spatial Analysis, University College London, UK}
+\affil[2]{UMR 8504 G{\' e}ographie-cit{\' e}s, Paris, France}
+\affil[3]{UMR 6266 IDEES, Universit{\' e} de Rouen Normandie, France}
+\affil[4]{Laboratoire Ville Mobilit{\' e} Transport, Universit{\' e} Paris-Est, France}
+\affil[5]{Instit, ut des Syst{\` e}mes Complexes Paris Ile-de-France, France}
+
+\affil[*]{\texttt{, Email: c.cottineau@ucl.ac.uk }}
 
 \begin{document}
 
 
-
-\title{
-% title propositions
-%Space matters
-For a Systematic Sensitivity Analysis of Spatial Meta-parameters in Models of Simulation
-}
-
-
-\date{}
-
 \maketitle
 
-\section{Space does matter in simulation modeling}
+% **************  ABSTRACT  **************
 
-generalities about simulation modeling of social facts and initial conditions
+\begin{abstract}
+\noindent
+\setlength{\parindent}{0pt}
+Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain until their results are proven robust. Sensitivity analysis usually include the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually taken for granted in geographical models, thus leaving completely unexplored the effect of spatial arrangements on the interaction of agents and of their interactions with the environment. In this contribution, we present a method to assess the effect of initial spatial conditions on simulation models, using a systematic generator controlled by meta-parameter to create density grids used in spatial simulation models. We show, with the example of two very classical agent-based models (Schelling's models of segregation and Sugarscape) that the effect of space in simulation is significant, and sometimes even larger than parameters themselves. We do so using high performance computing in a very simple and straightforward open-source workflow.
+$ $ \\ {\bf Keywords:} Space, Initial conditions, Sensitivity, ABM.
 
-the choice of working (as an illustration) on Schelling segregation model 
-
-\subsection{Literature review on why we believe space actually does matter}
-
-Pourquoi est-ce qu'on pense que forme grille spatiale peut influencer Schelling ?
-
-Spatio-temporal model of a social fact, so spatio-temporal patterns and dynamics are important. Spatial grid as an input variable whose impact on the model behaviour and output should be systematically tested while looking for general conclusions : e.g. effect of the size of the neighbourhood on the decision to move.
-
-clementine \& marion already started to write something up on that topic
-
-\subsection{With a simple Schelling model}
-
-simple illustration based on Netlogo Segregation model (Florent)
-For now on: one agent per cell, some cells cannot host agents, Moore neighbourhood. The idea is to illustrate how this simple variation in the population density of a cell (0 or 1) will impact their neighbourhood and therefore the probability to host blue or red agents.
-
-\subsection{In reality...}
-
-(if enough material) : what type of cities actually produced more / less segregation?
-See if there is some empirical findings the link between the shape of a city and its capability to produce segregated residential patterns.
-
-end of section : we got frustrated and wanted to systematically study the influence of initial spatial configuration on how models (here Schelling) does behave
-
-this is why...
+\end{abstract}, 
 
 
-%%%%%%%%%%%%%%%
-\section{Research framework}
-%%%%%%%%%%%%%%%
+% **************  MAIN BODY OF THE PAPER **************
 
+\section{Introduction}
 
-%%%%%%%%%%%%%%%
-\subsection{But in reality space is more complicated than basic Schelling model}
+Simulation has been recognised and increasingly used by geographers to explore various geographical processes and problems within virtual laboratories. It appears as a very fruitful way to overcome the difficulty of analytic resolution of many spatial models developed in the past, and to explore the possible trajectories of social and ecological systems in space and time. The specificity of geographical models compared with models from other social sciences is usually regarded as the way geographers consider space and spatial interactions, driven by an explicit interest in the way space influences the outcomes of the model. Geographers are indeed concerned about understanding and modelling how space plays a role in social interactions and environmental processes, and whether its action is placed-based or place-neutral. We think simulation can become a very good tool to achieve this, provided that models include relevant spatial description and modelling, behavioural rules that take space into account, and provided model evaluation  stresses the sensitivity of output variations to the way space is modelled. This communication focuses on a way to do  so: by using a sensitivity method to test the model's outcomes to initial spatial conditions.
 
-We want to consider the fact that there are different morphologies of cities (so different topological relations between 'neighbouring' cells) and various level of densities at the block$/$residential building level (so for the same definition of the scope of a neighbourhood, not the same number of agents nor the same potentiality to host a new agent).
+\subsection{Why spatial patterns are expected to impact social simulations}
 
-we worked with Schelling model extended with heterogeneous cell capacities: find the references of previous work where spatial heterogeneity and densities have been studied.
+\paragraph{Because actual cities are not regular grids}
+Although this may seem obvious, cities are not regular grids of isotropic densities. Modelling may be about abstracting features to highlight processes in a way which is simpler than reality. However, the uniform grid which represents space in most simulation models is potentially not enough to represent urban processes because density and accessibility have environmental, economic and social consequences. An intermediate and more meaningful way of abstracting space might thus be to consider, not the peculiarities of every city, but their broad density structures. In Europe for example, one can find broad types of density distributions (\cite{LeNechet2015}). At initialisation, we then expect agents to be distributed in different patterns, which influence results in the long run \cite{Castellanoetal2009}. A first approach could be to evaluate the effects of the same set of social mechanisms, but modelled in different types of cities, for example monocentric, polycentric and discontinuous.
 
-basic description of the model that we use, of the parameters and behaviour of agents that we simulate and finally of the output indicators.
+\paragraph{Because actual agents are not random walkers}
+We expect spatial patterns to influence model outcomes also because the agents' rule of action itself might depend on the spatial structure of the environment. Indeed, mechanisms of surrounding sensing will be impacted by different distributions of density. For example, agents tend to create buffer zones if they are allowed network-based rather than isotropic movements (\cite{Banos2012}), while the vision / sensing mechanism is sensitive to the scale of modelled environments (\cite{LauriJaggi2003, FossettDietrich2009}). Finally, households can have different preferences with respect to the built-environment (\cite{SpielmanHarrison2014}), thus creating a sensitivity to the initial form of the city modelled.
 
-Our output indicators: the level of segregation at equilibrium. Global indicator and$/$or also Local Moran's (number of significant clusters)?
+\paragraph{Due to spatio-temporal path dependencies}
 
-What we are interested in is how the relation between the input variables and the output indicators may vary according to the spatial grid we're using. Not sure we have to mention it here, but just as a reminder for us.
+\subsection{Objective}
 
-We have to be explicit about the relation between density and neighbourhood: if neighbourhood is describe as a number of agents, or by a particular spatial scope that we vary. In monocentric cities with highly populated cells, large neighbourhoods won't make a difference as most of the cells won't have the capacity to host migrants. Etc.
+In this paper, we suggest tackling sensitivity to spatial conditions by generating a variety of density grids to feed into simulation models at initialisation, and exploring the sensitivity of the model outcomes to the variation of meta-parameters (i.e. parameters used to generate initial spatial conditions). The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters within a typical category of space (a monocentric case for example) and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric vs. polycentric for example) on the results of a given model.
 
-Of course, we have to define what we call an equilibrium: static, dynamic (agents are still moving as there are still some unhappy ones but the segregation patterns$/$ values are not evolving anymore $\rightarrow$ we fix this time scope as being $n$ time steps). 
+% ************** 
 
+\section{Previous attempts in the literature}
 
+\subsection{In general}
 
-%%%%%%%%%%%%%%%
-\subsection{And studying influence of space requires appropriate tools}
+Paragraph not as detailed as the following one, but just to illustrate the fact that the issue is an important concern in different types of spatial simulation modelling approaches?
 
-(which is maybe why scholars tend not to do that : it's hard)
-our research framework : many combinations of parameters and many urban forms, plus random components (asynchronous decision making by agents which requires to order the agents...) : OpenMole to the rescue! 
+Eg. : effects of delineation and scale of cities in LUTI models \citep{Thomasetal2017}, etc.
 
+\subsection{For Schelling model in particular}
 
-%%%%%%%%%%%%%%%
-\subsection{Generation of various urban forms}
+Recent attempts of running Schelling-like models beyond the chessboard grid have proved that migration decisions are not only dependent of what positions agents occupy relative to each other, but also of where they occupy these positions. \citet{FlacheHegselmann2001} show that chances for random emergence of a stable cluster of similar agents are highest in a rectangular grid and lowest in a hexagonal grid and that an irregular (Voronoi-diagram) city lattice structure favours migration stabilisation around decentralised clusters of similar agents. \citet{StaufferSolomon2007} introduce asymetric interactions and empty residences on a large and regular lattice. They reveal conjoint and non-linear effects on the vacancy rates and tolerance levels on segregation patterns. \citet{Singhetal2009} show that the segregation patterns obtained by Schelling for certain tolerance values are strictly a small city phenomenon (8x8 city-lattice) and do not work for a larger spatial lattice (100x100), where segregation appears only for certain combinaisons of tolerance threshold and vacancy density values. \citet{Gauvinetal2010} run Schelling's segregation process in an open city-lattice to study how the variations in tolerance levels, vacancy rates and city attractiveness may create lines of vacancy lots between clusters of agents. They conclude on the functional role of vacancies, which allow weakly tolerant agents to live and be satisfied in a city environment they nevertheless perceive as hostile. 
+\citet{Banos2012} compares the behaviour of Schelling segregation model on city lattices formalized as either grid, random, scale-free and Sierpinski networks and concludes that the presence of cliques in graph-based urban structures favor segregationist behaviours. Interestingly, \citet{HatnaBenenson2012} show that their model replications run on a 50x50 torus with 2\% of empty cells were not sensitive to the initial patterns (random and fully segregated distribution of agents). In this paper, we build on the contributions of these previous studies and go further by systematically measuring the impact of the city lattice on Schelling model behaviour so far only assessed through a small set of illustrative spatial structures. 
 
-Juste's density generation model and comparison with Florent's categories : 
-now everything is on stage for the results
+\subsection{And for SugarScape?}
 
+% ************** 
 
+\section{Method}
 
+In this section, we detail the method developped to tackle simulation models sensitivity to initial spatial conditions. The general workflow of the method is illustrated in Figure \ref{fig:method}.
 
-%%%%%%%%%%%%%%%
-\section{How space matters}
+\begin{figure}[htbp] \begin{center} 
+\resizebox{0.9\textwidth}{!}{ 
+	\includegraphics{figures/SchemaMeta_1.png}
+} \caption{General workflow of our method} \label{fig:method} \end{center} \end{figure} %
 
-Again we have two points of analysis: the range and variability of segregation levels per city types that we obtained and how the shape of cities impact on the model behaviour, i.e. the relation between input and output variables.
+\comment[MLT]{If we want to keep this figure, I propose that we link it more clearly to the following subsections, by numbering the different parts of the figure? By graphically showing on which parts of the figure the different subsections focus? Besides, we need to change it as we know want to go further than analysing the outputs qualitatively.}
 
+\subsection{Constructing a spatial generator}
 
-%%%%%%%%%%%%%%%
-\subsection{Shape of cities and segregation capability}
+Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), which has been generalised, explored and calibrated (\cite{Raimbault2014}). In a nutshell, grids are generated through an iterative process which adds a quantity $N$ (population) at each time step, allocating it through preferential attachment characterised by its strength of attraction $\alpha$. This first growth process is then smoothed $n$ times using a diffusion process of strength $\beta$. Grids are thus generated from the combination of the values of these four meta-parameters $\alpha$, $\beta$, $n$ and $N$, in addition to the random seed. To ease our exploration, only the distribution of density is allowed to vary rather than the size of the grid, which we fix to a 50x50 square environment of 100,000 units (cf. figure \ref{fig:spatialGen}).
 
-We can imagine a figure where we would have one example of city of each type and two sizes of neighbourhood scope for instance (everything else being equal), and we see the resulting distribution of green and blue agents at equilibrium.
+\begin{figure}[htbp] \begin{center} 
+\resizebox{0.9\textwidth}{!}{ 
+	\includegraphics{figures/spatialGen.png}
+} \caption{Four examples of grids produced by the spatial generator} \label{fig:spatialGen} \end{center} \end{figure} %
 
-Plus descriptive statistics (factor analysis? regression?)
+\subsection{Including a (typical) variety of initial conditions in the sensitivity analysis}
 
+In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions: their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). A stochastic exploration of a Latin Hypercube Sampling of 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n$, $N$} gives a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology: compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg) in order to evaluate the non-trivial effects of urban form on simulation results. We select 15 grids of each type to work with.
 
+%cite{Gauvinetal2009}
 
-%%%%%%%%%%%%%%%
-\subsection{Systematic analysis}
-
-
-\paragraph{Systematic Exploration}
-
-The relation between these values and the value of the input parameters $\rightarrow$ phase diagram better than a regression analysis for instance as we suppose the relations are not continuous. We want to see if there are (and if yes, where in the parameter space) the ruptures and clusters of same behaviours.
-
-z(x,y) en fonction des formes de grilles initiales, z étant l'indice de segregation (Moran global ou nombre de clusters significatifs obtenus avec un local moran?) et (x,y) nos inputs (proportion of similar people wanted and size of the neighbourhood) 
-
-
-
-\paragraph{Comparing Phase Diagrams}
+\subsection{Comparing Phase Diagrams}
 
 Problem: we have as many phase diagrams than we have spatial grids, so we cannot define the phases qualitatively. We need quantitative procedures.
 
 Potential methods to explore: anisotropic spatial segregation index (number of clusters found and where in the parameter spaces? but may be weak...), earth Movers Distance (i.e. distance between probability distributions), comparison of transition matrices of the dynamic associated to the potential...
 See also: http://mck.riks.nl/ to get some ideas.
 
+A simple measure of the distance between two phase diagrams, relative to their internal variability, is given by
 
-\paragraph{Results}
+\[
+d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
+\]
 
-Et on met le mod{\`e}le plus sioux avec toutes les réplications dans plein de configurations de villes d'une part : diagramme de phase par rapport aux meta-param{\`e}tres(=indicateurs de forme, dans un plan principal = 80\% variance expliqu{\'e}e) de la variabilit{\'e} des diagrammes de phase selon critères de comparaison quantitatifs par rapport à une r{\'e}f{\'e}rence.
-
-
-
-
-
-%%%%%%%%%%%%%%%
-\subsection{Application: the Sugarscape model}
-
-To illustrate the generic nature of our methodology, we apply it here to an other model implying a spatialized distribution of resources for which agents compete: the ``Sugarscape'' model, introduced in~\cite{epstein1996growing}. We extend the implementation with agents wealth distribution of~\cite{li2009netlogo}.
-
-Basic parameters if the sugarscape model on which phase diagrams are computed are: agent population $N$, agent minimal ressource $s_{min}$ and agent maximal ressource $s_{max}$.
-
-
-%%%%%%%%%%%%%%%
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/fixed_phase_diagram}
-\caption{Phase diagram of the sugarscape model (final smoothed Gini indicator), for a basic bicentric spatial setup, with varying parameters population $N$, minimal sugar reload $s_{min}$ and maximal sugar reload $s_{max}$. For each parameter point, average is taken over 50 repetitions.}
-\label{fig:sugarscape-phasediagram}
-\end{figure}
-%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{figures/phasediagrams_pca_maxSugar200}
-\caption{Phase diagrams varying across the container morphological space. 50 realistic ressources distributions were generated, and used as container landscape (patches sugar capacity) for the sugarscape model, and phase diagrams were computed as in Fig.~\ref{fig:sugarscape-phasediagram} for each one. Spatial configurations were classified by reducing the dimension from four morphological indicators to two principal components ($\simeq$80\% of variance), for which the resulting space was gridded into 5x5 bins. We show here for each cell the average phase diagram along $(N,s_{min})$, taken at $s_{max}=200$. Other values of $s_{max}$ provide similar qualitative variations. The two missing cells correspond to non-feasible cells in the morphological space for the given generating model and parameters.}
-\label{fig:sugarscape-meta}
-\end{figure}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{figure}
-\centering
-%
-\caption{Meta phase diagram, i.e. phase diagram of phase diagram behavior, along parameters of spatial configuration generation ($\alpha$,$n_D$,$\beta$,$N_G$) (described these somewhere), aggregated for each as an Earth Mover Distance to a fixed reference (phase diagram of Fig.~\ref{fig:sugarscape-phasediagram}).}
-\label{fig:sugarscape-meta}
-\end{figure}
-%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%
-\subsection{Application: SimpopNet}
-
-More complicated initial conditions such as a synthetic transportation network also fully enter our framework, even these may be more difficult to generate or explore. We illustrate this other type of application by exploring the sensitivity of the \emph{SimpopNet} model to the initial network. This model introduced in \cite{schmitt2014modelisation} aims at simulating the co-evolution of cities and transportation networks. The implementation of the model for which the behavior is known corresponds to a fixed stylized initial network. We modulate it here in a basic way, within a range of plausibility given by network indicators.
+where $f_{\vec{alpha}}\left[\vec{x}\right]$ the operator giving phase diagrams with $\vec{x}$ parameters and $\vec{\alpha}$ meta-parameters, and $d$ is a functional distance that can be taken for example as basic L2 distance or the Earth's Mover Distance.
 
 
 
 
+% ************** 
+\section{Application cases}
+
+We use our set of initial density grids in two spatial simulation models: Schelling and Sugarscape.
+
+\subsection{Schelling's model of residential segregation}
+
+Schelling's model consists in a abstract urban housing market where agents of different nature sense their environment, evaluate their satisfaction in terms of neighbourhood composition, and relocate if unsatisfied. It has been shown by \cite{Schelling1969} that even tolerant agents tended to produce segregated patterns because of the complexity of their local interactions. The main parameters of this model are the tolerance level (\% of agents similar to {\it ego}), the scope of sensing and the percentage of vacant spaces in the housing market. In addition, we are interested in testing the impact of the spatial distribution of housing capacity in this project, using the generated grids.
+
+\subsection{Sugarscape model of resource extraction and population settlement}
+
+Sugarscape is a model of resource extraction which simulates the unequal distribution of wealth within a heterogenous population (\cite{EpsteinAxtell1996}). Agents of different vision scopes and different metabolisms harvest a self-regenerating resource available heterogeneously in the initial landscape, they settle and collect this resource, which leads some of them to survive and others to perish. The main parameters of this model are the number of agents, their minimal and maximal resource. In addition, we are interested in testing the impact of the spatial distribution of the resource in this project, using the generated grids. The outcome of the model is measured as a phase diagram of an index of inequality for ressource distribution (Gini index). We extend the implementation with agents wealth distribution of~\cite{li2009netlogo}.
 
 
+% ************** 
+\section{Results}
 
+\comment[JR]{for the plan of the results section, I think the best is to organize by application case.}
 
-%%%%%%%%%%%%%%%
+We proceed to 4,500,000 simulation runs of the Schelling model (1000 parameter combinations x 45 density grids x 100 replications), using OpenMOLE to distribute the computation, and apply segregation measures to characterise the results. We find that the different urban morphologies impact the parameter interaction patterns, and that polycentric and discontinuous cities appear systematically more segregated than compact cities in terms of dissimilarity and entropy index. For Sugarscape, 2,500,000 simulations (1000 parameter points x 50 density grids x 50 replications) allow us to show that the model is more sensitive to space than to its other parameters, both qualitatively and quantitatively: the amplitude of variations across density grids is larger than the amplitude in each phase diagram, and the behavior of phase diagram is qualitatively different in different regions of the morphological space.
+
+% ************** 
 \section{Discussion}
-%%%%%%%%%%%%%%%
 
-Puis discussion : space matters (les valeurs prises par les indicateurs segrégations sont pas les mêmes) et ensuite en ouverture implications pour planning ?
-
+% ************** 
 
 
 
-%%%%%%%%%%%%%%%
-% Biblio
-%%%%%%%%%%%%%%%
+% \hfill \break
+% \itshape{This is a sub, subheading}\normalfont
+
+% \hfill\break
+
+%
+%
+%\begin{table}[htp]
+%
+%\begin{center}
+%\begin{tabular}{c c c c}
+%\arrayrulecolor{black}
+%\hline 
+%This & Is & A & Table\\
+%\arrayrulecolor{lightgray}
+%\hline 
+%\arrayrulecolor{black}
+%Label & 0.1 & 0.2 & 0.3\\
+%Label & 1.0 & 2.0 & 3.0\\
+%\hline
+%\end{tabular}
+%\end{center}
+%\label{first_table}
+%\caption{This is a table caption}
+%\end{table}%
+%
+%
+%
+%\begin{equation}
+%a^2 + b^2 = c^2
+%\tag*{Equation 1}
+%\end{equation}
 
 
-\bibliographystyle{apalike}
-\bibliography{biblio}
+\section{Acknowledgements}
+
+The authors acknowledge the funding of their institutions and the EPSRC project number EP/M023583/1. Results obtained in this paper were computed on the vo.complex-system.eu virtual organization of the European Grid Infrastructure ( http://www.egi.eu ). We thank the European Grid Infrastructure and its supporting National Grid Initiatives (France-Grilles in particular) for providing the technical support and infrastructure.
+
+\section{References}
 
 
-
-
+\bibliography{spacematters}
 
 
 \end{document}
