@@ -40,37 +40,42 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 }
 
 
+
+
 % todo
-\newcommand{\todo}[1]{
-\ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
+%\newcommand{\todo}[1]{
+%\ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
+%}
+\DeclareDocumentCommand{\todo}{o m}{
+  \ifthenelse{\draft=1}{
+    \IfValueT{#1}{\textcolor{red!50!blue}{\textbf{TODO (#1) : \textit{#2}}}}
+    \IfNoValueT{#1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#2}}}}
+  }{}
 }
 
+%\date{}
+%\renewcommand\abstractname{\fontsize{14pt}{0}\textbf{Abstract}\selectfont}
+
+%\usepackage[left=25mm, right=25mm, top=25mm, bottom=25mm, includehead=false, includefoot=false]{geometry}
+
+%\usepackage{graphicx}
+%\usepackage{url}
+%\usepackage[round,semicolon]{natbib}  % Citation styles https://www.sharelatex.com/learn/Natbib_citation_styles
+%\bibliographystyle{humannat}
+%\renewcommand{\bibsection}{}
+%\renewcommand{\bibhang}{\setlength{-1px}}
 
 
-
-\date{}
-\renewcommand\abstractname{\fontsize{14pt}{0}\textbf{Abstract}\selectfont}
-
-\usepackage[left=25mm, right=25mm, top=25mm, bottom=25mm, includehead=false, includefoot=false]{geometry}
-
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage[round,semicolon]{natbib}  % Citation styles https://www.sharelatex.com/learn/Natbib_citation_styles
-\bibliographystyle{humannat}
-\renewcommand{\bibsection}{}
-\renewcommand{\bibhang}{\setlength{-1px}}
-
-
-\usepackage{authblk} % For author lists
-\renewcommand\Authfont{\fontsize{11}{1}\selectfont}
-\renewcommand\Affilfont{\fontsize{9}{1}\selectfont}
+%\usepackage{authblk} % For author lists
+%\renewcommand\Authfont{\fontsize{11}{1}\selectfont}
+%\renewcommand\Affilfont{\fontsize{9}{1}\selectfont}
 
 \renewcommand*\footnoterule{}
 
 \usepackage[table]{xcolor}
 \usepackage[parfill]{parskip} % Line between paragraphs
 \usepackage{amsmath}
-\pagenumbering{arabic} 
+%\pagenumbering{arabic} 
 
 \usepackage{sectsty}
 \allsectionsfont{\sffamily}
