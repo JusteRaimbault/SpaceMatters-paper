@@ -47,7 +47,7 @@ Although simulation models of geographical systems in general and agent-based mo
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Simulation has been recognised and increasingly used by geographers to explore various geographical processes and problems within virtual laboratories. It appears as a very fruitful way to overcome the difficulty of analytic resolution of many spatial models developed in the past, and to explore the possible trajectories of social and ecological systems in space and time. The specificity of geographical models compared with models from other social sciences is usually regarded as the way geographers consider space and spatial interactions, driven by an explicit interest in the way space influences the outcomes of the model. Geographers are indeed concerned about understanding and modelling how space plays a role in social interactions and environmental processes, and whether its action is placed-based or place-neutral. We think simulation can become a very good tool to achieve this, provided that models include relevant spatial description and modelling, behavioural rules that take space into account, and provided model evaluation  stresses the sensitivity of output variations to the way space is modelled. This communication focuses on a way to do  so: by using a sensitivity method to test the model's outcomes to initial spatial conditions.
+Simulation has been recognised and increasingly used by geographers to explore various geographical processes and problems within virtual laboratories. It appears as a very fruitful way to overcome the difficulty of analytic resolution of many spatial models developed in the past, and to explore the possible trajectories of social and ecological systems in space and time. The specificity of geographical models compared with models from other social sciences is usually regarded as the way geographers consider space and spatial interactions, driven by an explicit interest in the way space influences the outcomes of the model. Geographers are indeed concerned about understanding and modelling how space plays a role in social interactions and environmental processes, and whether its action is placed-based or place-neutral. We think simulation can become a very good tool to achieve this, provided that models include relevant spatial description and modelling, behavioural rules that take space into account, and provided model evaluation  stresses the sensitivity of output variations to the way space is modelled. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of model's outcomes to initial spatial conditions.
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -60,7 +60,7 @@ Although this may seem obvious, cities are not regular grids of isotropic densit
 We expect spatial patterns to influence model outcomes also because the agents' rule of action itself might depend on the spatial structure of the environment. Indeed, mechanisms of surrounding sensing will be impacted by different distributions of density. For example, agents tend to create buffer zones if they are allowed network-based rather than isotropic movements (\cite{Banos2012}), while the vision / sensing mechanism is sensitive to the scale of modelled environments (\cite{LauriJaggi2003, FossettDietrich2009}). Finally, households can have different preferences with respect to the built-environment (\cite{SpielmanHarrison2014}), thus creating a sensitivity to the initial form of the city modelled.
 
 \paragraph{Due to spatio-temporal path dependencies}
-
+A crucial aspect of most spatio-temporal complex systems is their non-ergodicity~(\cite{pumain2012urban}) (the property that cross-sectional samples in space are not equivalent to samples in time to compute statistics such as averages), what witnesses generally strong spatio-temporal path-dependencies in their trajectories. Similar to what \todo{cit Quarck and Jaguar} calls \emph{frozen accidents} in any complex system, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system: the example of transportation networks is a good illustration, as their spatial shape and hierarchy is strongly influenced by past investment decisions, technical choices, or political decisions sometimes not rational~(\cite{zembri2010new}). Some aggregated indicators will not take into account positions and trajectories of each agent (such as segregation in the Schelling model) but others, as in the case of spatial patterns of accessibility in a system of cities, fully capture the path-dependency and may therefore be highly dependent of the initial spatial configuration. It is not clear for example what shifted the economical and political capital of France from Lyon to Paris in the early Middle Age, some assumptions being the reconfiguration of trade patterns from South to North of Europe and thus an increased centrality for Paris due to its spatial position: the bifurcation induced by socio-economic and political factors took a deep significance with worldwide repercussions until today when magnified by the spatial configuration. \comment[JR]{quelqu'un sait si d'une part c'est vrai et d'autre part si des references backupent ca ? - je sors ca completement du chapeau pour l'instant mais ça me semble intuitivement raisonnable et une bonne illustration.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -91,7 +91,7 @@ Recent attempts of running Schelling-like models beyond the chessboard grid have
 
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Method}
+\section{Methods}
 %%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -134,20 +134,29 @@ In order to generate density grids which correspond to empirical density distrib
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparing Phase Diagrams}
 
-Problem: we have as many phase diagrams than we have spatial grids, so we cannot define the phases qualitatively. We need quantitative procedures.
+In order to test for the influence of spatial initial conditions, we need a systematic method to compare phase diagrams. Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic. A solution is to use systematic quantitative procedures. Several potential methods could be used: for example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \emph{meta phase transitions} (phase transitions in the space of meta parameters). The use of metrics comparing spatial distributions, such as the Earth Movers Distance, or the comparison of transition matrices of the dynamic associated to the potential described by each distribution.
 
-Potential methods to explore: anisotropic spatial segregation index (number of clusters found and where in the parameter spaces? but may be weak...), earth Movers Distance (i.e. distance between probability distributions), comparison of transition matrices of the dynamic associated to the potential...
-See also: http://mck.riks.nl/ to get some ideas.
 
-A simple measure of the distance between two phase diagrams, relative to their internal variability, is given by
+\comment[JR]{just realized there are a bunch of metrics in physical sciences (hydrology, meteorology, etc.) to compare spatial fields : cf http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0178165 - with spatio-temporal empirical orthogonal functions we can have a 3D parameter space for example ?}
+
+\comment[JR]{See also: http://mck.riks.nl/ to get some ideas.}
+
+To keep it simple and as such methodological considerations are auxiliary to the main purpose of this paper, we propose an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
 \[
 d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
 \]
 
-where $f_{\vec{\alpha}}\left[\vec{x}\right]$ the operator giving phase diagrams with $\vec{x}$ parameters and $\vec{\alpha}$ meta-parameters, and $d$ is a functional distance that can be taken for example as basic L2 distance or the Earth's Mover Distance.
+where $\alpha \mapsto \left[\vec{x} \mapsto f_{\vec{\alpha}}\left(\vec{x}\right)\right]$ is the operator giving phase diagrams with $\vec{x}$ parameters and $\vec{\alpha}$ meta-parameters, and $d$ is a distance between probability distributions that can be taken for example as basic L2 distance or the Earth's Mover Distance. For each values $\vec{\alpha_i}$, the phase diagram is seen as a random spatial field, facilitating the definition of variances and distance.
 
-\todo[JR]{explain this in clear words}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Model Exploration Workflows as an (meta-)sensitivity analysis method}
+
+\comment[JR]{ca serait interessant d'inserer un paragraphe specifique sur Openmole, le multimodeling, les workflows modulables etc, comme outil très puissant pour ce qu'on veut faire : ca permet de rendre transparent les analyses de sensitivite mais egalement les meta-analyses de sensitivite (d'ou le titre).}
+
+
 
 
 
