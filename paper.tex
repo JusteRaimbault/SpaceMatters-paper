@@ -65,7 +65,7 @@ We expect spatial patterns to influence model outcomes also because the agents' 
 
 \paragraph{Due to spatio-temporal path dependencies}
 
-A crucial aspect of most spatio-temporal complex systems is their non-ergodicity~(\cite{pumain2012urban}) (the property that cross-sectional samples in space are not equivalent to samples in time to compute statistics such as averages), what witnesses generally strong spatio-temporal path-dependencies in their trajectories. Similar to what \todo{cit Quarck and Jaguar} calls \emph{frozen accidents} in any complex system, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. Temporal and cumulative effects have been considered in various geographical subfields and at various geographical scales, including transportation and urban economics, urban geography, and interregional migrations \citep[for e.g.]{White1977,White1978, AllenSanglier1979,Wilson1981,Pumainetal1989,AllenSanglier1981,WeidlichHaag1988,Portugali2000,Wilson2002,Batty2007,AzizAlaouiBertelle2009}. Less studied is the impact of the spatial setting on models dynamics and potential bifurcations.
+A crucial aspect of most spatio-temporal complex systems is their non-ergodicity~(\cite{pumain2012urban}) (the property that cross-sectional samples in space are not equivalent to samples in time to compute statistics such as averages), what witnesses generally strong spatio-temporal path-dependencies in their trajectories. Similar to what Gell-Mann calls \emph{frozen accidents} in any complex system~\cite{gell1995quark}, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. Temporal and cumulative effects have been considered in various geographical subfields and at various geographical scales, including transportation and urban economics, urban geography, and interregional migrations \citep[for e.g.]{White1977,White1978, AllenSanglier1979,Wilson1981,Pumainetal1989,AllenSanglier1981,WeidlichHaag1988,Portugali2000,Wilson2002,Batty2007,AzizAlaouiBertelle2009}. Less studied is the impact of the spatial setting on models dynamics and potential bifurcations.
 
 The example of transportation networks is a good illustration, as their spatial shape and hierarchy is strongly influenced by past investment decisions, technical choices, or political decisions sometimes not rational~(\cite{zembri2010new}). Some aggregated indicators will not take into account positions and trajectories of each agent (such as segregation in the Schelling model) but others, as in the case of spatial patterns of accessibility in a system of cities, fully capture the path-dependency and may therefore be highly dependent of the initial spatial configuration. It is not clear for example what shifted the economical and political capital of France from Lyon to Paris in the early Middle Age, some assumptions being the reconfiguration of trade patterns from South to North of Europe and thus an increased centrality for Paris due to its spatial position: the bifurcation induced by socio-economic and political factors took a deep significance with worldwide repercussions until today when magnified by the spatial configuration. \comment[JR]{quelqu'un sait si d'une part c'est vrai et d'autre part si des references backupent ca ? - je sors ca completement du chapeau pour l'instant mais ça me semble intuitivement raisonnable et une bonne illustration.} \comment[MLT]{L'idée de donner un exemple me semble bonne mais je ne suis pas sûre qu'on l'amène de la bonne manière?}
 
@@ -141,14 +141,7 @@ In order to generate density grids which correspond to empirical density distrib
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparing Phase Diagrams}
 
-In order to test for the influence of spatial initial conditions, we need a systematic method to compare phase diagrams. Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic. A solution is to use systematic quantitative procedures. Several potential methods could be used: for example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \emph{meta phase transitions} (phase transitions in the space of meta parameters). The use of metrics comparing spatial distributions, such as the Earth Movers Distance, or the comparison of transition matrices of the dynamic associated to the potential described by each distribution.
-
-
-\comment[JR]{just realized there are a bunch of metrics in physical sciences (hydrology, meteorology, etc.) to compare spatial fields : cf http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0178165 - with spatio-temporal empirical orthogonal functions we can have a 3D parameter space for example ?}
-
-\comment[JR]{See also: http://mck.riks.nl/ to get some ideas.}
-
-To keep it simple and as such methodological considerations are auxiliary to the main purpose of this paper, we propose an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
+In order to test for the influence of spatial initial conditions, we need a systematic method to compare phase diagrams. Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic. A solution is to use systematic quantitative procedures. Several potential methods could be used: for example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \emph{meta phase transitions} (phase transitions in the space of meta parameters). The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\cite{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numeral tools to compare two dimensional fields~\cite{visser2006map}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\cite{10.1371/journal.pone.0178165}. To keep it simple and as such methodological considerations are auxiliary to the main purpose of this paper, we propose an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
 \[
 d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
@@ -191,17 +184,54 @@ Sugarscape is a model of resource extraction which simulates the unequal distrib
 %%%%%%%%%%%%%%%%%%%%%%
 
 
-\comment[JR]{for the plan of the results section, I think the best is to organize by application case.}
+
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Schelling's model}
 
 We proceed to 4,500,000 simulation runs of the Schelling model (1000 parameter combinations x 45 density grids x 100 replications), using OpenMOLE to distribute the computation, and apply segregation measures to characterise the results. We find that the different urban morphologies impact the parameter interaction patterns, and that polycentric and discontinuous cities appear systematically more segregated than compact cities in terms of dissimilarity and entropy index.
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sugarscape model}
 
 For Sugarscape, 2,500,000 simulations (1000 parameter points x 50 density grids x 50 replications) allow us to show that the model is more sensitive to space than to its other parameters, both qualitatively and quantitatively: the amplitude of variations across density grids is larger than the amplitude in each phase diagram, and the behavior of phase diagram is qualitatively different in different regions of the morphological space.
+
+More precisely, we explore the basic parameter space of the model, which is the population of agents $P$, the minimal ressource capacity
+
+% summary stats
+%    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+%0.009408 0.084490 1.266000 0.930400 1.574000 1.858000 
+
+% pca of morphological space
+% "","PC1","PC2","PC3","PC4"
+%"distance",0.762358566609464,-0.260991693298744,0.200656405132039,0.557162237616392
+%"entropy",0.601306167355116,0.181706245959277,0.0958379422351422,-0.772158547261002
+%"moran",0.0311129390452153,0.912155429075071,0.30114271129527,0.276256268103684
+%"slope",0.237217819823539,0.258531718397015,-0.927289147645628,0.130475642169329
+
+%relativedistance_metaparams.pdf%relativedistance_morphspace.pdf
+
+
+
+
+
+
+
+
+
+
+%phasediagram_id0_maxSugar110.png%phasediagram_id27_maxSugar110.png
+
+% phase diagrams
+%          spAlpha spDiffsteps spDiffusion spGrowth spPopulation
+% id=27 : 0.7913103    2.376837   0.1440293 157.4147 4852.746
+% id=0 : 2.562398    3.753032   0.1316788 128.4632 4753.983
+% maxSugar = 110
+
+
+
 
 
 
