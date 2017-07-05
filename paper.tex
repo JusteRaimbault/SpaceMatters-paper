@@ -119,7 +119,7 @@ In this section, we detail the method developed to analyse the sensitivity of si
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Constructing a spatial generator}
 
-Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), which has been generalised, explored and calibrated (\cite{Raimbault2014}). In a nutshell, grids are generated through an iterative process which adds a quantity $N$ (population) at each time step, allocating it through preferential attachment characterised by its strength of attraction $\alpha$. This first growth process is then smoothed $n$ times using a diffusion process of strength $\beta$. Grids are thus generated from the combination of the values of these four meta-parameters $\alpha$, $\beta$, $n$ and $N$, in addition to the random seed. To ease our exploration, only the distribution of density is allowed to vary rather than the size of the grid, which we fix to a 50x50 square environment of 100,000 units (cf. figure \ref{fig:spatialGen}).
+Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), which has been generalised, explored and calibrated (\cite{Raimbault2014}). In a nutshell, grids are generated through an iterative process which adds a quantity $N$ (population) at each time step, allocating it through preferential attachment characterised by its strength of attraction $\alpha$. More precisely, each added unit has a probability proportional to $P_i/\sum P_k$ to be added to patch $i$ with population $P_i$. At the end of each time step, this first growth process is then smoothed $n$ times using a diffusion process of strength $\beta$: each patch transmits an equal share of $\beta\cdot P_i$ to its extended neighborhood (8 surrounding patches). To avoid bord effects such as a reflexion on the border of the world, border patches diffuse to the outside.  The model stops when a fixed total population is reached. Grids are thus generated from the combination of the values of these four meta-parameters $\alpha$, $\beta$, $n$ and $N$, in addition to the random seed. To ease our exploration, only the distribution of density is allowed to vary rather than the size of the grid, which we fix to a 50x50 square environment of 100,000 units (cf. figure \ref{fig:spatialGen}). Typical value ranges for the other parameters are $\alpha\in\left[0.5,4.0\right]$, $\beta \in\left[0,0.3\right] $, $N\in \left[100,10000\right]$, $n\in\left[1,4\right]$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -236,7 +236,8 @@ We obtain a very strong sensitivity to initial conditions, as the distribution o
 
 %%%%%%%%%%%%%
 \begin{figure}
-\centering\includegraphics[width=0.24\textwidth]{figures/phasediagram_id27_maxSugar110}
+\centering
+\includegraphics[width=0.24\textwidth]{figures/phasediagram_id27_maxSugar110}
 \includegraphics[width=0.24\textwidth]{figures/phasediagram_id0_maxSugar110}
 \caption{\textbf{Examples of phase diagrams.} We show two dimensional phase diagrams on $(P,s_-)$, both at fixed $s_+ = 110$. (Left) Green frame, obtained with $\alpha = 0.79$, $n=2$, $\beta = 0.14$, $N=157$; (Right) Blue frame, obtained with $\alpha = 2.56$, $n=3$, $\beta = 0.13$, $N=128$.}
 \label{fig:sugarscape-phasediagrams}
