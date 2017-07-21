@@ -61,18 +61,13 @@ In spatially explicit simulation models, the non-linearity of local interactions
 
 At initialisation, we then expect the spatial distribution of agents to influence results in the long run \cite{Castellanoetal2009}, as agents' rule of action itself might depend on the spatial structure of the environment: households can have different preferences with respect to the built-environment (\cite{SpielmanHarrison2014}), mechanisms of surrounding sensing are impacted by different distributions of density (\cite{Banos2012}) or the scale of modelled environments (\cite{LauriJaggi2003, FossettDietrich2009}), etc. The way modellers abstract space is therefore a central element of any spatially explicite simulation model. Although this may seem obvious, cities are not regular grids of isotropic densities. However, the uniform grid which represents space in most simulation models is potentially not enough to represent urban processes because density and accessibility have environmental, economic and social consequences. An intermediate and more meaningful way of abstracting space might thus be to consider, not the peculiarities of every city, but their broad density structures. In Europe for example, one can find broad types of density distributions (\cite{LeNechet2015}). 
 
-
 \subsection{Objective}
 
-In this paper, we suggest tackling sensitivity to spatial conditions by generating a variety of density grids to feed into simulation models at initialisation, and exploring the sensitivity of the model outcomes to the variation of meta-parameters (i.e. parameters used to generate initial spatial conditions). The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters within a typical category of space (a monocentric case for example\comment[FL]{je ne trouve pas cela facile à comprendre car on n'a pas encore parlé des différentes formes de villes}) and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric vs. polycentric for example) on the results of a given model.
+In this paper, we suggest tackling sensitivity to spatial conditions by generating a variety of density grids to feed into simulation models at initialisation, and exploring the sensitivity of the model outcomes to the variation of meta-parameters (i.e. parameters used to generate initial spatial conditions). The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters within a typical category of space (a monocentric case for example\comment[FL]{je ne trouve pas cela facile à comprendre car on n'a pas encore parlé des différentes formes de villes}) and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric \textit{vs.} polycentric for example) on the results of a given model.
 
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection{Why spatial patterns are expected to impact social simulations}
+\subsection{Previous considerations of urban form in simulation models}
 
-
-\comment[MLT]{Je me demande si tout ce qui vient après jusqu'à la littérature review sur les attempts de prise en compte de l'effet de la configuration spatiale sur le comportement et les résultats des modèles ne serait pas mieux en intro? Ca ferait une longue intro mais ça éviterait de trop se répéter?}
-
-\paragraph{Previous considerations of urban form in simulation models}
 \begin{itemize}
 \item spatial context
 \begin{itemize}
@@ -84,19 +79,19 @@ In this paper, we suggest tackling sensitivity to spatial conditions by generati
 \item spatial "encoding"
 \begin{itemize}
 \item heterogeneity
-\item algorithm of desagregation
+\item algorithm of disaggregation
 \item uncertainty
 \end{itemize}
 
 \item spatial effects
-
 \begin{itemize}
 \item topology
 \item interaction (??)
 \end{itemize}
+
 \item spatial outputs
 \begin{itemize}
-\item agregation
+\item aggregation
 \item use of models
 \end{itemize}
 \end{itemize}
@@ -132,8 +127,8 @@ In this section, we detail the method developed to analyse the sensitivity of si
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Constructing a spatial generator}
 
-Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), which has been generalised, explored and calibrated (\cite{Raimbault2014}). In a nutshell, grids are generated through an iterative process which adds a quantity $N$ (population) at each time step $t$, allocating it through preferential attachment characterised by its strength of attraction $\alpha$. More precisely, each added unit has a probability equal to $P_i^{\alpha}/\sum_k P_k^{\alpha}$ to be added to patch $i$ with population $P_i$, all $N$ units being added independently and in parallel. At the end of each time step, this first growth process is then smoothed $n$ times using a diffusion process of strength $\beta$: each patch transmits an equal share of $\beta\cdot P_i$ to its extended neighborhood (8 surrounding patches). To avoid border effects such as a reflexion on the border of the world, border patches diffuse to the outside. The model stops when a fixed total population \comment{n?} is reached. Grids are thus generated from the combination of the values of these four meta-parameters $\alpha$, $\beta$, $n$ and $N$, in addition to the random seed. To ease our exploration, only the distribution of density is allowed to vary rather than the size of the grid, which we fix to a 50x50 square environment of 100,000 units (cf. figure \ref{fig:spatialGen}). Typical value ranges for the other parameters are $\alpha\in\left[0.5,4.0\right]$, $\beta \in\left[0,0.3\right] $, $N\in \left[100,10000\right]$, $n\in\left[1,4\right]$.
-\comment{A detailler en incluant les equations de morphogenese}[(JR) j'ai détaillé le processus, c'est suffisant ?]\comment[MLT]{Il me semble que l'on pourrait mieux expliciter la relation N/n (et peut-être du coup inverser N et n). Plus il me semble que l'on devrait dire plus clairement à quoi se réfère alpha : à une cellule $i$? au pas de temps $t$? Pourquoi ne pas indexer alpha? Enfin, je crois que l'on gagnerait encore plus en clarté si on expliquait formellement comment tous les paramètres sont reliés entre eux, notamment pour expliquer l'arrêt de la procédure d'attribution d'une nouvelle pop à la grille.}
+Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), which has been generalised, explored and calibrated (\cite{Raimbault2014}). In a nutshell, grids are generated through an iterative process which, starting from a void grid, adds a quantity $N$ (population) at each time step $t$, allocating it through preferential attachment \comment[FL]{à quoi?} characterised by its strength of attraction $\alpha$. More precisely, each added unit has a probability equal to $P_i^{\alpha}/\sum_k P_k^{\alpha}$ to be added to patch $i$ with population $P_i$, all $N$ units being added independently and in parallel. At the end of each time step, this growth process is smoothed $n$ times using a diffusion process of strength $\beta$: each patch transmits an equal share of $\beta\cdot P_i$ to its extended neighborhood (8 surrounding patches). To avoid border effects such as a reflexion on the border of the world, border patches diffuse to the outside\comment[FL]{comment est-ce qu'on contrôle la perte de population induite?}. The model stops when a fixed total population \comment{n?} is reached. Grids are thus generated from the combination of the values of these four meta-parameters $\alpha$, $\beta$, $n$ and $N$, in addition to the random seed. To ease our exploration, only the distribution of density is allowed to vary rather than the size of the grid, which we fix to a 50x50 square environment of 100,000 units (cf. figure \ref{fig:spatialGen}). Typical value ranges for the other parameters are $\alpha\in\left[0.5,4.0\right]$, $\beta \in\left[0,0.3\right] $, $N\in \left[100,10000\right]$, $n\in\left[1,4\right]$.
+\comment{A detailler en incluant les equations de morphogenese}[(JR) j'ai détaillé le processus, c'est suffisant ?]\comment[MLT]{Il me semble que l'on pourrait mieux expliciter la relation N/n (et peut-être du coup inverser N et n). Plus il me semble que l'on devrait dire plus clairement à quoi se réfère alpha : à une cellule $i$? au pas de temps $t$? Pourquoi ne pas indexer alpha? Enfin, je crois que l'on gagnerait encore plus en clarté si on expliquait formellement comment tous les paramètres sont reliés entre eux, notamment pour expliquer l'arrêt de la procédure d'attribution d'une nouvelle pop à la grille.} \comment[FL]{je crois que N c'est l'incrément de pop et n le nombre de fois où c'est smoothé mais c'est quoi la pop totale?}
 
 
 
@@ -148,7 +143,7 @@ Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), w
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Including a (typical) variety of initial conditions in the sensitivity analysis}
 
-In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions: their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). A stochastic exploration of a Latin Hypercube Sampling of 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n$, $N$} gives a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology: compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg) in order to evaluate the non-trivial effects of urban form on simulation results. We select 15 grids of each type to work with.
+In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure : their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). A stochastic exploration of a Latin Hypercube Sampling of 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n$, $N$} gives a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology: compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg) in order to evaluate the non-trivial effects of urban form on simulation results. We select 15 grids of each type to work with.
 
 %cite{Gauvinetal2009}
 
@@ -156,7 +151,7 @@ In order to generate density grids which correspond to empirical density distrib
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparing Phase Diagrams}
 
-In order to test for the influence of spatial initial conditions, we need a systematic method to compare phase diagrams. Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. Several potential methods from other fields such as environmental science could be used, but we keep it simple and such methodological considerations are furthermore auxiliary to the main purpose of this paper. We propose therefore an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
+In order to test for the influence of spatial initial conditions on model outputs, we need a systematic method to compare phase diagrams. Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. Several potential methods from other fields such as environmental science could be used, but we keep it simple and such methodological considerations are furthermore auxiliary to the main purpose of this paper. We propose therefore an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
 \begin{equation}\label{eq:phase-distance}
 d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
@@ -169,7 +164,7 @@ where $f_{\vec{\alpha}}(\vec{x})$ is the phase diagrams on parameters $\vec{x}$ 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Model Exploration Workflows as an meta-sensitivity analysis method}
 
-The last methodological point which we need to emphasis is the relation between the workflow we introduce and model exploration workflows. The ideas of multi-modeling and extensive model exploration are nothing from new as Openshaw already advocated for ``model-crunching'' in~\cite{openshaw1983data}, but their effective use only begins to emerge thanks to the apparition of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMole~\cite{reuillon2013openmole} allows to embed any model as a blackbox, write modulable exploration workflow using advanced methodologies such as genetic algorithms and distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, the workflow tool is a powerful way to embed both the sensitivity analysis and the meta-sensitivity analysis, and allow to couple any generator with any model in a straightforward way as soon as the model can take its spatial configuration as input or from an input file. In this paper, we use the OpenMole platform for spatial environment and model coupling, placing ourselves in the renewed framework of multi-modeling claimed by \cite{cottineau2016back}.
+The last methodological point which we need to emphasis is the relation between the workflow we introduce and model exploration workflows. The ideas of multi-modeling and extensive model exploration are nothing from new as Openshaw already advocated for ``model-crunching'' in, but their effective use only begins to emerge thanks to the apparition of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMole~\citep{reuillon2013openmole} allows to embed any model as a blackbox, write modulable exploration workflow using advanced methodologies such as genetic algorithms and distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, the workflow tool is a powerful way to embed both the sensitivity analysis and the meta-sensitivity analysis, and allow to couple any generator with any model in a straightforward way as soon as the model can take its spatial configuration as input or from an input file. In this paper, we use the OpenMole platform for spatial environment and model coupling, placing ourselves in the renewed framework of multi-modeling claimed by \cite{cottineau2016back}.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Application cases}
@@ -267,6 +262,9 @@ We now check the sensitivity in terms of qualitative behavior of phase diagrams.
 
 \comment[FLN]{opportunity for social science to emancipate from the very strong hypotheses of physicists that have become standards (homogeneity and isotropy of space), even though they are never valid in social systems.} \comment[MLT]{Du coup, ça je le garderais plutôt pour la discussion, à moins que l'on avance des références explicites mais je crois que la sous-section d'après explicite assez bien ce besoin.}
 
+\comment[CC]{Lancer des pistes sur comment travailler l'effet de la grille pour d'autres types de modélisation type modèles appliqués.}
+
+\comment[MLT]{Mise à disposition des grilles générées? D'un échantillon?}
 
 \paragraph{Comparing phase diagrams}
 
