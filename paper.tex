@@ -53,13 +53,6 @@ Although simulation models of geographical systems in general and agent-based mo
 
 Simulation has been recognised and increasingly used by geographers to explore various geographical processes and problems within virtual laboratories \citep{Quesneletal2009} \comment{Batty 1978? James Doran 1970's : lire thèse de Seb ;) }. It appears as a very fruitful way to overcome the difficulty of analytic resolution of many spatial models developed in the past, and to explore the possible trajectories of social and ecological systems in space and time. The specificity of geographical models compared with models from other social sciences is usually regarded as the way geographers consider space and spatial interactions, driven by an explicit interest in the way space influences the outcomes of the model. Geographers are indeed concerned about understanding and modelling how space plays a role in social interactions and environmental processes, and whether its action is placed-based or place-neutral. We think simulation can become a very good tool to achieve this, provided that models include relevant spatial description and modelling, behavioural rules that take space into account, and provided model evaluation stresses the sensitivity of output variations to the way space is modelled. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of model's outcomes to initial spatial conditions. To demonstrate the genericity of our approach, we develop two applications from simulation models which are commonly used as case studies for comparing and aligning simulation models \citep{Axtelletal1996}: Schelling's model of segregation and Epstein and Axtell's Sugarscape model. Both models are defined at the intraurban level.
 
-\subsection{Objective}
-
-In this paper, we suggest tackling sensitivity to spatial conditions by generating a variety of density grids to feed into simulation models at initialisation, and exploring the sensitivity of the model outcomes to the variation of meta-parameters (i.e. parameters used to generate initial spatial conditions). The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters within a typical category of space (a monocentric case for example) and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric vs. polycentric for example) on the results of a given model.
-
-%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Why spatial patterns are expected to impact social simulations}
-\comment[MLT]{Je me demande si tout ce qui vient après jusqu'à la littérature review sur les attempts de prise en compte de l'effet de la configuration spatiale sur le comportement et les résultats des modèles ne serait pas mieux en intro? Ca ferait une longue intro mais ça éviterait de trop se répéter?}
 An urban system consists of a large number of social agents that interact with each other at a microscopic level in a system-time that evolves irreversibly creating temporal and cumulative effects. Self-organization has been shown to be a central feature of urban systems~\citep{AllenSanglier1981,Portugali2000}, and emergent properties at qualitatively differentiated scales~\citep{AzizAlaouiBertelle2009} must be obtained through simulation methods~\citep{Wu2002,Batty2007}. In that frame, complexity is partially due to bifurcations \citep{Wilson1981} which are determinant in spatial systems~\citep{Wilson2002}. 
 
 
@@ -68,8 +61,45 @@ In spatially explicit simulation models, the non-linearity of local interactions
 
 At initialisation, we then expect the spatial distribution of agents to influence results in the long run \cite{Castellanoetal2009}, as agents' rule of action itself might depend on the spatial structure of the environment: households can have different preferences with respect to the built-environment (\cite{SpielmanHarrison2014}), mechanisms of surrounding sensing are impacted by different distributions of density (\cite{Banos2012}) or the scale of modelled environments (\cite{LauriJaggi2003, FossettDietrich2009}), etc. The way modellers abstract space is therefore a central element of any spatially explicite simulation model. Although this may seem obvious, cities are not regular grids of isotropic densities. However, the uniform grid which represents space in most simulation models is potentially not enough to represent urban processes because density and accessibility have environmental, economic and social consequences. An intermediate and more meaningful way of abstracting space might thus be to consider, not the peculiarities of every city, but their broad density structures. In Europe for example, one can find broad types of density distributions (\cite{LeNechet2015}). 
 
-\paragraph{Previous considerations of urban form in simulation models}
 
+\subsection{Objective}
+
+In this paper, we suggest tackling sensitivity to spatial conditions by generating a variety of density grids to feed into simulation models at initialisation, and exploring the sensitivity of the model outcomes to the variation of meta-parameters (i.e. parameters used to generate initial spatial conditions). The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters within a typical category of space (a monocentric case for example\comment[FL]{je ne trouve pas cela facile à comprendre car on n'a pas encore parlé des différentes formes de villes}) and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric vs. polycentric for example) on the results of a given model.
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Why spatial patterns are expected to impact social simulations}
+
+
+\comment[MLT]{Je me demande si tout ce qui vient après jusqu'à la littérature review sur les attempts de prise en compte de l'effet de la configuration spatiale sur le comportement et les résultats des modèles ne serait pas mieux en intro? Ca ferait une longue intro mais ça éviterait de trop se répéter?}
+
+\paragraph{Previous considerations of urban form in simulation models}
+\begin{itemize}
+\item spatial context
+\begin{itemize}
+\item extent
+\item objects
+\item shape
+\end{itemize}
+
+\item spatial "encoding"
+\begin{itemize}
+\item heterogeneity
+\item algorithm of desagregation
+\item uncertainty
+\end{itemize}
+
+\item spatial effects
+
+\begin{itemize}
+\item topology
+\item interaction (??)
+\end{itemize}
+\item spatial outputs
+\begin{itemize}
+\item agregation
+\item use of models
+\end{itemize}
+\end{itemize}
 %\comment[FL]{Je pense que cette partie est vraiment utile, et devrait être étoffée, en procédant peut être à une typologie plus systématique des "initial condition" qui nous intéressent. Il y a déjà une différence entre l'hétérogénéité de l'espace (densités réparties mono ou poly, etc) et les différentes façons de représenter l'espace (grilles carrées, hexagones). Par ailleurs aussi des discussions sur l'incertitude de l'information (est ce que par exemple les emplois downscalés au carreau INSEE par Pivano 2016 c'est vraiment fiable ou très ?) et la précision de la grille} 
 
 The effect of the spatial configuration on area-based attributes of human behaviours has been largely discussed in geostatistics, meanly since the exposure of the Modifiable Areal Unit Problem (MAUP) \citep{Openshaw1984,FotheringhamWong1991}. Recently, \citet{Kwan2012} claims for a careful examination of what she coins the uncertain geographic context problem (UGCoP), that is of the spatial configuration of geographical units even if the size and delineation of the area are the same. Considerations of such issues in the geographic simulation model literature are rather scarce, but they have been some noticeable examples of papers attempting to evaluate the effects of the same set of mechanisms runned from different initial spatial conditions. Mainly, these approaches have been focusing on the impact of geo-localised input data accuracy, of the spatial system shape, precision, and boundaries, as well as of the impact of spatial heterogeneity.
