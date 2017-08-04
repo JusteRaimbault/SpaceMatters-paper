@@ -1,4 +1,5 @@
-\documentclass[Afour,sageh,times]{sagej}
+\documentclass[Royal,sageh,times]{sagej}
+% Afour
 \input{header.tex}
 
 \begin{document}
@@ -44,7 +45,7 @@ Although simulation models of geographical systems in general and agent-based mo
 
 
 % **************  MAIN BODY OF THE PAPER **************
-\newpage
+%\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -116,12 +117,12 @@ To allow for the exploration of the relative effects of model parameters and spa
 In order to test for the influence of spatial initial conditions on model outputs, we use a systematic method to compare phase diagrams. We define a phase diagram as a vector of  outputs\comment[FL]{Juste, peut-être des choses qui sont mal dites? : par exemple, dans diagramme de phase est-ce qu'on entend pas une "réification" de catégories - des clusters par ex? Et du coup est-ce que cela ne manque pas là?}. 
 
 Comparing phase diagrams is useful because it allows us to compare the 
-Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic\comment[FL]{donner un ordre de grandeur du nombre de simulations?}. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. We used a distance between two phase diagram corresponding to the share of between-diagrams variability relative to their internal variability\comment[FL]{je ne comprends pas ce choix : pourquoi faut il considérer que des classes ayant une forte cohérence interne seraient plus éloignées? ou alors la question ne se pose pas en ces termes... Par ailleurs est ce que la formule est bien homogène du point de vue des dimensions? En tous cas je pense qu'on peut se passer de la formule à ce stade, éventuellement à mettre dans l'affichage des résultats si on en a besoin.}
+Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic\comment[FL]{donner un ordre de grandeur du nombre de simulations?}. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. We used a distance between two phase diagram corresponding to the share of between-diagrams variability relative to their internal variability\comment[FL]{je ne comprends pas ce choix : pourquoi faut il considérer que des classes ayant une forte cohérence interne seraient plus éloignées? ou alors la question ne se pose pas en ces termes... Par ailleurs est ce que la formule est bien homogène du point de vue des dimensions? En tous cas je pense qu'on peut se passer de la formule à ce stade, éventuellement à mettre dans l'affichage des résultats si on en a besoin.}[(JR)]
 
 %Several potential methods from other fields such as environmental science could be used, but we keep it simple and such methodological considerations are furthermore auxiliary to the main purpose of this paper. We propose therefore an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
 %\begin{equation}\label{eq:phase-distance}
-%d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}%{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
+%d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
 %\end{equation}
 
 %where $f_{\vec{\alpha}}(\vec{x})$ is the phase diagrams on parameters $\vec{x}$ at given meta-parameters $\vec{\alpha}$. $d$ is a functional distance that we take simply as Euclidian distance. The variances are estimated within each phase diagram $f_{\vec{\alpha_i}}$.
@@ -195,10 +196,13 @@ For Sugarscape, we explore a grid of a basic parameter space of the model, which
 
 \subsection{Quantitative variation across grids}
 \paragraph{Schelling} 
-Within a standard Schelling model (i.e. initialised with a uniform density grid), \citet{Gauvinetal2009} have built the phase diagram of segregation patterns depending on the combination of parameter values. For high levels of tolerance ($S < 0.25$), there is no segregation. For high values of vacancies ($V > 0.65$) and low values of tolerance ($S > 0.5$), these is a diluted segregation state where homogeneous communities are separated from other by large empty buffers. Finally, for low values of vacancies ($V < 0.2$) and low values of tolerance ($S > 0.7$), the model is frozen in a state where everyone is unhappy but no-one can express their intolerant behaviour due to the lack of free spaces. Between these extreme cases, the model gives rise to segregated states where homogeneous communities adjoin one another. The objective of this quantitative experiment is to evaluate to which extent this phase diagram is modified when different density grids are applied. \comment[CC]{!!! Il faut retrouver les fichiers de simu !!!} \comment[CC]{Juste, tu penses qu'il faudrait faire la meme analyse que toi sur la distance entre phase diagrams? Ce serait cool mais si oui, j'aurais besoin d'aide (et des fichiers de simu!)}
+Within a standard Schelling model (i.e. initialised with a uniform density grid), \citet{Gauvinetal2009} have built the phase diagram of segregation patterns depending on the combination of parameter values. For high levels of tolerance ($S < 0.25$), there is no segregation. For high values of vacancies ($V > 0.65$) and low values of tolerance ($S > 0.5$), these is a diluted segregation state where homogeneous communities are separated from other by large empty buffers. Finally, for low values of vacancies ($V < 0.2$) and low values of tolerance ($S > 0.7$), the model is frozen in a state where everyone is unhappy but no-one can express their intolerant behaviour due to the lack of free spaces. Between these extreme cases, the model gives rise to segregated states where homogeneous communities adjoin one another. The objective of this quantitative experiment is to evaluate to which extent this phase diagram is modified when different density grids are applied. 
 
-\paragraph{Sugarscape} We measure the distance of all 3-dimensional phase diagrams to the reference phase diagram computed on the default model setup \comment[CC]{j'ai peut-etre manque une etape, mais c'est quoi le default model setup? en termes de grille d'entree: uniforme? random? ou Netlogo?} (see Fig.~\ref{fig:sugarscape-distance-meta} for its morphological positioning regarded generated grids), using equation~\ref{eq:phase-distance} with the L2 distance to ensure direct interpretability. \comment[CC]{il manque les equations} Indeed, it gives in that case the average squared distance between corresponding points of the phase diagrams, relative to the average of the variance of each. Therefore, values greater than 1 will mean that inter-diagram variability is more important than intra-diagram variability. \comment[CC]{en mode tatillon, on voudrait une double descente chromatique centree sur 1 pour la legende de la distance figure 4, qui distinguerait mieux les situations superieures a 1 et celle inf a 1 (ce qui nous interesse). Par exemple, blanc pour 1, et de ++ rose quand c'est >>1 et de ++ vert que c'est <<1. En R pour un level plot
-}
+\comment[CC]{Juste, tu penses qu'il faudrait faire la meme analyse que toi sur la distance entre phase diagrams? Ce serait cool mais si oui, j'aurais besoin d'aide (et des fichiers de simu!)}
+
+\paragraph{Sugarscape} We measure the distance of all 3-dimensional phase diagrams to the reference phase diagram computed on the default model setup \comment[CC]{j'ai peut-etre manque une etape, mais c'est quoi le default model setup? en termes de grille d'entree: uniforme? random? ou Netlogo?}[(JR) c'est Netlogo, une configuration bi-centrique particulière] (see Fig.~\ref{fig:sugarscape-distance-meta} for its morphological positioning regarded generated grids), using equation~\ref{eq:phase-distance} with the L2 distance to ensure direct interpretability. \comment[CC]{il manque les equations} Indeed, it gives in that case the average squared distance between corresponding points of the phase diagrams, relative to the average of the variance of each. Therefore, values greater than 1 will mean that inter-diagram variability is more important than intra-diagram variability.
+
+\comment[CC]{en mode tatillon, on voudrait une double descente chromatique centree sur 1 pour la legende de la distance figure 4, qui distinguerait mieux les situations superieures a 1 et celle inf a 1 (ce qui nous interesse). Par exemple, blanc pour 1, et de ++ rose quand c'est >>1 et de ++ vert que c'est <<1. En R pour un level plot}[(JR) oui tu as carrément raison, j'ai updaté les figures !]
 
 % summary stats
 %   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -230,7 +234,7 @@ Another way of quantifying the density grids, instead of looking at the meta-par
 %%%%%%%%%%%%%
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{figures/relativedistance_morphspace}
+\includegraphics[width=0.8\textwidth]{figures/relativedistance_morphspace}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids.} Relative distance as a function of two first principal components of the morphological space (see text). Red point correspond to the reference spatial configuration. Green frame and blue frame give respectively the first and second particular phase diagrams shown in Fig.~\ref{fig:sugarscape-phasediagrams}.}
 \label{fig:sugarscape-distance-pca}
 \end{figure}
@@ -247,8 +251,8 @@ Another way of quantifying the density grids, instead of looking at the meta-par
 %%%%%%%%%%%%%
 \begin{figure}
 \centering
-\includegraphics[width=0.24\textwidth]{figures/phasediagram_id27_maxSugar110}
-\includegraphics[width=0.24\textwidth]{figures/phasediagram_id0_maxSugar110}
+\includegraphics[width=0.48\textwidth]{figures/phasediagram_id27_maxSugar110}
+\includegraphics[width=0.48\textwidth]{figures/phasediagram_id0_maxSugar110}
 \caption{\textbf{Examples of phase diagrams.} We show two dimensional phase diagrams on $(P,s_-)$, both at fixed $s_+ = 110$. (Left) Green frame, obtained with $\alpha = 0.79$, $n=2$, $\beta = 0.14$, $N=157$; (Right) Blue frame, obtained with $\alpha = 2.56$, $n=3$, $\beta = 0.13$, $N=128$.}
 \label{fig:sugarscape-phasediagrams}
 \end{figure}
