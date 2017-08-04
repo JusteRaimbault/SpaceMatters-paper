@@ -157,19 +157,11 @@ Our spatial generator applies an urban morphogenesis model (\cite{Batty2007}), w
 %%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Including a (typical) variety of initial conditions in the sensitivity analysis}
 
-In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure : their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). A stochastic exploration of a Latin Hypercube Sampling\comment[FL]{ce n'est pas explicite} of 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n$, $N$} gives a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology: compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg) in order to evaluate the non-trivial effects of urban form on simulation results. We select 15 grids of each type to work with in the computation of sensitivity analysis. \comment[FL]{pourquoi 15?} \comment[FL]{dire explicitement ce qu'on va faire avec ces catégories dans la partie résultats?}
+In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure : their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). We sample the meta-parameter space using a Latin Hypercube Sampling, which is a convenient technique to have a point cloud with high discrepancy. We sample 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n$, $N$}. It yields a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology: compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg) in order to evaluate the non-trivial effects of urban form on simulation results. We select 15 grids of each type to work with in the computation of sensitivity analysis. \comment[FL]{pourquoi 15?} \comment[FL]{dire explicitement ce qu'on va faire avec ces catégories dans la partie résultats?}
 
 
-%cite{Gauvinetal2009}
 
 
-%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Comparing Phase Diagrams}
-\comment[FL]{j'ai proposé de mettre cette partie au début de method et de la simplifier}
-
-%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Model Exploration Workflows as an meta-sensitivity analysis method}
-\comment[FL]{item}
 
 In the following section, we briefly recall the main components of the two ``classical'' agent-based simulation models used to test how spatial density variations may impact simulation models behaviour and results, and how general the method proposed is.
 
@@ -182,7 +174,8 @@ Sugarscape is a model of resource extraction which simulates the unequal distrib
 
 
 \subsection{Experiment design}
-For Schelling's model, we explore a grid of a basic parameter space of the model, which is composed of two dimensions: the minimum proportion of similar agents required in the neighbourhood for the agent to be satisfied (or intolerance level) $S\in \left[0;1\right]$ and the vacancy rate of the city $V\in \left[0;1\right]$, which then defines the number of green and red agents, present in equal proportion for this experiment. Each parameter is binned into 10 values, giving 1000 parameter points. We run 100 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 45 different grids, chosen among the ones which are most representative of the three types of urban morphology: 15 compact grids (like Vienna, cf figure \ref{fig:densityTypes}), 15 polycentric grids (like Liege) and 15 discontinuous grids (like Augsburg). The full experiment thus equates to 4,500,000 simulations (1000 parameter combinations x 45 density grids x 100 replications). We use OpenMOLE to distribute the computation, and apply segregation measures to characterise the results. 
+For Schelling's model, we explore a grid of a basic parameter space of the model, which is composed of two dimensions: the minimum proportion of similar agents required in the neighbourhood for the agent to be satisfied (or intolerance level) $S\in \left[0;1\right]$ and the vacancy rate of the city $V\in \left[0;1\right]$, which then defines the number of green and red agents, present in equal proportion for this experiment. Each parameter is binned into 10 values, giving 1000 parameter points. \comment[JR]{apparemment le sampling est sobol ou lhs pour l'espace des paramètres}
+We run 100 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 45 different grids, chosen among the ones which are most representative of the three types of urban morphology: 15 compact grids (like Vienna, cf figure \ref{fig:densityTypes}), 15 polycentric grids (like Liege) and 15 discontinuous grids (like Augsburg). The full experiment thus equates to 4,500,000 simulations (1000 parameter combinations x 45 density grids x 100 replications). We use OpenMOLE to distribute the computation, and apply segregation measures to characterise the results. 
 
 For Sugarscape, we explore a grid of a basic parameter space of the model, which is composed of three dimensions: the population of agents $P\in \left[10;510\right]$, the minimal initial agent resource $s_{-}\in \left[10;100\right]$ and the maximal initial agent resource $s_{+}\in \left[110;200\right]$. Each parameter is binned into 10 values, giving 1000 parameter points. We run 50 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 50 different grids, generated by sampling meta-parameters for the generator in a LHS. We did not use the clustered grids to test the flexibility of our framework, which is demonstrated in this case by a direct sequential coupling of the generator and the model. The full experiment thus equates to 2,500,000 simulations (1000 parameter combinations x 50 density grids x 50 replications). 
 
@@ -215,7 +208,7 @@ We obtain a very strong sensitivity to initial spatial conditions. Indeed, the r
 \centering
 \includegraphics[width=0.5\textwidth]{figures/relativedistance_metaparams}\\
 \includegraphics[width=0.4\textwidth]{figures/alpha_beta_schemas}\\
-\caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by the meta-parameters of their generator.} (Top) Relative distance as a function of meta-parameters $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process). \comment[CC]{y'a un truc qui cloche avec cette figure: le nom des axes! soit alpha et beta, et on dit ce que c'est en legende, soit strength / diffusion, mais ca ne me parait pas la meilleure solution. en tout cas, pas de middle ground sinon c'est confusant, pour parler parfaitement frenglish} (Bottom) Corresponding stylised density grids }
+\caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by the meta-parameters of their generator.} (Top) Relative distance as a function of meta-parameters $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process). (Bottom) Corresponding stylised density grids }
 \label{fig:sugarscape-distance-meta}
 \end{figure}
 %%%%%%%%%%%%%
@@ -266,8 +259,10 @@ Another way of quantifying the density grids, instead of looking at the meta-par
 \paragraph{Schelling} In this qualitative exploration of the effect of initial spatial conditions on the results of Schelling's model, we use the classification of grids into three morphological types (cf. figure \ref{fig:densityTypes}). In particular, we want evaluate to which extent the typology summarizes the spatial effects, and so if one type of urban form or the other enhances or mutes the segregation mechanism of the model, or interacts differently with the model parameters. This experiment aims at suggesting topical conclusions on urban morphology, beyond the technical conclusions already obtained with respect to simulation sensitivity.
 
 \begin{table*}[htbp]
+\caption{\textbf{Regression of the segregation level of Schelling simulation with order parameters and type of city grid.} *** means that the estimate is significant.\label{tab:regressionSchelling}}
+\begin{adjustwidth}{-0.5cm}{-0.5cm}
 \centering
-\begin{tabular}{|l|ll|ll|ll|}
+\begin{tabular}{|m{2cm}|ll|ll|ll|}
 \hline
 Simulation outcome by segregation index: & \multicolumn{2}{c|}{\textbf{Dissimilarity}} & \multicolumn{2}{c|}{\textbf{Entropy}} & \multicolumn{2}{c|}{\textbf{Moran's I}} \\ \hline
 \textbf{Intercept}                       & -0.007 ***  & -0.03 ***                     & -0.028 ***        & -0.041 ***        & 0.127 ***        & 0.129 ***            \\ \hline
@@ -278,8 +273,7 @@ Simulation outcome by segregation index: & \multicolumn{2}{c|}{\textbf{Dissimila
 \textbf{R2 (\%)}                         & 15.01       & 15.57  & 7.62              & 7.83              & 2.04             & 2.05                 \\ 
 \textbf{\# of observations (sim. runs)}  & 4,500,000   & 4,500,000                     & 4,500,000         & 4,500,000         & 4,500,000        & 4,500,000            \\ \hline
 \end{tabular}
-\caption{\textbf{Regression of the segregation level of Schelling simulation with order parameters and type of city grid.} *** means that the estimate is significant.}
-\label{tab:regressionSchelling}
+\end{adjustwidth}
 \end{table*}
 
 
