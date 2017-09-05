@@ -121,9 +121,9 @@ Indeed, we have as many phase diagrams than we have spatial grids, what makes a 
 
 %Several potential methods from other fields such as environmental science could be used, but we keep it simple and such methodological considerations are furthermore auxiliary to the main purpose of this paper. We propose therefore an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
-%\begin{equation}\label{eq:phase-distance}
-%d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
-%\end{equation}
+\begin{equation}\label{eq:phase-distance}
+d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
+\end{equation}
 
 %where $f_{\vec{\alpha}}(\vec{x})$ is the phase diagrams on parameters $\vec{x}$ at given meta-parameters $\vec{\alpha}$. $d$ is a functional distance that we take simply as Euclidian distance. The variances are estimated within each phase diagram $f_{\vec{\alpha_i}}$.
 
@@ -303,6 +303,32 @@ N.B. Moran's I applies to the minority population
 \end{table*}
 
 
+
+
+\comment[cc]{Nouveaux Resultats}
+\begin{table*}[]
+\centering
+\caption{My caption}
+\begin{adjustwidth}{-0.5cm}{-0.5cm}
+\begin{tabular}{|m{2.5cm}|ll|ll|ll|}
+\hline
+Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissimilarity}}   & \multicolumn{2}{c|}{\textbf{Entropy}} & \multicolumn{2}{c|}{\textbf{Moran's I}} \\ \hline
+\textbf{Intercept}                          & -0.212 *** & -0.141 ***                       & -0.254 ***        & -0.208 ***        & -0.036 ***           & -0.061 ***               \\ \hline
+\textbf{Similarity Wanted (S)}              & 1.212 ***  & 1.212 ***                        & 1.250 ***         & 1.250 ***         & 0.550 ***            & 0.550 ***                \\ 
+\textbf{quadratic term ($S^2$)}               & -0.942 *** & -0.942 ***                       & -0.963 ***        & -0.963 ***        & -0.428 ***           & -0.438 ***               \\ 
+\textbf{Vacancy Rate (V)}                   & 0.602 ***  & 0.602 ***                        & 0.453 ***         & 0.453 ***         & -0.027 ***           & -0.027 ***               \\ 
+\textbf{Minority Index (\%Maj - \%Min)}     & 0.307å ***  & 0.307 ***                        & 0.130 ***         & 0.130 ***         & -0.067 ***           & -0.067 ***               \\ \hline
+\textbf{Density Grid = Polycentric}         &            & 0.087 ***                        &                   & 0.052 ***         &                      & 0.001 ***                \\ 
+\textbf{Density Grid = Discontinuous}       &            & 0.111 ***                        &                   & 0.068 ***         &                      & \textit{0.00}              \\
+\textbf{Attraction meta-parameter $\alpha$} &            & -0.083 ***                       &                   & -0.053 ***        &                      & 0.014 ***                \\ 
+\textbf{Diffusion meta-parameter $\beta$}   &            & 0.323 ***                        &                   & 0.218 ***         &                      & 0.017 ***           \\ \hline
+\textbf{R2 (\%)}                            & 30.6       & 34.7                             & 24.1              & 25.6              & 23.9                 & 24.0                    \\ 
+\textbf{\# of observations (sim. runs)}     & 2,106,000  & 2,106,000 						 & 2,106,000          & 2,106,000          & 2,106,000             & 2,106,000                \\ 
+\textbf{AIC}                                & -70717.68   & -198748.2  						& 208213.8          & 166048.8          & -4385990             & -4387816                 \\ \hline
+\end{tabular}
+\end{adjustwidth}
+N.B. Moran's I applies to the minority population
+\end{table*}
 In table \ref{tab:regressionSchelling}, we see that the type of density grid with which the model is initialised determines to a certain extent the level of segregation measured at the end of the simulation run. Indeed, compared to compact density patterns, polycentric grids produce more dissimilarity and entropy between the location of green and red agents. Discontinuous grids have the same effect, although attenuated. The results obtained with Moran's I are opposite, because this index measures spatial autocorrelation at the global level and that compact cities have higher levels of global autocorrelation by construction. However, linear models with and without information about the type of density distribution yields the same coefficients for Schelling's parameters $V$ and $S$, the only exception being the vacancy rate $V$ in the Moran's I model with grid types, which becomes non-significant. The similarity of the coefficient in both cases means that the effect of the model's parameters (and thus the mechanism by which agents of similar group cluster in space) is the same regardless of the distribution of density. The way polycentric and discontinuous density grid exhibit higher segregation is by allowing buffer zones of low density to surround pockets of homogeneity, which is impossible in a compact city, because everyone is at reach of everyone else. The buffering process confirms previous results obtained with network structures \citep{Banos2012}.
 
 
