@@ -114,7 +114,7 @@ In this section, we detail the method developed to analyse the sensitivity of si
 In our approach, we have introduced a spatial generator (lower branch in figure \ref{fig:method}), which itself is determined by input parameters and produces sets of spatial initial conditions. 
 To allow for the exploration of the relative effects of model parameters and spatial configuration, we clustered initial spatial conditions  to represent types of spaces ex-ante (for example: monocentric or polycentric density grids). The sensitivity analysis of the model is now run against $\mu$ parameters as well as spatial parameters or spatial types. It allows the sensitivity analysis to produce qualitative conclusions regarding the influence of spatial distribution on the outputs of simulation models, alongside the classic variation of parameter values.
 
-In order to test for the influence of spatial initial conditions on model outputs, we use a systematic method to compare phase diagrams. We define a phase diagram as a vector of  outputs\comment[FL]{Juste, peut-être des choses qui sont mal dites? : par exemple, dans diagramme de phase est-ce qu'on entend pas une "réification" de catégories - des clusters par ex? Et du coup est-ce que cela ne manque pas là?}. 
+In order to test for the influence of spatial initial conditions on model outputs, we use a systematic method to compare phase diagrams. We define a phase diagram as the projection of a vector of model outputs in the parameter space. Technically, because of stochasticity, we represent the output of the model for a given combination of parameter values as the median of the final values of an output indicator obtained for the replications of the model initialized with this combination of parameter.\\
 
 Comparing phase diagrams is useful because it allows us to compare the 
 Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic\comment[FL]{donner un ordre de grandeur du nombre de simulations?}. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. We used a distance between two phase diagram corresponding to the share of between-diagrams variability relative to their internal variability\comment[FL]{je ne comprends pas ce choix : pourquoi faut il considérer que des classes ayant une forte cohérence interne seraient plus éloignées? ou alors la question ne se pose pas en ces termes... Par ailleurs est ce que la formule est bien homogène du point de vue des dimensions? En tous cas je pense qu'on peut se passer de la formule à ce stade, éventuellement à mettre dans l'affichage des résultats si on en a besoin.}[(JR) pour l'homogénéité oui justement on prend $d^2$ car c'est les variances, on obtient une mesure sans unité ; ok pour omettre la formule ; pour l'interprétation, on regarde la distance relative, pour des classes à une certaine distance, si elles sont concentrées, cette distance sera plus sigificative que si elles ont une grande variabilité et peuvent se recouper ; par exemple si elles ont mêmes variance $\sigma^2$, alors si $d \simeq \sqrt{2} \sigma$ alors les nuages de points vont en gros se recouper sur leur moitié (cas gaussien idéal), tandis que si $d\gg \sigma$, le max d'un diagramme sera très loin du min de l'autre - on compare à la fois la distance relative et la distance de forme.]
@@ -175,9 +175,9 @@ Sugarscape is a model of resource extraction which simulates the unequal distrib
 
 \subsection{Experiment design}
 For Schelling's model, we explore a grid of a basic parameter space of the model, which is composed of two dimensions: the minimum proportion of similar agents required in the neighbourhood for the agent to be satisfied (or intolerance level) $S\in \left[0;1\right]$ and the vacancy rate of the city $V\in \left[0;1\right]$, which then defines the number of green and red agents, present in equal proportion for this experiment. Each parameter is binned into 10 values, giving 1000 parameter points. \comment[JR]{apparemment le sampling est sobol ou lhs pour l'espace des paramètres}
-We run 100 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 45 different grids, chosen among the ones which are most representative of the three types of urban morphology: 15 compact grids (like Vienna, cf figure \ref{fig:densityTypes}), 15 polycentric grids (like Liege) and 15 discontinuous grids (like Augsburg). The full experiment thus equates to 4,500,000 simulations (1000 parameter combinations x 45 density grids x 100 replications). We use OpenMOLE to distribute the computation, and apply segregation measures to characterise the results. 
+We run 100 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 45 different grids, chosen among the ones which are most representative of the three types of urban morphology: 15 compact grids (like Vienna, cf figure \ref{fig:densityTypes}), 15 polycentric grids (like Liege) and 15 discontinuous grids (like Augsburg). The full experiment thus equates to 4,500,000 simulations (1000 parameter combinations x 45 density grids x 100 replications). We use OpenMOLE to distribute the computation, and apply segregation measures to characterise the results.
 
-For Sugarscape, we explore a grid of a basic parameter space of the model, which is composed of three dimensions: the population of agents $P\in \left[10;510\right]$, the minimal initial agent resource $s_{-}\in \left[10;100\right]$ and the maximal initial agent resource $s_{+}\in \left[110;200\right]$. Each parameter is binned into 10 values, giving 1000 parameter points. We run 50 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 50 different grids, generated by sampling meta-parameters for the generator in a LHS. We did not use the clustered grids to test the flexibility of our framework, which is demonstrated in this case by a direct sequential coupling of the generator and the model. The full experiment thus equates to 2,500,000 simulations (1000 parameter combinations x 50 density grids x 50 replications). 
+For Sugarscape, we explore a grid of a basic parameter space of the model, which is composed of three dimensions: the population of agents $P\in \left[10;510\right]$, the minimal initial agent resource $s_{-}\in \left[10;100\right]$ and the maximal initial agent resource $s_{+}\in \left[110;200\right]$. Each parameter is binned into 10 values, giving 1000 parameter points. We run 50 repetitions for each configuration, what yield reasonable convergence properties. The initial spatial configuration varies across 50 different grids, generated by sampling meta-parameters for the generator in a LHS. We did not use the clustered grids to test the flexibility of our framework, which is demonstrated in this case by a direct sequential coupling of the generator and the model. Indeed, because the density distribution refers to the distribution of resource rather than to the representation of a city structure, we do not need the typology of urban density in this experiment. The full experiment thus equates to 2,500,000 simulations (1000 parameter combinations x 50 density grids x 50 replications). 
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -257,57 +257,14 @@ Another way of quantifying the density grids, instead of looking at the meta-par
 
 \paragraph{Schelling} In this qualitative exploration of the effect of initial spatial conditions on the results of Schelling's model, we use the classification of grids into three morphological types (cf. figure \ref{fig:densityTypes}). In particular, we want evaluate to which extent the typology summarizes the spatial effects, and so if one type of urban form or the other enhances or mutes the segregation mechanism of the model, or interacts differently with the model parameters. This experiment aims at suggesting topical conclusions on urban morphology, beyond the technical conclusions already obtained with respect to simulation sensitivity.
 
-\begin{table*}[htbp]
-\caption{\textbf{Regression of the segregation level of Schelling simulation with order parameters and type of city grid.} *** means that the estimate is significant.\label{tab:regressionSchelling}}
-\begin{adjustwidth}{-0.5cm}{-0.5cm}
-\centering
-\begin{tabular}{|m{2cm}|ll|ll|ll|}
-\hline
-Simulation outcome by segregation index: & \multicolumn{2}{c|}{\textbf{Dissimilarity}} & \multicolumn{2}{c|}{\textbf{Entropy}} & \multicolumn{2}{c|}{\textbf{Moran's I}} \\ \hline
-\textbf{Intercept}                       & -0.007 ***  & -0.03 ***                     & -0.028 ***        & -0.041 ***        & 0.127 ***        & 0.129 ***            \\ \hline
-\textbf{Similarity Wanted (S)}           & -0.007 ***  & -0.007 ***                    & -0.007 ***        & -0.007 ***        & -0.005 ***       & -0.005 ***           \\ 
-\textbf{Vacancy Rate (V)}                & 0.294 ***   & 0.294 ***                     & 0.204 ***         & 0.294 ***         & 0.204 ***        & \textit{0.099}       \\ \hline
-\textbf{Density Grid = Polycentric}      &             & 0.038 ***                     &                   & 0.023 ***         &                  & -0.006 ***           \\ 
-\textbf{Density Grid = Discontinuous}    &             & 0.03 ***                     &                   & 0.017 ***         &                  & -0.001 ***           \\ \hline
-\textbf{R2 (\%)}                         & 15.01       & 15.57  & 7.62              & 7.83              & 2.04             & 2.05                 \\ 
-\textbf{\# of observations (sim. runs)}  & 4,500,000   & 4,500,000                     & 4,500,000         & 4,500,000         & 4,500,000        & 4,500,000            \\ \hline
-\end{tabular}
-\end{adjustwidth}
-\end{table*}
-
-
-
-\begin{table*}[]
-\centering
-\caption{\comment[cc]{Resultats Temporaires sur 1/3 des simu}}
-\begin{adjustwidth}{-0.5cm}{-0.5cm}
-\begin{tabular}{|m{2.5cm}|ll|ll|ll|}
-\hline
-Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissimilarity}}   & \multicolumn{2}{c|}{\textbf{Entropy}} & \multicolumn{2}{c|}{\textbf{Moran's I}} \\ \hline
-\textbf{Intercept}                          & -0.222 *** & -0.206 ***                       & -0.272 ***        & -0.288 ***        & -0.040 ***           & -0.086 ***               \\ \hline
-\textbf{Similarity Wanted (S)}              & 1.426 ***  & 1.426 ***                        & 1.482 ***         & 1.482 ***         & 0.673 ***            & 0.673 ***                \\ 
-\textbf{quadratic term ($S^2$)}               & -1.158 *** & -1.158 ***                       & -1.179 ***        & -1.179 ***        & -0.545 ***           & -0.545 ***               \\ 
-\textbf{Vacancy Rate (V)}                   & 0.614 ***  & 0.614 ***                        & 0.486 ***         & 0.486 ***         & -0.037 ***           & -0.037 ***               \\ 
-\textbf{Minority Index (\%Maj - \%Min)}     & 0.280 ***  & 0.280 ***                        & 0.094 ***         & 0.094 ***         & -0.090 ***           & -0.090 ***               \\ \hline
-\textbf{Density Grid = Polycentric}         &            & 0.098 ***                        &                   & 0.070 ***         &                      & 0.002 ***                \\ 
-\textbf{Density Grid = Discontinuous}       &            & 0.117 ***                        &                   & 0.082 ***         &                      & -0.001 ***               \\
-\textbf{Attraction meta-parameter $\alpha$} &            & -0.055 ***                       &                   & -0.024 ***        &                      & 0.026 ***                \\ 
-\textbf{Diffusion meta-parameter $\beta$}   &            & 0.270 ***                        &                   & 0.175 ***         &                      & \textit{-0.00}           \\ \hline
-\textbf{R2 (\%)}                            & 34.6       & 38.5                             & 29.1              & 30.8              & 29.8                 & 30.0                     \\ 
-\textbf{\# of observations (sim. runs)}     & 1,403,899  & {\color[HTML]{000000} 1,403,899} & 1,403,899         & 1,403,899         & 1,403,899            & 1,403,899                \\ 
-\textbf{AIC}                                & -5939.02   & -91944.86                        & 246882.4          & 213145.1          & -2829106             & -2832773                 \\ \hline
-\end{tabular}
-\end{adjustwidth}
-N.B. Moran's I applies to the minority population
-\end{table*}
-
 
 
 
 
 \begin{table*}[]
 \centering
-\caption{\comment[CC]{Nouveaux Resultats}}
+\caption{\textbf{Regression of the segregation level of Schelling simulation with order parameters and type of city grid.} *** means that the estimate is significant.}
+\label{tab:regressionSchelling}
 \begin{adjustwidth}{-0.5cm}{-0.5cm}
 \begin{tabular}{|m{2.5cm}|ll|ll|ll|}
 \hline
@@ -328,6 +285,7 @@ Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissim
 \end{adjustwidth}
 N.B. Moran's I applies to the minority population
 \end{table*}
+
 In table \ref{tab:regressionSchelling}, we see that the type of density grid with which the model is initialised determines to a certain extent the level of segregation measured at the end of the simulation run. Indeed, compared to compact density patterns, polycentric grids produce more dissimilarity and entropy between the location of green and red agents. Discontinuous grids have the same effect, although attenuated. The results obtained with Moran's I are opposite, because this index measures spatial autocorrelation at the global level and that compact cities have higher levels of global autocorrelation by construction. However, linear models with and without information about the type of density distribution yields the same coefficients for Schelling's parameters $V$ and $S$, the only exception being the vacancy rate $V$ in the Moran's I model with grid types, which becomes non-significant. The similarity of the coefficient in both cases means that the effect of the model's parameters (and thus the mechanism by which agents of similar group cluster in space) is the same regardless of the distribution of density. The way polycentric and discontinuous density grid exhibit higher segregation is by allowing buffer zones of low density to surround pockets of homogeneity, which is impossible in a compact city, because everyone is at reach of everyone else. The buffering process confirms previous results obtained with network structures \citep{Banos2012}.
 
 
