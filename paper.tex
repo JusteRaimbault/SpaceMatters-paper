@@ -7,27 +7,45 @@
 % **************  TITLE AND AUTHOR INFORMATION **************
 
 
-\runninghead{Raimbault \& al.}
-
+%\runninghead{Raimbault \& al.}
+\runninghead{}
 
 \title{Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?}
 
-\author{Juste Raimbault\affilnum{1,2}, 
-Cl{\' e}mentine Cottineau\affilnum{3},
-Marion Le Texier\affilnum{4}, 
-Florent Le N{\' e}chet\affilnum{2}, 
-Romain Reuillon\affilnum{1,5}
-}
+%\author{Juste Raimbault\affilnum{1,2}, 
+%Cl{\' e}mentine Cottineau\affilnum{3},
+%Marion Le Texier\affilnum{4}, 
+%Florent Le N{\' e}chet\affilnum{2}, 
+%Romain Reuillon\affilnum{1,5}
+%}
+\author{}
 
-\affiliation{\affilnum{1}UMR 8504 G{\'e}ographie-cit{\'e}s, Paris, France\\
-\affilnum{2}Laboratoire Ville Mobilit{\'e} Transport, Universit{\'e} Paris-Est, France\\
-\affilnum{3}Centre for Advanced Spatial Analysis, University College London, UK\\
-\affilnum{4}UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France\\
-\affilnum{5}Institut des Syst{\`e}mes Complexes Paris Ile-de-France, France}
-
-\corrauth{\email{juste.raimbault@polytechnique.edu}}
+%\affiliation{\affilnum{1}UMR 8504 G{\'e}ographie-cit{\'e}s, Paris, France\\
+%\affilnum{2}Laboratoire Ville Mobilit{\'e} Transport, Universit{\'e} Paris-Est, France\\
+%\affilnum{3}Centre for Advanced Spatial Analysis, University College London, UK\\
+%\affilnum{4}UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France\\
+%\affilnum{5}Institut des Syst{\`e}mes Complexes Paris Ile-de-France, France}
 
 
+%\corrauth{Juste Raimbault, UMR CNRS 8504 G{\'e}ographie-cit{\'e}s
+%13 rue du Four,
+%75006 Paris, France.
+%\email{juste.raimbault@polytechnique.edu}}
+%\corrauth{}
+
+
+
+% authors bio
+% Juste Raimbault is a PhD student at Université Paris 7, UMR CNRS 8504 Géographie-cités and UMR-T 9403 IFSTTAR LVMT, under the supervision of Arnaud Banos and Florent Le Néchet. He holds an engineer degree from Ecole Polytechnique and Ecole des Ponts et Chaussées, and a Master in Complex Systems Science from Ecole Polytechnique. His research focuses on complexity approaches to the relations between networks and territories.
+
+% bios...
+
+
+% Cover Letter
+% Dear editors,
+%We are pleased with my coauthors to submit an original research article entitled ``Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?'' for consideration for publication in Environment and Planning B. This article deals with the central yet poorly explored issue of the sensitivity of geosimulation models to their spatial context, and more precisely their spatial initial conditions. It does not rely on previously published work. Preliminary results where however presented as an oral parallel session talk at ECTQG 2015, Bari, and at Geocomputation Conference 2017, Leeds. We did not have any previous interaction with EPB regarding this manuscript. This manuscript has not been published and is not under consideration for publication elsewhere. We have no conflicts of interest to disclose. We do not have any opposed reviewer.
+% Yours faithfully,
+% Juste Raimbault
 
 
 
@@ -51,7 +69,8 @@ Although simulation models of geographical systems in general and agent-based mo
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Simulation within computer models has been recognised and increasingly used by geographers as an efficient tool to explore geographical processes, hypotheses and predictive scenarios within virtual laboratories \citep{batty1971modelling, batty2007model, carley1999generating, Quesneletal2009}. \comment{+ Seb \& James Doran in the 1970s??} Simulation also appears as a way to overcome the difficult analytic resolution of many spatial models which were developed in the past, as well as to explore the possible (alternative) trajectories of social and ecological systems in space and time. The specificity of geographical models compared to other social sciences' models is that space and spatial interactions are given a prime role, as geographers are driven by an explicit interest in studying the way space influences the outcomes of the model. Indeed, they usually seek to understand and model the role of space in social interactions and environmental processes, in a city for example. We think simulation can become a very good tool to achieve this, provided that models do include relevant spatial description and behavioural rules which take space into account, and provided that the model evaluation includes a sensitivity analysis of output variations to the way space is modelled. Unfortunately, the first condition is not always met, and the second is seldom even mentioned. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of a model's outcomes to its initial spatial conditions. To demonstrate the genericity of our approach, we develop two applications with classic simulation models commonly used as case studies for comparing and aligning simulation models \citep{Axtelletal1996, wilensky2007making}: \citet{schelling1971dynamic}'s model of segregation and \citet{EpsteinAxtell1996}'s Sugarscape model, both defined at the intra-urban level.\\
+Simulation within computer models has been recognised and increasingly used by geographers as an efficient tool to explore geographical processes, hypotheses and predictive scenarios within virtual laboratories \citep{batty1971modelling, batty2007model, carley1999generating, Quesneletal2009}. %\comment{+ Seb \& James Doran in the 1970s??}
+ Simulation also appears as a way to overcome the difficult analytic resolution of many spatial models which were developed in the past, as well as to explore the possible (alternative) trajectories of social and ecological systems in space and time. The specificity of geographical models compared to other social sciences' models is that space and spatial interactions are given a prime role, as geographers are driven by an explicit interest in studying the way space influences the outcomes of the model. Indeed, they usually seek to understand and model the role of space in social interactions and environmental processes, in a city for example. We think simulation can become a very good tool to achieve this, provided that models do include relevant spatial description and behavioural rules which take space into account, and provided that the model evaluation includes a sensitivity analysis of output variations to the way space is modelled. Unfortunately, the first condition is not always met, and the second is seldom even mentioned. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of a model's outcomes to its initial spatial conditions. To demonstrate the genericity of our approach, we develop two applications with classic simulation models commonly used as case studies for comparing and aligning simulation models \citep{Axtelletal1996, wilensky2007making}: \citet{schelling1971dynamic}'s model of segregation and \citet{EpsteinAxtell1996}'s Sugarscape model, both defined at the intra-urban level.\\
 
 An urban system can be defined as a large number of diverse social agents interacting with one another, within a limited portion of space. Social agents thus constitute the microscopic level of urban systems, which are framed by a system-time that evolves irreversibly, creating temporal and cumulative effects. Self-organization has been shown to be a central feature of urban systems~\citep{AllenSanglier1981,saint1989villes, Portugali2000}, and emergent properties at qualitatively differentiated scales~\citep{pumain2006hierarchy, AzizAlaouiBertelle2009} must be obtained through simulation methods~\citep{Wu2002, Batty2007}. Complexity is thus partially due to bifurcations, which are determinant in spatial systems~\citep{Wilson1981, Wilson2002}. Indeed, in spatially explicit simulation models, the non-linearity of local interactions is very likely to sublimate small perturbations in the initial spatial setting, making it difficult to interpret the resulting global structures. \\
 Another crucial aspect of spatio-temporal complex systems in general, and cities in particular, is their non-ergodicity~\citep{pumain2012urban}, which means that cross-sectional samples in space (the different cities of a country at time t) are not equivalent to samples in time (the same city at time t, t+1, t+2...) to compute statistics such as average. On the contrary, strong spatio-temporal path-dependencies in the trajectory of individual cities and changing social environments over time provide the use of ergodic models. Similarly to what \citet{gell1995quark} calls \emph{frozen accidents} in complex system generally, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. \\
@@ -63,16 +82,16 @@ Although this may seem obvious, cities are not regular grids, and the distributi
 In this paper, we suggest a way of performing a sensitivity analysis to the spatial conditions of models by using a spatial generator to produce a variety of density grids, which are then fed into simulation models at initialisation. The generator being controlled by meta-parameters, we can then relate the parameters used to generate initial spatial conditions to the variation in outcome of the simulations. The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric \textit{vs.} polycentric for example) on the results of a given model. Our approach allows for a systematic comparison of several aspects of the spatial configuration problem, which has been suggested by \citet{filatova2013spatial}, but hardly implemented and achieved in previous studies, which tend to focus on single aspects of the debate. In particular, it is applied to the effects of urban form on simulation results, using Schelling's model as a first case study and Sugarscape as a second one. 
 
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection{Previous considerations on the effects of the urban form in simulation models}
+\subsection{Previous considerations on the effects of the spatial configuration in simulation models}
 
 
 %\comment[FL]{Je pense que cette partie est vraiment utile, et devrait être étoffée, en procédant peut être à une typologie plus systématique des "initial condition" qui nous intéressent. Il y a déjà une différence entre l'hétérogénéité de l'espace (densités réparties mono ou poly, etc) et les différentes façons de représenter l'espace (grilles carrées, hexagones). Par ailleurs aussi des discussions sur l'incertitude de l'information (est ce que par exemple les emplois downscalés au carreau INSEE par Pivano 2016 c'est vraiment fiable ou très ?) et la précision de la grille} 
 
-Different spatial configurations produce different distributions of income, carbon emissions, educational outcomes, etc. For example, \citet{wheeler2006urban} shows that, in the US, sprawling cities tend to be more unequal than their compact counterparts with respects to income. Dynamically, sprawl consists in the addition of new developments which have been occupied by different groups of population, resulting in a concentration of the wealthy in suburban pockets and of pockets of poverty in the inner city area \citep{jargowsky2002sprawl}. Similarly, in terms of pollution for example, \citet[p.173]{schwanen2001travel} show that{\it "deconcentration of urban land uses encourages driving and discourages the use of public transport as well as cycling and walking"}. The discussion of these effects has also been extensive in the field of geostatistics, meanly since the exposure of the Modifiable Areal Unit Problem (MAUP) \citep{Openshaw1984, FotheringhamWong1991}. Recently, \citet{Kwan2012} has argued for a careful examination of what she coins the uncertain geographic context problem (UGCoP), i.e. of the spatial configuration of geographical units even when the size and delineation of the area are the same.\\
+Different spatial configurations produce different distributions of income, carbon emissions, educational outcomes, etc. For example, \citet{wheeler2006urban} shows that, in the US, sprawling cities tend to be more unequal than their compact counterparts with respects to income. Dynamically, sprawl consists in the addition of new developments which have been occupied by different groups of population, resulting in a concentration of the wealthy in suburban pockets and of pockets of poverty in the inner city area \citep{jargowsky2002sprawl}. Similarly, in terms of pollution for example, \citet[p.173]{schwanen2001travel} show that \textit{``deconcentration of urban land uses encourages driving and discourages the use of public transport as well as cycling and walking''}. The discussion of these effects has also been extensive in the field of geostatistics, meanly since the exposure of the Modifiable Areal Unit Problem (MAUP) \citep{Openshaw1984, FotheringhamWong1991}. Recently, \citet{Kwan2012} has argued for a careful examination of what she coins the uncertain geographic context problem (UGCoP), i.e. of the spatial configuration of geographical units even when the size and delineation of the area are the same.\\
 
 Considerations of such issues in the geographical modelling literature are rather scarce, although there have been some noticeable attempts to evaluate the effects of the same set of mechanisms run from different initial spatial conditions. Mainly, they have focused on the impact of:
 \begin{itemize}
-\item The accuraty of geo-localised input data;
+\item The accuracy of geo-localised input data;
 \item The spatial system shape, precision and boundaries;
 \item Spatial heterogeneity.
 \end{itemize}
@@ -80,19 +99,18 @@ We detail these approaches in the paragraphs below. Other approaches, not includ
 
 \paragraph{Geo-localised input data accuracy:} \citet{Thomasetal2017} show that data selection in LUTI model is inter-related with the delineation of the spatial system boundaries and scale of analysis. They provide a few examples of how the use of Exploratory Spatial Data Analysis (ESDA) prior to simulation runs can help avoiding measurement errors of model behaviour and outcomes. In the context of spatial interaction models, \citet{hagen2012new} acknowledge the dilemma between spatial resolution and computational burden, and suggest a method of adaptive zoning (where the size of destination zones depends on the distance to origin) to solve it.
 
-\paragraph{Spatial system shape, precision, and boundaries:} \citet{Axtelletal1996} highlight the sensitivity of the average number of stable cultural regions generated to the effect of the territory width implemented in a version of the Sugarscape model which is docked (i.e. made equivalent to) to Axelrod Culture Model. \citet{FlacheHegselmann2001} show that chances for random emergence of a stable cluster of similar agents in a Schelling-like model are higher in a rectangular grid and lower in a hexagonal grid and that an irregular (Voronoi-diagram) city lattice structure favours migration stabilisation around decentralised clusters of similar agents. \citet{Banos2012} compares the behaviour of Schelling segregation model on city lattices formalized as either grid, random, scale-free and Sierpinski networks and concludes that the presence of cliques in graph-based urban structures favor segregationist behaviours. \citet{LeTexierCaruso2017}, using a set of different theoretical spatial systems, demonstrate the impact of the regularity and aggregation levels, or centrality/periphery effects, on spatial diffusion dynamics of euro coins. 
-\comment[FL]{je dois compléter\\
-\cite{horritt2001effects} identified the effects of grid cell size on the behaviour of a raster flood model
-\cite{vazquez2002effect} ont exploré la meilleure granularité pour la précision d'un modèle d'écoulement hydrologie et le temps de calcul (à reprendre)}
+\paragraph{Spatial system shape, precision, and boundaries:} \citet{Axtelletal1996} highlight the sensitivity of the average number of stable cultural regions generated to the effect of the territory width implemented in a version of the Sugarscape model which is docked (i.e. made equivalent to) to Axelrod Culture Model. \citet{FlacheHegselmann2001} show that chances for random emergence of a stable cluster of similar agents in a Schelling-like model are higher in a rectangular grid and lower in a hexagonal grid and that an irregular (Voronoi-diagram) city lattice structure favours migration stabilisation around decentralised clusters of similar agents. \citet{Banos2012} compares the behaviour of Schelling segregation model on city lattices formalized as either grid, random, scale-free and Sierpinski networks and concludes that the presence of cliques in graph-based urban structures favor segregationist behaviours. \citet{LeTexierCaruso2017}, using a set of different theoretical spatial systems, demonstrate the impact of the regularity and aggregation levels, or centrality/periphery effects, on spatial diffusion dynamics of euro coins. Similar issues were also dealt with in physical sciences, as for example \cite{horritt2001effects} studies the effects of grid cell size on the behaviour of a raster flood model and shows that increasing resolution does not increase model prediction performance under a certain limit. Similar conclusions are obtained by \cite{vazquez2002effect}, unveiling an intermediate optimal spatial resolution regarding model performance and computation time. Spatial resolution also plays a role in the Schelling model: \citet{Singhetal2009} show that the segregation patterns for certain tolerance values are strictly a small city phenomenon (8x8 city-lattice) and do not work for a larger spatial lattice (100x100), where segregation appears only for certain combinaisons of tolerance threshold and vacancy density values.
 
-\paragraph{Spatial heterogeneity:} \citet{StaufferSolomon2007} introduce asymetric interactions and empty residences in Schelling's model run on a large and regular lattice. They reveal conjoint and non-linear effects on the vacancy rates and tolerance levels on segregation patterns. \citet{Gauvinetal2010} run Schelling's segregation process in an open city-lattice to study how the variations in tolerance levels, vacancy rates and city attractiveness may create lines of vacancy lots between clusters of agents. They conclude on the functional role of vacancies, which allow weakly tolerant agents to live and be satisfied in a city environment they nevertheless perceive as hostile. \citet{HatnaBenenson2012} show that their model replications run on a 50x50 torus with 2\% of empty cells were not sensitive to the initial patterns (random and fully segregated distribution of agents).
+%\comment[FL]{je dois compléter\\
+%\cite{horritt2001effects} identified the effects of grid cell size on the behaviour of a raster flood model
+%\cite{vazquez2002effect} ont exploré la meilleure granularité pour la précision d'un modèle d'écoulement hydrologie et le temps de calcul (à reprendre)}
 
-\paragraph{Combination:} \citet{Singhetal2009} show that the segregation patterns obtained by Schelling for certain tolerance values are strictly a small city phenomenon (8x8 city-lattice) and do not work for a larger spatial lattice (100x100), where segregation appears only for certain combinaisons of tolerance threshold and vacancy density values. 
+\paragraph{Spatial heterogeneity:} \citet{StaufferSolomon2007} introduce asymetric interactions and empty residences in Schelling's model run on a large and regular lattice. They reveal conjoint and non-linear effects on the vacancy rates and tolerance levels on segregation patterns. \citet{Gauvinetal2010} run Schelling's segregation process in an open city-lattice to study how the variations in tolerance levels, vacancy rates and city attractiveness may create lines of vacancy lots between clusters of agents. They conclude on the functional role of vacancies, which allow weakly tolerant agents to live and be satisfied in a city environment they nevertheless perceive as hostile. \citet{HatnaBenenson2012} show that their model replications run on a 50x50 torus with 2\% of empty cells were not sensitive to the initial patterns (random and fully segregated distribution of agents). In ecology, \citet{smith2002predicting} study the spread of a disturbance in an heterogeneous landscape using a percolation model, and show that landscape structure has a significant influence on final patterns of contamination outcome. In a spatial epidemics model for an infectious disease, parametrised on real data, \citet{smith2002predicting} finds that the physical landscape heterogeneity, in particular the presence of rivers, locally influence the propagation speed.
+
+
+%\paragraph{Combination:} 
 
 %\cite{ligmann2013spatially}
-
-\comment[clem]{Ce serait cool d'avoir aussi des exemples de simu hors Schelling pour les deux dernieres sous-parties}
-
 
 
 In this paper, we build on the contributions of these previous studies and go further by systematically measuring the impact of the city lattice on model behaviour, which has so far only been assessed through a small set of illustrative spatial structures. We illustrate the potential generalisation of our approach by running two distinctive agent-based models: Schelling's model of residential segregation and Sugarscape.
@@ -103,12 +121,12 @@ In this paper, we build on the contributions of these previous studies and go fu
 \section{Methods}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we detail the method developed to analyse the sensitivity of simulation models to initial spatial conditions. The general method workflow is illustrated in Figure \ref{fig:method}. In addition to the usual protocol (upper branch in figure \ref{fig:method}, which consists of running a model $\mu$ with various values of its parameters, we introduced the lower branch in figure \ref{fig:method}. We wanted to emphasize that spatial effects do not only derive from grid size or shape effects, but indeed from the heterogeneity of relevant geographic entities (people, housing, networks, etc.) through geographical space. In models, the initial configuration of space can be either flat (most economic models\comment[FL]{c'est peut être un peu brutal?}), or heterogeneous,  based on external databases and internal modelling (generation of synthetic population for instance \citep{bhat1999activity}).
+In this section, we detail the method developed to analyse the sensitivity of simulation models to initial spatial conditions. The general method workflow is illustrated in Figure \ref{fig:method}. In addition to the usual protocol (upper branch in figure \ref{fig:method}, which consists of running a model $\mu$ with various values of its parameters, we introduced the lower branch in figure \ref{fig:method}. We wanted to emphasize that spatial effects do not only derive from grid size or shape effects, but indeed from the heterogeneity of relevant geographic entities (people, housing, networks, etc.) through geographical space. In models, the initial configuration of space can be either flat, or heterogeneous,  based on external databases and internal modelling (generation of synthetic population for instance \citep{bhat1999activity}).
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[htbp] \begin{center} 
 \resizebox{0.9\textwidth}{!}{ 
 	\includegraphics{figures/SchemaMeta_1.png}
-} \caption{General workflow of our method} \label{fig:method} \end{center} \end{figure*} %
+} \caption{\textbf{General workflow of our method.}} \label{fig:method} \end{center} \end{figure*} %
 %%%%%%%%%%%%%%%%%%%%%%
 
 In our approach, we have introduced a spatial generator (lower branch in figure \ref{fig:method}), which itself is determined by input parameters and produces sets of spatial initial conditions. 
@@ -117,15 +135,17 @@ To allow for the exploration of the relative effects of model parameters and spa
 In order to test for the influence of spatial initial conditions on model outputs, we use a systematic method to compare phase diagrams. We define a phase diagram as the projection of a vector of model outputs in the parameter space. Technically, because of stochasticity, we represent the output of the model for a given combination of parameter values as the median of the final values of an output indicator obtained for the replications of the model initialized with this combination of parameter.\\
 
 Comparing phase diagrams is useful because it allows us to compare the 
-Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic\comment[FL]{donner un ordre de grandeur du nombre de simulations?}. A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. We used a distance between two phase diagram corresponding to the share of between-diagrams variability relative to their internal variability\comment[FL]{je ne comprends pas ce choix : pourquoi faut il considérer que des classes ayant une forte cohérence interne seraient plus éloignées? ou alors la question ne se pose pas en ces termes... Par ailleurs est ce que la formule est bien homogène du point de vue des dimensions? En tous cas je pense qu'on peut se passer de la formule à ce stade, éventuellement à mettre dans l'affichage des résultats si on en a besoin.}[(JR) pour l'homogénéité oui justement on prend $d^2$ car c'est les variances, on obtient une mesure sans unité ; ok pour omettre la formule ; pour l'interprétation, on regarde la distance relative, pour des classes à une certaine distance, si elles sont concentrées, cette distance sera plus sigificative que si elles ont une grande variabilité et peuvent se recouper ; par exemple si elles ont mêmes variance $\sigma^2$, alors si $d \simeq \sqrt{2} \sigma$ alors les nuages de points vont en gros se recouper sur leur moitié (cas gaussien idéal), tandis que si $d\gg \sigma$, le max d'un diagramme sera très loin du min de l'autre - on compare à la fois la distance relative et la distance de forme.]
+Indeed, we have as many phase diagrams than we have spatial grids, what makes a qualitative visual comparison not realistic (with around 50 different spatial configurations in our applications). A solution is to use systematic quantitative procedures. To our knowledge there exist no well established method to compare phase diagrams in agent-based modeling and geosimulation literature. We propose to use a relative distance between two phase diagram corresponding to the share of between-diagrams variability relative to their internal variability, given formally by
+
+%\comment[FL]{je ne comprends pas ce choix : pourquoi faut il considérer que des classes ayant une forte cohérence interne seraient plus éloignées? ou alors la question ne se pose pas en ces termes... Par ailleurs est ce que la formule est bien homogène du point de vue des dimensions? En tous cas je pense qu'on peut se passer de la formule à ce stade, éventuellement à mettre dans l'affichage des résultats si on en a besoin.}[(JR) pour l'homogénéité oui justement on prend $d^2$ car c'est les variances, on obtient une mesure sans unité ; ok pour omettre la formule ; pour l'interprétation, on regarde la distance relative, pour des classes à une certaine distance, si elles sont concentrées, cette distance sera plus sigificative que si elles ont une grande variabilité et peuvent se recouper ; par exemple si elles ont mêmes variance $\sigma^2$, alors si $d \simeq \sqrt{2} \sigma$ alors les nuages de points vont en gros se recouper sur leur moitié (cas gaussien idéal), tandis que si $d\gg \sigma$, le max d'un diagramme sera très loin du min de l'autre - on compare à la fois la distance relative et la distance de forme.]
 
 %Several potential methods from other fields such as environmental science could be used, but we keep it simple and such methodological considerations are furthermore auxiliary to the main purpose of this paper. We propose therefore an intuitive measure corresponding to the share of between-diagrams variability relative to their internal variability. More formally, the distance is given by
 
 \begin{equation}\label{eq:phase-distance}
-d_r\left(\alpha_1,\alpha_2\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
+d_r\left(\vec{\alpha_1},\vec{\alpha_2}\right) = 2 \cdot \frac{d(f_{\vec{\alpha_1}},f_{\vec{\alpha_2}})^2}{Var\left[f_{\vec{\alpha_1}}\right] + Var\left[f_{\vec{\alpha_2}}\right]}
 \end{equation}
 
-%where $f_{\vec{\alpha}}(\vec{x})$ is the phase diagrams on parameters $\vec{x}$ at given meta-parameters $\vec{\alpha}$. $d$ is a functional distance that we take simply as Euclidian distance. The variances are estimated within each phase diagram $f_{\vec{\alpha_i}}$.
+where $f_{\vec{\alpha}}(\vec{x})$ is the phase diagrams on parameters $\vec{x}$ at given meta-parameters $\vec{\alpha}$. $d$ is a functional distance that we take simply as Euclidian distance. The variances are estimated within each phase diagram $f_{\vec{\alpha_i}}$.
 
 
 The last methodological point which we need to emphasis is the relation between the workflow we introduce and model exploration workflows. The ideas of multi-modeling and extensive model exploration are nothing from new as ~\cite{openshaw1983data} already advocated for ``model-crunching'', but their effective use only begins to emerge thanks to the apparition of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMole~\citep{reuillon2013openmole} allows to embed any model as a blackbox, write modulable exploration workflow using advanced methodologies such as genetic algorithms and distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, the workflow tool is a powerful way to embed both the sensitivity analysis and the meta-sensitivity analysis, and allow to couple any generator with any model in a straightforward way as soon as the model can take its spatial configuration as input or from an input file. In this paper, we use the OpenMole platform for spatial environment and model coupling, placing ourselves in the renewed framework of multi-modelling claimed by \citet{cottineau2015modular}.
