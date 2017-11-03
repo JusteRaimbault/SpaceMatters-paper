@@ -13,18 +13,19 @@
 \title{Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?}
 
 %\author{Juste Raimbault\affilnum{1,2}, 
-%Cl{\' e}mentine Cottineau\affilnum{3},
-%Marion Le Texier\affilnum{4}, 
+%Cl{\' e}mentine Cottineau\affilnum{3,4},
+%Marion Le Texier\affilnum{5}, 
 %Florent Le N{\' e}chet\affilnum{2}, 
-%Romain Reuillon\affilnum{1,5}
+%Romain Reuillon\affilnum{1,6}
 %}
 \author{}
 
 %\affiliation{\affilnum{1}UMR 8504 G{\'e}ographie-cit{\'e}s, Paris, France\\
 %\affilnum{2}Laboratoire Ville Mobilit{\'e} Transport, Universit{\'e} Paris-Est, France\\
 %\affilnum{3}Centre for Advanced Spatial Analysis, University College London, UK\\
-%\affilnum{4}UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France\\
-%\affilnum{5}Institut des Syst{\`e}mes Complexes Paris Ile-de-France, France}
+%\affilnum{4}CNRS, UMR 8097 Centre Maurice Halbwachs, Paris, France\\
+%\affilnum{5}UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France\\
+%\affilnum{6}Institut des Syst{\`e}mes Complexes Paris Ile-de-France, France}
 
 
 %\corrauth{Juste Raimbault, UMR CNRS 8504 G{\'e}ographie-cit{\'e}s
@@ -38,14 +39,21 @@
 % authors bio
 % Juste Raimbault is a PhD student at Université Paris 7, UMR CNRS 8504 Géographie-cités and UMR-T 9403 IFSTTAR LVMT, under the supervision of Arnaud Banos and Florent Le Néchet. He holds an engineer degree from Ecole Polytechnique and Ecole des Ponts et Chaussées, and a Master in Complex Systems Science from Ecole Polytechnique. His research focuses on complexity approaches to the relations between networks and territories.
 
-% bios...
+% Dr. Clémentine Cottineau is a research associate at the Centre for Advanced Spatial Analysis of University College London. She studied geography and economics at University Paris 1 Panthéon-Sorbonne and holds a PhD in geography from this university. Her thesis aimed at modelling urbanisation in the post-Soviet space with modular agent-based models. Since 2014, she has been working at the Centre for Advanced Spatial Analysis on urban economics and parametric scaling in the context of European systems of cities, using tools from complexity science to investigate inequality in cities and economic disparities between cities.
 
 
 % Cover Letter
+
 % Dear editors,
-%We are pleased with my coauthors to submit an original research article entitled ``Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?'' for consideration for publication in Environment and Planning B. This article deals with the central yet poorly explored issue of the sensitivity of geosimulation models to their spatial context, and more precisely their spatial initial conditions. It does not rely on previously published work. Preliminary results where however presented as an oral parallel session talk at ECTQG 2015, Bari, and at Geocomputation Conference 2017, Leeds. We did not have any previous interaction with EPB regarding this manuscript. This manuscript has not been published and is not under consideration for publication elsewhere. We have no conflicts of interest to disclose. We do not have any opposed reviewer.
+
+%My coauthors and I are pleased to submit an original research article entitled ``Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?'' for consideration for publication in Environment and Planning B. 
+
+%This article deals with the central yet poorly explored issue of the sensitivity of geosimulation models to their spatial context (i.e. the spatial configuration of agents and their environment), and more precisely their spatial initial conditions. We think the subject in general and the novelty of the paper in particular will meet the interest of the readers of EPB, a journal dealing with urban modelling and city science.
+
+%Despite some preliminary results being presented as at ECTQG 2015, Bari, and at Geocomputation Conference 2017, Leeds, we confirm that neither the manuscript nor any parts of its content are currently under consideration or published in another journal. We did not have any previous interaction with EPB regarding this manuscript. We have no conflicts of interest to disclose. We do not have any opposed reviewer.
+
 % Yours faithfully,
-% Juste Raimbault
+% Juste Raimbault and co-authors.
 
 
 
@@ -54,10 +62,10 @@
 \begin{abstract}
 %\noindent
 %\setlength{\parindent}{0pt}
-Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain until their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually taken for granted in geographical models, thus leaving completely unexplored the effect of spatial arrangements on the interactions of agents and of that of agents with their environment. In this paper, we present a method to assess the effect of initial spatial conditions on simulation models, using a systematic generator controlled by meta-parameters in order to create the density grids with which spatial simulation models are initialised. We show, with the example of two very classical agent-based models (Schelling's models of segregation and Sugarscape's model of resource harvesting) and a straightforward open-source work-flow using high performance computing, that the effect of space is significant in the two types of simulation. Furthermore, this effect is sometimes larger than the effect of parameters' value change. 
+Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain until their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually taken for granted in geographical models, thus leaving completely unexplored the effect of spatial arrangements on the interactions of agents and of that of agents with their environment. In this paper, we present a method to assess the effect of initial spatial conditions on simulation models, using a systematic generator controlled by meta-parameters in order to create the density grids with which spatial simulation models are initialised. We show, with the example of two classical agent-based models (Schelling's models of segregation and Sugarscape's model of resource harvesting) and a straightforward open-source work-flow using high performance computing, that the effect of space is significant in the two types of simulation. Furthermore, this effect is sometimes larger than the effect of parameters' value change. 
 \end{abstract}
 
-\keywords{Space, Initial conditions, Sensitivity, ABM}
+\keywords{Space, Initial conditions, Sensitivity, ABM, Validation}
 
 \maketitle
 
@@ -70,7 +78,7 @@ Although simulation models of geographical systems in general and agent-based mo
 %%%%%%%%%%%%%%%%%%%%%%
 
 Simulation within computer models has been recognised and increasingly used by geographers as an efficient tool to explore geographical processes, hypotheses and predictive scenarios within virtual laboratories \citep{batty1971modelling, batty2007model, carley1999generating, Quesneletal2009}. %\comment{+ Seb \& James Doran in the 1970s??}
- Simulation also appears as a way to overcome the difficult analytic resolution of many spatial models which were developed in the past, as well as to explore the possible (alternative) trajectories of social and ecological systems in space and time. The specificity of geographical models compared to other social sciences' models is that space and spatial interactions are given a prime role, as geographers are driven by an explicit interest in studying the way space influences the outcomes of the model. Indeed, they usually seek to understand and model the role of space in social interactions and environmental processes, in a city for example. We think simulation can become a very good tool to achieve this, provided that models do include relevant spatial description and behavioural rules which take space into account, and provided that the model evaluation includes a sensitivity analysis of output variations to the way space is modelled. Unfortunately, the first condition is not always met, and the second is seldom even mentioned. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of a model's outcomes to its initial spatial conditions. To demonstrate the genericity of our approach, we develop two applications with classic simulation models commonly used as case studies for comparing and aligning simulation models \citep{Axtelletal1996, wilensky2007making}: \citet{schelling1971dynamic}'s model of segregation and \citet{EpsteinAxtell1996}'s Sugarscape model, both defined at the intra-urban level.\\
+ Simulation also appears as a way to overcome the difficult analytic resolution of many spatial models which were developed in the past, as well as to explore the possible (alternative) trajectories of social and ecological systems in space and time. The specificity of geographical models compared to other social sciences' models is that space and spatial interactions are given a prime role, as geographers are driven by an explicit interest in studying the way space influences the outcomes of the model. Indeed, they usually seek to understand and model the role of space in social interactions and environmental processes, in a city for example. We think simulation can become a very good tool to achieve this, provided that models do include relevant spatial descriptions and behavioural rules which take space into account, and provided that the model evaluation includes a sensitivity analysis of output variations to the way space is modelled. Unfortunately, the first condition is not always met, and the second is seldom even mentioned. This paper aims to fill a methodological and conceptual gap, which is a systematic testing of the sensitivity of a model's outcomes to its initial spatial conditions. To demonstrate the genericity of our approach, we develop two applications with classic simulation models commonly used as case studies for comparing and aligning simulation models \citep{Axtelletal1996, wilensky2007making}: \citet{schelling1971dynamic}'s model of segregation and \citet{EpsteinAxtell1996}'s Sugarscape model, both defined at the intra-urban level.\\
 
 An urban system can be defined as a large number of diverse social agents interacting with one another, within a limited portion of space. Social agents thus constitute the microscopic level of urban systems, which are framed by a system-time that evolves irreversibly, creating temporal and cumulative effects. Self-organization has been shown to be a central feature of urban systems~\citep{AllenSanglier1981,saint1989villes, Portugali2000}, and emergent properties at qualitatively differentiated scales~\citep{pumain2006hierarchy, AzizAlaouiBertelle2009} must be obtained through simulation methods~\citep{Wu2002, Batty2007}. Complexity is thus partially due to bifurcations, which are determinant in spatial systems~\citep{Wilson1981, Wilson2002}. Indeed, in spatially explicit simulation models, the non-linearity of local interactions is very likely to sublimate small perturbations in the initial spatial setting, making it difficult to interpret the resulting global structures. \\
 Another crucial aspect of spatio-temporal complex systems in general, and cities in particular, is their non-ergodicity~\citep{pumain2012urban}, which means that cross-sectional samples in space (the different cities of a country at time t) are not equivalent to samples in time (the same city at time t, t+1, t+2...) to compute statistics such as average. On the contrary, strong spatio-temporal path-dependencies in the trajectory of individual cities and changing social environments over time provide the use of ergodic models. Similarly to what \citet{gell1995quark} calls \emph{frozen accidents} in complex system generally, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. \\
