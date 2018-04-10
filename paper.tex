@@ -54,7 +54,7 @@
 % authors bio
 % Juste Raimbault is a PhD student at Université Paris 7, UMR CNRS 8504 Géographie-cités and UMR-T 9403 IFSTTAR LVMT, under the supervision of Arnaud Banos and Florent Le Néchet. He holds an engineer degree from Ecole Polytechnique and Ecole des Ponts et Chaussées, and a Master in Complex Systems Science from Ecole Polytechnique. His research focuses on complexity approaches to the relations between networks and territories.
 
-% Dr. Clémentine Cottineau is a research associate at the Centre for Advanced Spatial Analysis of University College London. She studied geography and economics at University Paris 1 Panthéon-Sorbonne and holds a PhD in geography from this university. Her thesis aimed at modelling urbanisation in the post-Soviet space with modular agent-based models. Since 2014, she has been working at the Centre for Advanced Spatial Analysis on urban economics and parametric scaling in the context of European systems of cities, using tools from complexity science to investigate inequality in cities and economic disparities between cities.Conc
+% Dr. Clémentine Cottineau is a research associate at the Centre for Advanced Spatial Analysis of University College London. She studied geography and economics at University Paris 1 Panthéon-Sorbonne and holds a PhD in geography from this university. Her thesis aimed at modelling urbanisation in the post-Soviet space with modular agent-based models. Since 2014, she has been working at the Centre for Advanced Spatial Analysis on urban economics and parametric scaling in the context of European systems of cities, using tools from complexity science to investigate inequality in cities and economic disparities between cities.
 
 % Dr. Marion Le Texier is associate professor at University of Rouen Normandie. She holds a PhD in geography from both Paris Diderot University and Luxembourg University. Her thesis aimed at modelling the circulation of euro coins through European borders with statistical and agent-based models. Previous to joining Rouen Normandie University in 2016, she has been a Jean Monet fellow at the European University Institute in Florence and a post-doc at Luxembourg University. Her work deals with data and modelling issues in different thematic contexts: access to nature in cities, international online media coverage of earthquakes, to name but two.
 
@@ -408,9 +408,10 @@ Within a standard Schelling model (i.e. initialised with a uniform density grid)
 
 \begin{table*}[]
 \centering
+\begin{threeparttable}
 \caption{\textbf{Regression of the segregation level of Schelling simulation with order parameters and type of city grid.} *** means that the estimate is significant at the 0.01 level.}
 \label{tab:regressionSchelling}
-\begin{adjustwidth}{-1cm}{-1cm}
+%\begin{adjustwidth}{-1cm}{-1cm}
 \begin{tabular}{|m{2.5cm}|ll|ll|ll|}
 \hline
 Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissimilarity}}   & \multicolumn{2}{c|}{\textbf{Entropy}} & \multicolumn{2}{c|}{\textbf{Moran's I}} \\ \hline
@@ -427,8 +428,11 @@ Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissim
 \textbf{\# of observations (sim. runs)}     & 2,106,000  & 2,106,000 						 & 2,106,000          & 2,106,000          & 2,106,000             & 2,106,000                \\ 
 \textbf{AIC}                                & -70717.68   & -198748.2  						& 208213.8          & 166048.8          & -4385990             & -4387816                 \\ \hline
 \end{tabular}
-\end{adjustwidth}
+%\end{adjustwidth}
+\begin{tablenotes}
 N.B. Moran's I applies to the minority population
+\end{tablenotes}
+  \end{threeparttable}
 \end{table*}
 
 In table \ref{tab:regressionSchelling}, we see that the type of density grid with which the model is initialised determines to a certain extent the level of segregation measured at the end of the simulation run. Indeed, compared to compact density patterns, polycentric grids produce more dissimilarity and entropy between the location of green and red agents. Discontinuous grids have the same effect, although attenuated. The results obtained with Moran's I are opposite, because this index measures spatial autocorrelation at the global level and that compact cities have higher levels of global autocorrelation by construction. However, linear models with and without information about the type of density distribution yields the same coefficients for Schelling's parameters $V$ and $S$, the only exception being the vacancy rate $V$ in the Moran's I model with grid types, which becomes non-significant. The similarity of the coefficient in both cases means that the effect of the model's parameters (and thus the mechanism by which agents of similar group cluster in space) is the same regardless of the distribution of density. The way polycentric and discontinuous density grid exhibit higher segregation is by allowing buffer zones of low density to surround pockets of homogeneity, which is impossible in a compact city, because everyone is at reach of everyone else. The buffering process confirms previous results obtained with network structures \citep{Banos2012}.
