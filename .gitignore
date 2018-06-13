@@ -1,4 +1,13 @@
 .DS_Store
 .texpadtmp
 paper.pdf
+*.aux
+*.bbl
+*.log
+*.blg
+*.out
+*.blg
+*.soc
+*.spl
+*.synctex.gz
 
