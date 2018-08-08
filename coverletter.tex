@@ -1,0 +1,59 @@
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+\usepackage[document]{ragged2e}
+% pour justifier
+
+
+% moderncv themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{red}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\renewcommand{\familydefault}{\rmdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\firstname{}
+\lastname{}
+\begin{document}
+%-----       letter       ---------------------------------------------------------
+
+
+
+% recipient data
+\recipient{Editors CEUS}{}
+\date{June 13, 2018}
+\opening{Dear Editors,}
+\closing{Yours faithfully,\\
+Juste Raimbault and co-authors\\
+UPS CNRS 3611 ISC-PIF
+}
+         % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+
+\justify
+My coauthors and I are pleased to submit an original research article entitled ``Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models'' for consideration for publication in Computer, Environment and Urban Systems.
+
+This article deals with the central yet poorly explored issue of the sensitivity of geosimulation models to their spatial context (i.e. the spatial configuration of agents and their environment), and more precisely their spatial initial conditions. We think the subject in general and the novelty of the paper in particular will meet the interest of the readers of CEUS, a journal dealing with computerised models and urban systems.
+
+Despite some preliminary results being presented as at ECTQG 2015, Bari, and at Geocomputation Conference 2017, Leeds, we confirm that neither the manuscript nor any parts of its content are currently under consideration or published in another journal. We did not have any previous interaction with CEUS regarding this manuscript. We have no conflicts of interest to disclose. We do not have any opposed reviewer.
+\justify
+
+
+
+%
+
+
+\makeletterclosing
+
+
+
+
+
+\end{document}
+
+
+%% end of file `template.tex'.
