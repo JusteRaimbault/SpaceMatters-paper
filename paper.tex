@@ -133,7 +133,7 @@ Computer simulation has been recognised and increasingly used by geographers as 
 
 \subsection{Definition of the problem}
 
-Geographical systems can be crudely described as social agents interacting with one another, within a limited portion of space. Social agents thus constitute the microscopic level of the system, and they are framed by a system-time that evolves irreversibly, creating temporal and cumulative effects, also known as path-dependent \citep{arthur1994increasing}. Therefore, observing a system at different points in time does not equate to observing different system at a single point in time. This general property of ergodicity applies to geographical elements such as road networks or built-up areas \citep{pumain2003approche}. Similarly to what \citet{gell1995quark} calls \emph{frozen accidents} in complex system generally, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. Therefore, strong spatio-temporal path-dependencies in the trajectory of individual cities and changing social environments over time prohibits the use of ergodic models... which are the main models to be found in geosimulation.
+Geographical systems can be crudely described as social agents interacting with one another, within a limited portion of space. Social agents thus constitute the microscopic level of the system, and they are framed by a system-time that evolves irreversibly, creating temporal and cumulative effects, also known as path-dependent \citep{arthur1994increasing}. Therefore, observing a system at different points in time does not equate to observing \added{a} different system at a single point in time. This general property of ergodicity applies to geographical elements such as road networks or built-up areas \citep{pumain2003approche}. Similarly to what \citet{gell1995quark} calls \emph{frozen accidents} in complex system generally, a given configuration contains clues on past bifurcations, that can have had dramatic effects on the state of the system. Therefore, strong spatio-temporal path-dependencies in the trajectory of individual cities and changing social environments over time prohibits the use of ergodic models... which are the main models to be found in geosimulation.
 
 
 Self-organization has been shown to be a central feature of geographical systems in general and cities in particular ~\citep{AllenSanglier1981,saint1989villes, Portugali2000}. In the vocabulary of complex systems, cities also exhibit emergent properties at macroscopic scales~\citep{pumain2006hierarchy, AzizAlaouiBertelle2009}, which can be simulated through microscopic interactions between agents~\citep{Wu2002, Batty2007}. Complexity is partially due to bifurcations, which are determinant in spatial systems~\citep{Wilson1981, Wilson2002}. Indeed, in spatially explicit simulation models, the non-linearity of local interactions is very likely to sublimate small perturbations in the initial spatial setting, making it difficult to interpret the resulting global structures. In that sense, the impact of initial \emph{spatial} settings on final outcomes is assumed to be significant just as other initial conditions, but of more interest to the geographer. \\
@@ -253,6 +253,8 @@ We choose different experiment designs, both for meta-parameters and for the pha
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 %%%%%%%%%%%%%%%%%%%%%%
+
+\todo{add code and data availability statement here}
 
 \subsection{Quantitative variation across grids}
 
@@ -376,17 +378,21 @@ We consider that the method presented in this paper holds great potential for st
 
 \paragraph{Comparing phase diagrams} Comparing phase diagrams is as we saw not so straightforward, and further developments of our method imply testing alternative methods for this particular point. For example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \emph{meta phase transitions} (phase transitions in the space of meta parameters). The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\citep{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numeral tools to compare two dimensional fields~\citep{visser2006map}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\citep{10.1371/journal.pone.0178165}. The investigation of diverse approaches to systematically quantify differences between phase diagrams is an important potential development of our method.
 
+\added{\cite{kuhnert2005comparing} map comparison techniques}
 
-\paragraph{Platform constraints and docking challenges} An aspect that we have not touched upon in the article with respect to the sensitivity to initial spatial conditions is the importance of the modelling platform as a constraint in the formalisation of space. For example, the use of Netlogo fosters the use of raster/grid spatial inputs rather than vector elements. Its toroidal default setting might also have influenced the work of many modellers who did not question explicitly the representation of space. This issue is part of the docking challenge \citep{Axtelletal1996} (i.e. checking if two models can produce the same results), but more generally, it involves a description of the model and its spatial requirements more detailed than what is currently the rule.
+\added{\cite{kruskal1983overview} parallel with time-series comparison techniques (see reviewer comment - however more constrained as two dimensional indexing)}
+
+\paragraph{Platform constraints and docking challenges}
+
+An aspect that we have not touched upon in the article with respect to the sensitivity to initial spatial conditions is the importance of the modelling platform as a constraint in the formalisation of space. For example, the use of Netlogo fosters the use of raster/grid spatial inputs rather than vector elements. Its toroidal default setting might also have influenced the work of many modellers who did not question explicitly the representation of space. This issue is part of the docking challenge \citep{Axtelletal1996} (i.e. checking if two models can produce the same results), but more generally, it involves a description of the model and its spatial requirements more detailed than what is currently the rule.
 
 
-% \comment[FL]{NetLogo qui influence la formalisation de l'espace dans les modèles alors que formalisation de ce dernier peut être plus poussée dans la description du modèle original.}[(JR) bonne idée, y'a pas mal d'exemples ou il faut pas mal contourner l'usage ``naturel'' de Netlogo pour s'en sortir - sur les représentations raster/vecteur c'est souvent un dilemne et ça peut induire des biais d'implémentation - je vais essayer de trouver un exemple simple (ceux que j'ai là trop usine à gaz, exemple Lutecia)]
 
 \subsection{Opportunities and extensions}
 
 
 \paragraph{Reproducibility and Applicability} 
-%\comment[CC]{Lancer des pistes sur comment travailler l'effet de la grille pour d'autres types de modélisation type modèles appliqués.}
+
 
 Although the applications we present here are limited by the simplicity of the models, we think that the method could (and should) be applied to larger models including domain mechanisms and more empirical initialisation data, for example synthetic populations. The sensitivity analysis to initial spatial conditions could then be either a replication on the spatial allocation of the synthetic population, or a series of spatial permutations of the empirical spatial inputs.
 We want to foster this extension of our work by releasing the density grids also generated, as well as the generating work-flow and the model implementation. They are available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. Another way to go would be to implement additional generators, such as social networks \citep{alizadeh2016generating} with localised agents. 
@@ -394,8 +400,6 @@ We want to foster this extension of our work by releasing the density grids also
 
 \paragraph{An emancipation opportunity for social sciences.}
 
-%\comment[MLT]{Au-delà de l'outil NetLogo, parler de la formalisation de l'espace par les physiciens qui a influencé les modèles en géographie (cf: commentaire de Florent que je propose de bouger ici)?}
-%\comment[FLN]{opportunity for social science to emancipate from the very strong hypotheses of physicists that have become standards (homogeneity and isotropy of space), even though they are never valid in social systems.} 
 
 As~\citet{pumain2003approche} points out in an overview of complexity approaches in geography, transfer of models and concepts between disciplines may induce a transfer of corresponding assumptions, that become senseless taken out of context. Geography and the social sciences in general have been in the last decades strongly influenced by insights from physics, that beside their highly enriching impact~\citep{o2015physicists}, may have softly imposed strong assumptions such as homogeneity and isotropy of space. We believe that a renewed approach on the role of space as we proposed, in other terms insisting that \emph{space matters}, is an opportunity the for social sciences to build their own stream of methodologies in the modelling domain.
 
@@ -460,6 +464,10 @@ After reviewing the extensive literature on spatial biases in statistical and si
 
 \section*{Supplementary material}
 
+\subsection*{\added{Additional figures for the Schelling model}}
+
+\added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here.}
+
 %%%%%%%%%%%%%
 \begin{figure}[h!]
 \centering
@@ -468,6 +476,14 @@ After reviewing the extensive literature on spatial biases in statistical and si
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids for the Schelling model.} Each point corresponds to a spatial configuration and colour gives the relative distance to one of the phase diagrams. We show them in the meta-parameter space (Left) and in the reduced morphological space (Right).\label{fig:schelling-distance-meta}}
 \end{figure}
 %%%%%%%%%%%%%
+
+
+\subsection*{\added{Pseudo-code for models}}
+
+\added{We give below the pseudo-code for the implementations we used of both models.}
+
+
+
 
 
 
