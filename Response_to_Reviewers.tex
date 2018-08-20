@@ -156,141 +156,116 @@ Concerning specifically the comments made by the first referee:
 
 
 
+Concerning the comments made by the second referee:
 
+%This is an interesting article that I read with true interest. The paper fits the profile of this journal and can reach a wider audience.
 
--Reviewer 2
+%I also have some concerns:
 
-  -
-This is an interesting article that I read with true interest. The paper fits the profile of this journal and can reach a wider audience.
-
-I also have some concerns:
-
-In the abstract the authors claim that initial spatial conditions are often taken for granted. I do not agree to this statement. Initial spatial condition can have a large impact on the results of a model, however I do not think that the initial spatial conditions are often taken for granted.
-
-
-
-Page 2 line 88: the authors state that “Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents is still approximated by a constant density”, I do not think this is true. Many models generate a heterogeneous synthetic population that is based on local data (replicating the actual population as closely as possible) and in far more detail then what is done in this paper. I am thinking of work in the line of disease diffusion, crime etc.
-
-
-
-Page 2 line 98: “However, this step is rarely explicit and authors tend to generalize the conclusion of the model from a single, spatial case study”. I do not understand the first part of the this statement. The steps taken are often very explicit. Due to the amount of time it takes to correctly represent all spatial data, including population densities and the variation of other population variables over space, many authors indeed restrict themselves to a single case study due to the time intensity of this task. Many agent-based models are also not valid for other areas.
-
-The authors do not differentiate between data driven empirical models versus theory-driven models. I think a clear differentiation between the two groups and the positioning of the two case studies in the second group would make the paper more balanced.
-
-
-
-In section 1.3 (Previous considerations on the effects of the spatial configuration in simulation models) authors provide a lot of evidence on previous work on the impact of initial spatial conditions on the output of models. This is contrary to the statement in the abstract that initial conditions are often taken for granted.
-
-The most interesting part of the research to me, is not the way the density layers are generated but the use of the phase diagrams, defined as a vector of final aggregated model outputs. As these are vectors, they are not so different from time series and many techniques exist to compare vectors in this domain. I wonder if the Euclidean distance is the best measure to determine the difference between the phase vectors of different spatial inputs.
-
-Last paragraph of page 5, you do not state explicitly if genetic algorithms were use within the OpenMOLE platform.
-
-In section 3.1, page 8, line 404-405 the authors mention that the distance of the phase diagrams was measured with respect to the reference phase diagram computed on the default initial spatial conditions. Actually this came as a surprise to me. I had the impression that all phase diagrams would be evaluated against all other diagrams. Perhaps this should be explained earlier in the paper.
-
-
-
-Figure 4 and 5: I find it confusing that the green color indicates higher distance values and the red color indicates lower values. I think this should be reversed.
-
-
-
-I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
-
-
-
-
+\begin{itemize}
+	% In the abstract the authors claim that initial spatial conditions are often taken for granted. I do not agree to this statement. Initial spatial condition can have a large impact on the results of a model, however I do not think that the initial spatial conditions are often taken for granted.
+	\item 
+	
+	% Page 2 line 88: the authors state that “Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents is still approximated by a constant density”, I do not think this is true. Many models generate a heterogeneous synthetic population that is based on local data (replicating the actual population as closely as possible) and in far more detail then what is done in this paper. I am thinking of work in the line of disease diffusion, crime etc.
+	\item 
+	
+	% Page 2 line 98: “However, this step is rarely explicit and authors tend to generalize the conclusion of the model from a single, spatial case study”. I do not understand the first part of the this statement. The steps taken are often very explicit. Due to the amount of time it takes to correctly represent all spatial data, including population densities and the variation of other population variables over space, many authors indeed restrict themselves to a single case study due to the time intensity of this task. Many agent-based models are also not valid for other areas.
+	\item
+	
+	% The authors do not differentiate between data driven empirical models versus theory-driven models. I think a clear differentiation between the two groups and the positioning of the two case studies in the second group would make the paper more balanced.
+	\item 
+	
+	% In section 1.3 (Previous considerations on the effects of the spatial configuration in simulation models) authors provide a lot of evidence on previous work on the impact of initial spatial conditions on the output of models. This is contrary to the statement in the abstract that initial conditions are often taken for granted.
+	\item 
+	
+	% The most interesting part of the research to me, is not the way the density layers are generated but the use of the phase diagrams, defined as a vector of final aggregated model outputs. As these are vectors, they are not so different from time series and many techniques exist to compare vectors in this domain. I wonder if the Euclidean distance is the best measure to determine the difference between the phase vectors of different spatial inputs.
+	% -> 
+	\item
+	
+	% Last paragraph of page 5, you do not state explicitly if genetic algorithms were use within the OpenMOLE platform.
+	\item 
+	
+	% In section 3.1, page 8, line 404-405 the authors mention that the distance of the phase diagrams was measured with respect to the reference phase diagram computed on the default initial spatial conditions. Actually this came as a surprise to me. I had the impression that all phase diagrams would be evaluated against all other diagrams. Perhaps this should be explained earlier in the paper.
+	\item 
+	
+	% Figure 4 and 5: I find it confusing that the green color indicates higher distance values and the red color indicates lower values. I think this should be reversed.
+	\item 
+	
+	% I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
+	
+	
+\end{itemize}
 
 
 
 
+Concerning the comments made by the third referee:
 
 
+\begin{itemize}
+	% I found the research question posed by the author(s) interesting and I agree with the author(s) that many modelers don’t consider how spatial arrangements impact the outcomes of the model and tend to focus only on the parameters. The paper makes good use of the complexity and spatial literature in defining the problem and demonstrates how urban form impacts the results. However, while the paper is innovative, I found it really difficult to interpret and follow the results. I would suggest to the author to rewrite the results and methodology so that they flow better and also provide more context with respect to how to interpret the results.
+	\item 
+	
+	% On a side note, one of your key words you use “validation” but in what sense?  You don’t really come back to this in the paper, also you write about “the validity of generative models is uncertain until their results are proven robust and representative of ’real-world’ conditions.” In the abstract but this is it.  What do you consider real world conditions to be? You seem to allude that you need to have the spatial generator to generate realistic (styles) city shapes for testing on the Schelling model but I am not convinced.  After the abstract all notion of validation is missing.
+	\item 
+	
+	% Geosimulation is introduced but not defined or referenced.  This should be clarified as the term has several meanings etc.
+	\item 
+	
+	% In places the English along with the overall argument could be better articulated. For example, on page 1 you write: “We think simulation can become a very good tool to achieve this,”  Could this be rewritten or better argued. You are not the only one to believe this but you don’t show this in your paper.
+	\item 
+	
+	% Page 4: you write “Generally, sensitivity analyses have focused either on the spatial context (extent of the environment, shape of the zones if applicable - squares, hexagons, etc., objects - links, rasters, etc.); either on the spatial encoding of the heterogeneity of space (algorithms of disaggregation, interpolation, etc.), but rarely on both at the same time” This makes little sense. What it should be is “Generally, sensitivity analyses have focused either on the spatial context or the heterogeneity of space” or something like that. Basically you need the “or”.
+	\item 
 
--Reviewer 3
+	% You write “To our knowledge there exist no single well established method to compare phase diagrams in the agent-based modelling and geosimulation literature.” As this is new you may want to discuss how say its done in other fields?  
+	\item 
+	
+	% In the Schelling and sugarscape models how are the initial population of agents distributed? Is it random? I ask as this is unclear in the current version of the paper but it is vital if your purpose is to explore how the initial spatial configuration impacts the results of the model. Should the agents not be all located at the same location for each run to rule out the impact of initial placement of agents on the resulting patterns? This is something that is not addressed in the paper. I know for example, the Schelling model in NetLogo normally places the agents at random locations but in your reimplementation how is this done? The same goes for the sugarscape model in NetLogo. I believe a clearer description of the model initialization would be good and how its not the initial random placement of agents but the actual environment that impacts the outcomes. Maybe this was explained in the paper but I missed it.  
+	\item 
+	
+	% In Section 1.2 talk about “(monocentric vs. polycentric for example)” but in the results you don’t discuss the monocentric versions explicitly using these terms.
+	\item 
+	
+	% Also I appreciate you are trying to show rather complex results but reading the results several times I found the presentation of them (both written and visual) really hard to follow and understand. I was wondering if maybe you could find a better way to show / discuss them. Maybe a  worked example of how each set of parameters leads to a point in say Figure 4. Also it is confusing why the results from both models are not presented using the same styles of figures. For example, for the sugar scape model you different styles of figures than for the segregation model.   
+	\item 
+\end{itemize}
 
-  -
-I found the research question posed by the author(s) interesting and I agree with the author(s) that many modelers don’t consider how spatial arrangements impact the outcomes of the model and tend to focus only on the parameters. The paper makes good use of the complexity and spatial literature in defining the problem and demonstrates how urban form impacts the results. However, while the paper is innovative, I found it really difficult to interpret and follow the results. I would suggest to the author to rewrite the results and methodology so that they flow better and also provide more context with respect to how to interpret the results.
+
 
  
-
-On a side note, one of your key words you use “validation” but in what sense?  You don’t really come back to this in the paper, also you write about “the validity of generative models is uncertain until their results are proven robust and representative of ’real-world’ conditions.” In the abstract but this is it.  What do you consider real world conditions to be? You seem to allude that you need to have the spatial generator to generate realistic (styles) city shapes for testing on the Schelling model but I am not convinced.  After the abstract all notion of validation is missing.
-
- 
-
-Geosimulation is introduced but not defined or referenced.  This should be clarified as the term has several meanings etc.
-
- 
-
-In places the English along with the overall argument could be better articulated. For example, on page 1 you write: “We think simulation can become a very good tool to achieve this,”  Could this be rewritten or better argued. You are not the only one to believe this but you don’t show this in your paper.
-
- 
-
-Page 4: you write “Generally, sensitivity analyses have focused either on the spatial context (extent of the environment, shape of the zones if applicable - squares, hexagons, etc., objects - links, rasters, etc.); either on the spatial encoding of the heterogeneity of space (algorithms of disaggregation, interpolation, etc.), but rarely on both at the same time” This makes little sense. What it should be is “Generally, sensitivity analyses have focused either on the spatial context or the heterogeneity of space” or something like that. Basically you need the “or”.
-
- 
-
-You write “To our knowledge there exist no single well established method to compare phase diagrams in the agent-based modelling and geosimulation literature.” As this is new you may want to discuss how say its done in other fields?  
-
- 
-
- 
-
-In the Schelling and sugarscape models how are the initial population of agents distributed? Is it random? I ask as this is unclear in the current version of the paper but it is vital if your purpose is to explore how the initial spatial configuration impacts the results of the model. Should the agents not be all located at the same location for each run to rule out the impact of initial placement of agents on the resulting patterns? This is something that is not addressed in the paper. I know for example, the Schelling model in NetLogo normally places the agents at random locations but in your reimplementation how is this done? The same goes for the sugarscape model in NetLogo. I believe a clearer description of the model initialization would be good and how its not the initial random placement of agents but the actual environment that impacts the outcomes. Maybe this was explained in the paper but I missed it.  
-
- 
-
- 
-
-In Section 1.2 talk about “(monocentric vs. polycentric for example)” but in the results you don’t discuss the monocentric versions explicitly using these terms.
-
- 
-
- 
-
-Also I appreciate you are trying to show rather complex results but reading the results several times I found the presentation of them (both written and visual) really hard to follow and understand. I was wondering if maybe you could find a better way to show / discuss them. Maybe a  worked example of how each set of parameters leads to a point in say Figure 4. Also it is confusing why the results from both models are not presented using the same styles of figures. For example, for the sugar scape model you different styles of figures than for the segregation model.   
+Concerning the comments made by the fourth referee:
 
 
-
-
--Reviewer 4
-
-  -
-Review of "Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models"
-
-In sensitivity analysis of spatial models, stochastic effects and small parameter changes are normally applied. What about initial conditions? The authors test the effects of different arrangements (e.g. monocentric vs. polycentric density patterns) on agent-based Schelling segregation models and Sugarscape's unequal societies model.
-
-Overall, I find this to be a very good paper. Very well written in general. Good review of the problem, clearly outlining (with references) the need for focus on initial conditions in geosimulation. The chief factors (data uncertainty, nature of spatial units (e.g. shape) and spatial heterogeneity) on initial spatial conditions are covered:
-
--how many of these do you test? I see heterogeneity addressed, but what about shape and uncertainty? You touch upon shape when talking about NetLogo's use of raster as opposed to vector in the Discussion - could you expand on this?
-
-Rigorous experimental method described. In the matching of European metropolitan areas to your generated outputs, I wonder what you are missing by not using cities from other continents. i.e. by widening the cities available to your study it may be possible to even better discover real-world examples of your archtypes (compact, polycentric, discontinuous).
-
-Why do you not have the same amount of repetitions for your Sugarscape (50 repetitions) and Schelling (100 repetitions) model runs?
-
-You say your models are open source - do you give details of that source?  
-
-Small edits:
-
-line 68: "...a different system"
-
-figure 1: modify font size so that labels do not go to the edge of their respective objects
-
-figure 2: can you add the parameters that led to each of the grids
-
-figure 3: check spelling of "Augburg" (should be Augsburg)
-
-line 350: "...consists of..."
-
-line 455: "sa,e" = "same"?
-
-figure 4 and figure 5 captions: make it explicit that we're seeing the Sugarscape results here.
-
-line 515: "analyse" = "analysis"
-
-line 593: "at reach" = "within reach"
-
-line 671: would "classic" or "hypothetical" be better words (choice dependent on your meaning) than "mythical", which implies these are models of centuries ago and somehow out of reach..
-
-
+\begin{itemize}
+	% In sensitivity analysis of spatial models, stochastic effects and small parameter changes are normally applied. What about initial conditions? The authors test the effects of different arrangements (e.g. monocentric vs. polycentric density patterns) on agent-based Schelling segregation models and Sugarscape's unequal societies model.
+	\item 
+	
+	% Overall, I find this to be a very good paper. Very well written in general. Good review of the problem, clearly outlining (with references) the need for focus on initial conditions in geosimulation. The chief factors (data uncertainty, nature of spatial units (e.g. shape) and spatial heterogeneity) on initial spatial conditions are covered: -how many of these do you test? I see heterogeneity addressed, but what about shape and uncertainty? You touch upon shape when talking about NetLogo's use of raster as opposed to vector in the Discussion - could you expand on this?
+	\item 
+	
+	% Rigorous experimental method described. In the matching of European metropolitan areas to your generated outputs, I wonder what you are missing by not using cities from other continents. i.e. by widening the cities available to your study it may be possible to even better discover real-world examples of your archtypes (compact, polycentric, discontinuous).
+	\item 
+	
+	% Why do you not have the same amount of repetitions for your Sugarscape (50 repetitions) and Schelling (100 repetitions) model runs?
+	\item 
+	
+	% You say your models are open source - do you give details of that source?  
+	\item 
+	
+	% Small edits:
+	% line 68: "...a different system"
+	% figure 1: modify font size so that labels do not go to the edge of their respective objects
+	% figure 2: can you add the parameters that led to each of the grids
+	% figure 3: check spelling of "Augburg" (should be Augsburg)
+	%line 350: "...consists of..."
+	% line 455: "sa,e" = "same"?
+	%figure 4 and figure 5 captions: make it explicit that we're seeing the Sugarscape results here.
+	%line 515: "analyse" = "analysis"
+	%line 593: "at reach" = "within reach"
+	%line 671: would "classic" or "hypothetical" be better words (choice dependent on your meaning) than "mythical", which implies these are models of centuries ago and somehow out of reach..
+	\item
+\end{itemize}
 
 
 
