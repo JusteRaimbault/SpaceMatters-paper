@@ -13,16 +13,12 @@
 
 \begin{document}
 
-% **************  TITLE AND AUTHOR INFORMATION **************
-
 
 \begin{frontmatter}
 
 \dochead{}
 
-\title{Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models
-%Initial spatial conditions in simulation models: the missing leg of sensitivity analyses?
-}
+\title{Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models}
 
 \author[a,b]{Juste Raimbault\corref{cor1}}
 \author[c,d]{Cl{\' e}mentine Cottineau}
@@ -37,8 +33,6 @@
 \address[d]{UMR CNRS 8097 Centre Maurice Halbwachs, Paris, France}
 \address[e]{UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France}
 \address[f]{Université Paris-Est, Laboratoire Ville Mobilité Transport, Marne-la-Vallée, France}
-%NB : mon affiliation "officielle" c'est : 
-%Le Néchet, F., Université Paris-Est, Laboratoire Ville Mobilité Transport, UPEMLV : 5 boulevard Copernic, Cité Descartes F 77454 Marne-la-Vallée cedex 2 France
 
 
 \cortext[cor1]{Corresponding author.}
@@ -201,7 +195,7 @@ d_r\left(\mu_{\vec{\alpha}_1},\mu_{\vec{\alpha}_2}\right) = 2 \cdot \frac{d(\mu_
 
 where $\mu_{\vec{\alpha}_i}$ are the phase diagrams at given meta-parameters $\vec{\alpha}_i$. $d$ is a functional distance that we take simply as Euclidian distance. The internal variabilities are estimated as the variance within each phase diagram $f_{\vec{\alpha_i}}$. For a multi-dimensional phase diagram, we sum these relative distances over the components. 
 
-The last methodological point which we need to emphasize is the relation between the present workflow and model exploration workflows in general. The ideas of multi-modeling and extensive model exploration are nothing from new as ~\cite{openshaw1983data} already advocated for ``model-crunching'', but their effective use only begins to emerge thanks to the development of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMOLE~\citep{reuillon2013openmole} allows to embed any model as a blackbox, to write modulable exploration workflow using advanced methodologies such as genetic algorithms and to distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, this tool is a powerful way to embed both the sensitivity analysis and the meta-sensitivity analysis, and to allow the coupling of any spatial generator with any model in a straightforward way as long as the model can take its spatial configuration as an input or from an input file. In this paper, we use the OpenMOLE platform for the spatial environment and the model coupling, placing ourselves in the  framework of multi-modelling \citep{cottineau2015modular}.
+The last methodological point which we need to emphasize is the relation between the present workflow and model exploration workflows in general. The ideas of multi-modeling and extensive model exploration are nothing from new as ~\cite{openshaw1983data} already advocated for ``model-crunching'', but their effective use only begins to emerge thanks to the development of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMOLE~\citep{reuillon2013openmole} allows to embed any model as a blackbox, to write modulable exploration workflow using advanced methodologies such as genetic algorithms and to distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, this tool is a powerful way to embed both the sensitivity analysis and the meta-sensitivity analysis, and to allow the coupling of any spatial generator with any model in a straightforward way as long as the model can take its spatial configuration as an input or from an input file. In this paper, we use the OpenMOLE platform for the spatial environment and the model coupling, placing ourselves in the  framework of multi-modelling \citep{cottineau2015modular}. \added{We use therefore OpenMOLE's functionalities for model embedding through workflow, design of experiments (parameter sampling) and high performance environment access.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -211,11 +205,18 @@ The spatial generator applies an urban morphogenesis model \citep{Batty2007} whi
 
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[htbp] \begin{center} 
-\resizebox{0.9\textwidth}{!}{ 
-	\includegraphics{figures/spatialGen.png}
-} \caption{Four examples of grids produced by the spatial generator. The lighter the red, the denser the area. Changing the growth rate $N$ allows to have more or less chaotic shapes (two first compared to the two last grids for example) corresponding to different levels of convergence of the model, whereas local radius can be tuned with the interplay of aggregation strength $\alpha$ and diffusion strength $\beta$.} \label{fig:spatialGen} \end{center} \end{figure*} %
+	\includegraphics[width=\linewidth]{figures/spatialGen.png}
+ \caption{\textbf{Four examples of grids produced by the spatial generator.} The lighter the red, the denser the area. Changing the growth rate $N$ allows to have more or less chaotic shapes (two first compared to the two last grids for example) corresponding to different levels of convergence of the model, whereas local radius can be tuned with the interplay of aggregation strength $\alpha$ and diffusion strength $\beta$. \added{Parameter values used here are for the first grid $(\alpha = 0.4,\beta=0.006, N = 25, n_d = 1, t_f = 971)$, the second $(\alpha = 0.4,\beta=0.006, N = 25, n_d = 1, t_f = 176)$, the third $(\alpha = 1.4,\beta=0.045, N = 102, n_d = 2, t_f = 618)$, and the fourth $(\alpha = 1.8,\beta=0.114, N = 108, n_d = 1, t_f = 227)$.}}
+\label{fig:spatialGen}
+\end{center}
+\end{figure*} %
 %%%%%%%%%%%%%%%%%%%%%%
 
+% Generator parameters values:
+%  1) ex_sp-diffusion=0.0060_sp-growth-rate=25_sp-diffusion-steps=1_sp-alpha-localization=0.4_ticks=971_sp-population=24275.000000000102
+%  2) ex_sp-diffusion=0.0060_sp-growth-rate=25_sp-diffusion-steps=1_sp-alpha-localization=0.4_ticks=176_sp-population=4400.000000000003
+%  3) ex_sp-max-pop=80260_sp-diffusion=0.045_sp-growth-rate=102_sp-diffusion-steps=2_sp-alpha-localization=1.4_ticks=618
+%  4) ex_sp-max-pop=382170_sp-diffusion=0.114_sp-growth-rate=108_sp-diffusion-steps=1_sp-alpha-localization=1.8_ticks=227
 
 
 In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure: their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). We sample the meta-parameter space using a Latin Hypercube Sampling, which is a convenient technique to have a point cloud with high discrepancy. We sample 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n_d$, $N$}. It yields a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology (figure \ref{fig:densityTypes}): compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg). This clustering allows to evaluate the non-trivial effects of a meaningful urban form on simulation results. We select 15 grids of each type to work with in the computation of sensitivity analysis of an intra-urban model (cf. section \ref{sec:qualResults}).
@@ -273,8 +274,7 @@ We obtain a very strong sensitivity to initial spatial conditions for the Sugars
 %%%%%%%%%%%%%
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams}\\
-%\includegraphics[width=0.4\textwidth]{figures/alpha_beta_schemas}(Bottom) Corresponding stylised density grids\\\comment[JR]{je sais pas si c'est une bonne idee de mettre les grilles stylisees comme ca parce que ca donne une fausse idee des sorties du modele de generation}}
+\includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams}
 \caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by the meta-parameters of their generator.} Relative distance as a function of meta-parameters $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process).}
 \label{fig:sugarscape-distance-meta}
 \end{figure}
@@ -441,11 +441,10 @@ As~\citet{pumain2003approche} points out in an overview of complexity approaches
 
 \section{Conclusion.}
 
-After reviewing the extensive literature on spatial biases in statistical and simulation models, we presented a method to analyse the sensitivity of a simulation's results to the initial spatial configuration. We did so by implementing a spatial generator whose output is used as input for the simulation model. We applied this approach to two mythical ABMs: Schelling and Sugarscape. With the Schelling experiment, we found that the different urban morphologies impact the interaction patterns, and that polycentric and discontinuous cities appear systematically more segregated than compact cities in terms of dissimilarity and entropy index. With Sugarscape, we show that the model is more sensitive to space than to its other parameters in the reference Netlogo implementation, both qualitatively and quantitatively: the amplitude of variations across density grids is larger than the amplitude in each phase diagram, and the behaviour of the phase diagram is qualitatively different in different regions of the morphological space. We think that this method has the potential to increase the arsenal of evaluation of geographical models, in order to assess the sensitivity of models to their initial spatial conditions but also to learn about the impact of the urban form on social mechanisms.
+After reviewing the extensive literature on spatial biases in statistical and simulation models, we presented a method to analyse the sensitivity of a simulation's results to the initial spatial configuration. We did so by implementing a spatial generator whose output is used as input for the simulation model. We applied this approach to two \replaced{well-known}{mythical} ABMs: Schelling and Sugarscape. With the Schelling experiment, we found that the different urban morphologies impact the interaction patterns, and that polycentric and discontinuous cities appear systematically more segregated than compact cities in terms of dissimilarity and entropy index. With Sugarscape, we show that the model is more sensitive to space than to its other parameters in the reference Netlogo implementation, both qualitatively and quantitatively: the amplitude of variations across density grids is larger than the amplitude in each phase diagram, and the behaviour of the phase diagram is qualitatively different in different regions of the morphological space. We think that this method has the potential to increase the arsenal of evaluation of geographical models, in order to assess the sensitivity of models to their initial spatial conditions but also to learn about the impact of the urban form on social mechanisms.
 %%%%%%%%%%%%%
 % Acknowledgements
 
-% acks commentés pour la soumission (anonymous)
 %\begin{acks}
 %The authors acknowledge the funding of their institutions and the EPSRC project number EP/M023583/1. Results obtained in this paper were computed on the vo.complex-system.eu virtual organization of the European Grid Infrastructure ( http://www.egi.eu ). We thank the European Grid Infrastructure and its supporting National Grid Initiatives (France-Grilles in particular) for providing the technical support and infrastructure.
 %\end{acks}
@@ -463,6 +462,20 @@ After reviewing the extensive literature on spatial biases in statistical and si
 \newpage
 
 \section*{Supplementary material}
+
+
+\subsection*{\added{Behavior of the density grid generator}}
+
+\added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$.}
+
+%%%%%%%%%%%%%%
+\begin{figure}
+	\includegraphics[width=0.49\linewidth]{figures/alpha_beta_examples.png}
+    \includegraphics[width=0.49\linewidth]{figures/alpha_beta_schemas.png}
+    \caption{\added{\textbf{Stylized behavior of the density grid generator.}}\label{fig:stylized-generator}}
+\end{figure}
+%%%%%%%%%%%%%%
+
 
 \subsection*{\added{Additional figures for the Schelling model}}
 
@@ -483,6 +496,39 @@ After reviewing the extensive literature on spatial biases in statistical and si
 \added{We give below the pseudo-code for the implementations we used of both models.}
 
 
+% Minimal netlogo code for the sugarscape model
+\begin{lstlisting}
+	to main-loop
+    	regrow-patches
+        update-agetns
+    end
+    
+    to regrow-patches
+    	ask patches [set psugar min (list max-psugar (psugar + 1))]
+    end
+    
+    to update-agents
+    	ask turtles [
+    		let move-candidates (patch-set patch-here (patches at-points vision-points) with [not any? turtles-here])
+  let possible-winners move-candidates with-max [psugar]
+  if any? possible-winners [
+    ;; if there are any such patches move to one of the patches that is closest
+    move-to min-one-of possible-winners [distance myself]
+  ]
+            
+            ; 
+            set sugar (sugar - metabolism + psugar)
+  			set psugar 0
+            
+    		set age (age + 1)
+    		if sugar <= 0 or age > max-age [
+      			hatch 1 [ new-turtle ]
+      			die
+    		]
+  		]
+    end
+    
+\end{lstlisting}
 
 
 
