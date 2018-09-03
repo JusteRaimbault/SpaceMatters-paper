@@ -9,15 +9,25 @@
 
 \usepackage{xparse}
 \usepackage{ifthen}
-\DeclareDocumentCommand{\comment}{m o o o o}
+\DeclareDocumentCommand{\comment}{o m o o o o}
 {\ifthenelse{\draft=1}{
-    \textcolor{red}{\textbf{C : }#1}
-    \IfValueT{#2}{\textcolor{blue}{\textbf{A1 : }#2}}
-    \IfValueT{#3}{\textcolor{ForestGreen}{\textbf{A2 : }#3}}
-    \IfValueT{#4}{\textcolor{red!50!blue}{\textbf{A3 : }#4}}
-    \IfValueT{#5}{\textcolor{Aquamarine}{\textbf{A4 : }#5}}
+  \IfValueT{#1}{
+      \textcolor{red}{\textbf{C (#1) : }#2}
+      \IfValueT{#3}{\textcolor{blue}{\textbf{A1 : }#3}}
+      \IfValueT{#4}{\textcolor{ForestGreen}{\textbf{A2 : }#4}}
+      \IfValueT{#5}{\textcolor{red!50!blue}{\textbf{A3 : }#5}}
+      \IfValueT{#6}{\textcolor{Aquamarine}{\textbf{A4 : }#6}}
+    }
+    \IfNoValueT{#1}{
+      \textcolor{red}{\textbf{C : }#2}
+      \IfValueT{#3}{\textcolor{blue}{\textbf{A1 : }#3}}
+      \IfValueT{#4}{\textcolor{ForestGreen}{\textbf{A2 : }#4}}
+      \IfValueT{#5}{\textcolor{red!50!blue}{\textbf{A3 : }#5}}
+      \IfValueT{#6}{\textcolor{Aquamarine}{\textbf{A4 : }#6}}
+    }
  }{}
 }
+
 \newcommand{\todo}[1]{
 \ifthenelse{\draft=1}{\textcolor{red!50!blue}{\textbf{TODO : \textit{#1}}}}{}
 }
@@ -26,6 +36,7 @@
 \usepackage{multirow}
 
 \usepackage{listings}
+\usepackage{mdframed}
 
 \usepackage{soul}
 \soulregister\cite7
@@ -65,39 +76,6 @@
 
 
 \cortext[cor1]{Corresponding author: juste.raimbault@polytechnique.edu}
-
-
-
-% authors bio
-% Juste Raimbault is a PhD student at Université Paris 7, UMR CNRS 8504 Géographie-cités and UMR-T 9403 IFSTTAR LVMT, under the supervision of Arnaud Banos and Florent Le Néchet. He holds an engineer degree from Ecole Polytechnique and Ecole des Ponts et Chaussées, and a Master in Complex Systems Science from Ecole Polytechnique. His research focuses on complexity approaches to the relations between networks and territories.
-
-% Dr. Clémentine Cottineau is a research associate at the Centre for Advanced Spatial Analysis of University College London. She studied geography and economics at University Paris 1 Panthéon-Sorbonne and holds a PhD in geography from this university. Her thesis aimed at modelling urbanisation in the post-Soviet space with modular agent-based models. Since 2014, she has been working at the Centre for Advanced Spatial Analysis on urban economics and parametric scaling in the context of European systems of cities, using tools from complexity science to investigate inequality in cities and economic disparities between cities.
-
-% Dr. Marion Le Texier is associate professor at University of Rouen Normandie. She holds a PhD in geography from both Paris Diderot University and Luxembourg University. Her thesis aimed at modelling the circulation of euro coins through European borders with statistical and agent-based models. Previous to joining Rouen Normandie University in 2016, she has been a Jean Monet fellow at the European University Institute in Florence and a post-doc at Luxembourg University. Her work deals with data and modelling issues in different thematic contexts: access to nature in cities, international online media coverage of earthquakes, to name but two.
-
-% Dr. Florent Le Néchet is associate professor at  Paris-Est Marne-la-Vallée University (UPEM). He holds a PhD in planning from Paris-Est University (UPE). His thesis aimed at modelling the relationships between urban form and mobility patterns at metropolitan level, comparing several European cities, especially in France and Germany. His work deals with charactering and measuring mobility in cities, in relation to the built environment, and involves statistical techniques as well as multi-agent modelling.
-
-
-% Dr. Romain Reuillon is a research fellow at UMR CNRS 8504 Géographie-cités and at the Complex System Institute Paris Ile-de-France. He holds a PhD in Computer Science from Université Clermont II. His work deals with intensive computation model exploration, focusing on new techniques and methods to extract knowledge from models of simulation. He is the creator of the OpenMole platform for model exploration.
-
-
-% Cover Letter
-
-% Dear editors,
-
-%My coauthors and I are pleased to submit an original research article entitled ``Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models'' for consideration for publication in Computer, Environment and Urban Systems.
-
-%This article deals with the central yet poorly explored issue of the sensitivity of geosimulation models to their spatial context (i.e. the spatial configuration of agents and their environment), and more precisely their spatial initial conditions. We think the subject in general and the novelty of the paper in particular will meet the interest of the readers of CEUS, a journal dealing with computerised models and urban systems.
-
-%Despite some preliminary results being presented as at ECTQG 2015, Bari, and at Geocomputation Conference 2017, Leeds, we confirm that neither the manuscript nor any parts of its content are currently under consideration or published in another journal. We did not have any previous interaction with CEUS regarding this manuscript. We have no conflicts of interest to disclose. We do not have any opposed reviewer.
-
-% Yours faithfully,
-% Juste Raimbault and co-authors.
-
-
-
-
-
 
 
 
@@ -147,7 +125,7 @@ Finally, although this may seem obvious, cities are not regular grids, and the d
 
 \subsection{Objective}
 
-In this paper, we offer a methodological solution to the problem of sensitivity of simulation models to initial spatial conditions with two application cases (Schelling and Sugarscape). In no way do we want to provide a full exploration of these two particular models, their attractors and/or potential policy implications. Instead, we present a way of performing a sensitivity analysis to the spatial conditions of models by using a spatial generator to produce a variety of density grids, which are then fed into simulation models at initialisation. The generator being controlled by meta-parameters, we can then relate the parameters used to generate initial spatial conditions to the variation in outcome of the simulations. The purpose is two-fold: 1/ to test the robustness of simulation results to small variations of meta-parameters and 2/ to study the non-trivial effects of typical categories of spatial distribution (monocentric \textit{vs.} polycentric for example) on the results of a given model. Our approach allows for a systematic comparison of several aspects of the spatial configuration problem, which have been suggested by \citet{filatova2013spatial}, but hardly implemented and achieved in previous studies. In particular, it is applied to the effects of urban form on simulation results, using Schelling's model as a first case study and Sugarscape as a second one. 
+In this paper, we offer a methodological solution to the problem of sensitivity of simulation models to initial spatial conditions with two application cases (Schelling and Sugarscape). In no way do we want to provide a full exploration of these two particular models, their attractors and/or potential policy implications. Instead, we present a way of performing a sensitivity analysis to the spatial conditions of models by using a spatial generator to produce a variety of density grids, which are then fed into simulation models at initialisation. The generator being controlled by meta-parameters, we can then relate the parameters used to generate initial spatial conditions to the variation in outcome of the simulations. The purpose is two-fold: (i) to test the robustness of simulation results to small variations of meta-parameters and (ii) to study the non-trivial effects of typical categories of spatial distribution (monocentric \textit{vs.} polycentric for example) on the results of a given model. Our approach allows for a systematic comparison of several aspects of the spatial configuration problem, which have been suggested by \citet{filatova2013spatial}, but hardly implemented and achieved in previous studies. In particular, it is applied to the effects of urban form on simulation results, using Schelling's model as a first case study and Sugarscape as a second one. 
 
 %%%%%%%%%%%%%%%%%%%%%%
 \subsection{Previous considerations on the effects of the spatial configuration in simulation models}
@@ -229,7 +207,9 @@ The spatial generator applies an urban morphogenesis model \citep{Batty2007} whi
 %  4) ex_sp-max-pop=382170_sp-diffusion=0.114_sp-growth-rate=108_sp-diffusion-steps=1_sp-alpha-localization=1.8_ticks=227
 
 
-In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure: their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). We sample the meta-parameter space using a Latin Hypercube Sampling, which is a convenient technique to have a point cloud with high discrepancy. We sample 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n_d$, $N$}. It yields a subset of 170 interesting grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology (figure \ref{fig:densityTypes}): compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg). This clustering allows to evaluate the non-trivial effects of a meaningful urban form on simulation results. We select 15 grids of each type to work with in the computation of sensitivity analysis of an intra-urban model (cf. section \ref{sec:qualResults}).
+In order to generate density grids which correspond to empirical density distributions, we select among the generated grids using an objective function which matches the point cloud of 110 metropolitan areas in Europe described by four dimensions of spatial structure: their concentration index, hierarchy index, centrality index and continuity index (cf. \cite{LeNechet2015}). We sample the meta-parameter space using a Latin Hypercube Sampling, which is a convenient technique to have a point cloud with high discrepancy. We sample 2000 points in the 4-dimensional space of parameters {$\alpha$, $\beta$, $n_d$, $N$}. It yields a subset of 170 \deleted{interesting} grids matching empirical densities, which constituted our set of different initial spatial conditions. These are further clustered into three classes of morphology (figure \ref{fig:densityTypes}): compact (e.g. Vienna), polycentric (Liege) and discontinuous (Augsburg). This clustering allows to evaluate the non-trivial effects of a meaningful urban form on simulation results. We select 15 grids of each type to work with in the computation of sensitivity analysis of an intra-urban model (cf. section \ref{sec:qualResults}).
+
+\todo{explain why this generator is relevant for both models (discussion on scale ?)}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[htbp] \begin{center} 
@@ -243,9 +223,9 @@ In the following section, we briefly recall the main components of the two ``cla
 
 \subsection{Case study models}
 
-Schelling's model consists in an abstract urban housing market where agents of different attributes (for example: red or green) sense their environment, evaluate their satisfaction in terms of neighbourhood composition (how many reds and greens?), and relocate if unsatisfied. It has been shown by \cite{Schelling1969} that even tolerant agents tend to produce segregated patterns because of the complexity of their local interactions and the snowball effect of individual moves on the global distribution of agents in the city. The main parameters of this model are the tolerance level (maximum \% of agents different to {\it ego} accepted in the neighbourhood), the scope of sensing, the minority split and the percentage of vacant spaces in the housing market. In addition, we are interested in testing the impact of the initial spatial distribution of housing capacity in this project, using the generated grids. The outcome of the model is measured by a combination of three segregation indices: Dissimilarity, Moran's Index, Entropy~\citep{brown2006spatial}. We translated the Netlogo implementation of Schelling into Scala for this project.
+Schelling's model consists in an abstract urban housing market where agents of different attributes (for example: red or green) sense their environment, evaluate their satisfaction in terms of neighbourhood composition (how many reds and greens?), and relocate if unsatisfied. It has been shown by \cite{Schelling1969} that even tolerant agents tend to produce segregated patterns because of the complexity of their local interactions and the snowball effect of individual moves on the global distribution of agents in the city. The main parameters of this model are the tolerance level (maximum \% of agents different to {\it ego} accepted in the neighbourhood), the scope of sensing, the minority split and the percentage of vacant spaces in the housing market. In addition, we are interested in testing the impact of the initial spatial distribution of housing capacity in this project, using the generated grids. The outcome of the model is measured by a combination of three segregation indices: Dissimilarity, Moran's Index, Entropy~\citep{brown2006spatial}. \replaced{We use a ad-hoc implementation of the Schelling model, both in Scala for performance reasons and in NetLogo to ensure visualization of model dynamics. The pseudo-code of the implemented model is available in Appendix~\ref{app:code} and source code are available on the repository of the project.}{We translated the Netlogo implementation of Schelling into Scala for this project.}
 
-Sugarscape is a model of resource extraction which simulates the unequal distribution of wealth within a heterogenous population \cite{EpsteinAxtell1996}. Although it "is designed to study the interaction of many plausible social mechanisms" \cite[p.125]{Axtelletal1996}, we refer in this paper to the first (and simplest) version of the model, where "processes allow its agents to look for, move to, and eat a resource ("sugar") which grows on its $[...]$ array of cells". Agents of different vision scopes and different metabolisms harvest a self-regenerating resource available heterogeneously in the initial landscape, they settle and collect this resource, which leads some of them to survive and others to perish. The main parameters of this model are the number of agents, their minimal and maximal resource levels. \added{In an urban environment, Sugarscape can be used to model how the spatial distribution of any type of goods or services can influence the spread of wealth among inhabitants.} We extend the implementation with agents wealth distribution of \cite{li2009netlogo}. The outcome of the model is measured by a Gini index of inequality for resource distribution. \added{We are interested in testing the impact of the spatial distribution of the resource, using the generated grids.}
+Sugarscape is a model of resource extraction which simulates the unequal distribution of wealth within a heterogenous population \cite{EpsteinAxtell1996}. Although it "is designed to study the interaction of many plausible social mechanisms" \cite[p.125]{Axtelletal1996}, we refer in this paper to the first (and simplest) version of the model, where "processes allow its agents to look for, move to, and eat a resource ("sugar") which grows on its $[...]$ array of cells". Agents of different vision scopes and different metabolisms harvest a self-regenerating resource available heterogeneously in the initial landscape, they settle and collect this resource, which leads some of them to survive and others to perish. The main parameters of this model are the number of agents, their minimal and maximal resource levels. \added{In an urban environment, Sugarscape can be used to model how the spatial distribution of any type of goods or services can influence the spread of wealth among inhabitants. Following \cite{batty2005agents}, it is a good metaphor of an urban system.} We extend the implementation with agents wealth distribution of \cite{li2009netlogo}. The outcome of the model is measured by a Gini index of inequality for resource distribution. \added{We are interested in testing the impact of the spatial distribution of the resource, using the generated grids.}
 
 \subsection{Experiment design}
 For Sugarscape, we explore three dimensions of the parameter space: the total population of agents $P\in \left[10;510\right]$, the minimal initial agent resource $s_{-}\in \left[10;100\right]$ and the maximal initial agent resource $s_{+}\in \left[110;200\right]$. Each parameter is binned into 10 values, giving 1000 parameter points. We run 50 repetitions for each configuration, which yields reasonable convergence properties. The initial spatial configuration varies across 50 different grids, generated by sampling meta-parameters for the generator in a LHS. We did not use the clustered grids to test the flexibility of our framework, which is demonstrated in this case by a direct sequential coupling of the generator and the model. Indeed, because the density distribution refers to the distribution of resource rather than to the representation of a city structure, we do not need the typology of urban density in this experiment. The full experiment thus equates to 2,500,000 simulations (1000 parameter combinations x 50 density grids x 50 replications). 
@@ -434,15 +414,13 @@ After reviewing the extensive literature on spatial biases in statistical and si
 \bibliographystyle{elsarticle-harv}
 \bibliography{spacematters}
 
+\appendix
 
-\newpage
-
-\section*{Supplementary material}
-
-
-\subsection*{\added{Behavior of the density grid generator}}
+\section{\added{Behavior of the density grid generator}}
 
 \added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$.}
+
+\todo{bla bla on generator scale / real configs in the initial paper}
 
 %%%%%%%%%%%%%%
 \begin{figure}
@@ -453,25 +431,28 @@ After reviewing the extensive literature on spatial biases in statistical and si
 %%%%%%%%%%%%%%
 
 
-\subsection*{\added{Additional figures for the Schelling model}}
+\section{\added{Additional figures for the Schelling model}}
 
 \added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here.}
 
 %%%%%%%%%%%%%
-\begin{figure}[h!]
+\begin{figure*}[h!]
 \centering
 \includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_metaparams_red}
 \includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_morphspace_red}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids for the Schelling model.} Each point corresponds to a spatial configuration and colour gives the relative distance to one of the phase diagrams. We show them in the meta-parameter space (Left) and in the reduced morphological space (Right).\label{fig:schelling-distance-meta}}
-\end{figure}
+\end{figure*}
 %%%%%%%%%%%%%
 
 
-\subsection*{\added{Pseudo-code for models}}
+\section{\added{Pseudo-code for models}}
+\label{app:code}
 
 \added{We give below the pseudo-code for the implementations we used of both models.}
 
 
+\begin{figure*}
+%\begin{frame}
 % Minimal netlogo code for the sugarscape model
 \begin{lstlisting}
 	to main-loop
@@ -505,8 +486,18 @@ After reviewing the extensive literature on spatial biases in statistical and si
     end
     
 \end{lstlisting}
+%\end{frame}
+\end{figure*}
 
 
+
+%%%%%%%%%%%%%%%
+\begin{figure*}
+	\begin{lstlisting}
+    
+    \end{lstlisting}
+\end{figure*}
+%%%%%%%%%%%%%%%
 
 
 
