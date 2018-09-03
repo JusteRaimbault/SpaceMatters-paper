@@ -107,8 +107,7 @@ Concerning specifically the comments made by the first referee:
    \item \comment[JR]{Possibility to find configuration with an ``eyeball'' difference ? i'm not sure of that..}
 	
 	% 2. It is very important to describe the models. This is especially relevant for the Schelling model, which has many variants; each has different dependencies on the initial pattern. In my opinion, the NetLogo implementation is not the best choice because the model does not reach a state of segregation when agents are highly intolerant.
-	%\comment[MLT]{Thank you for this comment. The reason why we have decided to use the NetLogo implementations was again to help the readers to distance themselves from the case studies and focus on the genericity of the approach. This also explains why we have chosen Sugarscape as a second example: these two models are often used as toy models due to the simplicity of their mechanisms (in the NetLogo scenarios) and therefore do not require a high level of expertise nor technicality to apprehend the impacts of the initial spatial conditions on the model outputs. This is again an argument in favour of our choice: space-dependent variations are to be expected even with the most simple sociospatial models.}
-    \item There was a misunderstanding for the Schelling implementation actually used, as we used our own implementation which pseudo-code has been added in Appendix of the paper and source code is openly available on the git repository of the project. This version implements the one used by (Gauvin et al., 2009), which also influenced us for the use of the term ``phase diagram''. It does not either reach a segregated state for high values of intolerance, but it does not cause a problem in our case as indicators can be computed on any model state (and actually reflect the fact that it is not segregated).
+	\item There was a misunderstanding for the Schelling implementation actually used, as we used our own implementation which pseudo-code has been added in Appendix of the paper and source code is openly available on the git repository of the project. This version implements the one used by (Gauvin et al., 2009), which also influenced us for the use of the term ``phase diagram''. It does not either reach a segregated state for high values of intolerance, but it does not cause a problem in our case as indicators can be computed on any model state (and actually reflect the fact that it is not segregated).
     \item More generally concerning the choice of these two models, we aim at helping the readers to distance themselves from the case studies and focus on the genericity of the approach. This also explains why we have chosen Sugarscape as a second example: these two models are often used as toy models due to the simplicity of their mechanisms and therefore do not require a high level of expertise nor technicality to apprehend the impacts of the initial spatial conditions on the model outputs. This is again an argument in favour of our choice: space-dependent variations are to be expected even with the most simple sociospatial models.
 	
 	% 3. I am not sure why the Sugarscape model has been chosen given that the paper seems to be focused on cities.
@@ -120,7 +119,7 @@ Concerning specifically the comments made by the first referee:
     \item \comment[JR]{TB la def Marion ; là on peut choisir de virer en effet le terme, ou dire que les 3 sont interchangeable mais que "meta-" est plus pratique, qu'en pensez vous ?}
 	
 	% 5. Line 228: Please explain why the median was chosen. Especially given that you use an L2 norm and variances in the index
-	\item \comment[JR]{je pensais qu'on prenait la moyenne ? je verifie...}
+	\item \comment[JR]{je pensais qu'on prenait la moyenne ? je verifie... ligne 175 on écrit la médiane en effet}
 	
 	% 6. Line 232: comparing phase diagrams is related to the topic of comparing patterns. It would make sense to mention the methods that are usually used to compare patterns
 	\item \comment[JR]{biblio a rajouter}
@@ -141,13 +140,15 @@ Concerning specifically the comments made by the first referee:
 	\item 
 	
 	% 12. Line 641: NetLogo supports grids, continuous space, and GIS elements. It does not restrict the user in any way.
-	\item \comment[JR]{plutot d'accord avec lui mais parce que proficient en NetLogo, peut etre que des debutants sont plus contraints ? quelquun aurait une ref là dessus ?}
+    % \comment[JR]{plutot d'accord avec lui mais parce que proficient en NetLogo, peut etre que des debutants sont plus contraints ? quelquun aurait une ref là dessus ?}
+	\item We agree that NetLogo does not restrict the use on what implementation to use. However, some features are much more easier as raster or the contrary, what could influence the choice of beginners. We clarified that statement in the paper.
 	
 	% 13. Line 301: I am not sure what the authors mean by “interesting grids”
 	\item The term ``interesting grids'' was a typo and corrected, ``grids'' only was meant.
 	
 	% 14. Line 671: The same comment regarding “mythical ABMs” 
 	\item The term ``mythical'' line 671 was a language mistake and corrected, ``well-known'' ABM was meant.
+    \comment[MLT]{Use "textbook ABM instead?}
 \end{itemize}
 
 
@@ -204,7 +205,7 @@ Concerning the comments made by the third referee:
 	\item 
 	
 	% On a side note, one of your key words you use “validation” but in what sense?  You don’t really come back to this in the paper, also you write about “the validity of generative models is uncertain until their results are proven robust and representative of ’real-world’ conditions.” In the abstract but this is it.  What do you consider real world conditions to be? You seem to allude that you need to have the spatial generator to generate realistic (styles) city shapes for testing on the Schelling model but I am not convinced.  After the abstract all notion of validation is missing.
-	\item 
+	\item \comment[JR]{enlever le concept de validation}
 	
 	% Geosimulation is introduced but not defined or referenced.  This should be clarified as the term has several meanings etc.
 	\item 
@@ -225,7 +226,7 @@ Concerning the comments made by the third referee:
 	\item 
 	
 	% Also I appreciate you are trying to show rather complex results but reading the results several times I found the presentation of them (both written and visual) really hard to follow and understand. I was wondering if maybe you could find a better way to show / discuss them. Maybe a  worked example of how each set of parameters leads to a point in say Figure 4. Also it is confusing why the results from both models are not presented using the same styles of figures. For example, for the sugar scape model you different styles of figures than for the segregation model.   
-	\item 
+	\item Additional figures for the Schelling model presenting the results in a similar way were provided. Figures showing grid estimates of phase diagrams could not be realized for the Schelling model because of the different sampling of the parameter space used.
 \end{itemize}
 
 

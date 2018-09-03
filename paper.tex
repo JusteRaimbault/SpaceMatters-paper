@@ -134,7 +134,7 @@ In this paper, we offer a methodological solution to the problem of sensitivity 
 
 In 'real-life', different spatial configurations of people in a city tend to be associated with different distributions of income, carbon emissions, educational outcomes, etc. For example, \citet{wheeler2006urban} shows that, in the US, sprawling cities are more unequal than their compact counterparts with respect to income. Dynamically, sprawl consists in the addition of new developments which have been occupied by different groups of population, resulting in a concentration of the wealthy in suburban pockets and of pockets of poverty in the inner city area \citep{jargowsky2002sprawl}. Similarly, in terms of pollution for example, \citet[p.173]{schwanen2001travel} show that \textit{``deconcentration of urban land uses encourages driving and discourages the use of public transport as well as cycling and walking''}. The discussion of these effects has also been associated with the field of geostatistics since the exposure of the Modifiable Areal Unit Problem (MAUP) \citep{Openshaw1984, FotheringhamWong1991}. For example, \citet{Kwan2012} has argued for a careful examination of what she coins the 'uncertain geographic context problem' (UGCoP), i.e. of the spatial configuration of geographical units even when the size and delineation of the area are the same.\\
 
-Considerations of such issues in the geographical modelling literature are rather scarce.Despite the opportunity of simulation in the representation of space and its potential observation biases, there have been some noticeable attempts to evaluate the effects of the same set of mechanisms run from different initial spatial conditions, which have focused on the impact of:
+Considerations of such issues in the geographical modelling literature are rather scarce. Despite the opportunity of simulation in the representation of space and its potential observation biases, there have been some noticeable attempts to evaluate the effects of the same set of mechanisms run from different initial spatial conditions, which have focused on the impact of:
 \begin{itemize}
 \item The accuracy of geo-localised input data;
 \item The shape, precision and boundaries of the modelled spatial system;
@@ -372,7 +372,7 @@ We consider that the method presented in this paper holds great potential for st
 
 \paragraph{Platform constraints and docking challenges}
 
-An aspect that we have not touched upon in the article with respect to the sensitivity to initial spatial conditions is the importance of the modelling platform as a constraint in the formalisation of space. For example, the use of Netlogo fosters the use of raster/grid spatial inputs rather than vector elements. Its toroidal default setting might also have influenced the work of many modellers who did not question explicitly the representation of space. This issue is part of the docking challenge \citep{Axtelletal1996} (i.e. checking if two models can produce the same results), but more generally, it involves a description of the model and its spatial requirements more detailed than what is currently the rule.
+An aspect that we have not touched upon in the article with respect to the sensitivity to initial spatial conditions is the importance of the modelling platform as a constraint in the formalisation of space. For example, \replaced{spatial structure may be easier to implement as a raster rather a vector in NetLogo models, what could influence the implementation choices of some non-experienced modelers}{the use of Netlogo fosters the use of raster/grid spatial inputs rather than vector elements}. Its toroidal default setting might also have influenced the work of many modellers who did not question explicitly the representation of space. This issue is part of the docking challenge \citep{Axtelletal1996} (i.e. checking if two models can produce the same results), but more generally, it involves a description of the model and its spatial requirements more detailed than what is currently the rule.
 
 
 
@@ -423,11 +423,11 @@ After reviewing the extensive literature on spatial biases in statistical and si
 \todo{bla bla on generator scale / real configs in the initial paper}
 
 %%%%%%%%%%%%%%
-\begin{figure}
+\begin{figure*}
 	\includegraphics[width=0.49\linewidth]{figures/alpha_beta_examples.png}
     \includegraphics[width=0.49\linewidth]{figures/alpha_beta_schemas.png}
     \caption{\added{\textbf{Stylized behavior of the density grid generator.}}\label{fig:stylized-generator}}
-\end{figure}
+\end{figure*}
 %%%%%%%%%%%%%%
 
 
