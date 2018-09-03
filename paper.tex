@@ -67,12 +67,6 @@
 \cortext[cor1]{Corresponding author: juste.raimbault@polytechnique.edu}
 
 
-%\corrauth{Juste Raimbault, UMR CNRS 8504 G{\'e}ographie-cit{\'e}s
-%13 rue du Four,
-%75006 Paris, France.
-%}
-%\corrauth{}
-
 
 % authors bio
 % Juste Raimbault is a PhD student at Université Paris 7, UMR CNRS 8504 Géographie-cités and UMR-T 9403 IFSTTAR LVMT, under the supervision of Arnaud Banos and Florent Le Néchet. He holds an engineer degree from Ecole Polytechnique and Ecole des Ponts et Chaussées, and a Master in Complex Systems Science from Ecole Polytechnique. His research focuses on complexity approaches to the relations between networks and territories.
@@ -85,7 +79,6 @@
 
 
 % Dr. Romain Reuillon is a research fellow at UMR CNRS 8504 Géographie-cités and at the Complex System Institute Paris Ile-de-France. He holds a PhD in Computer Science from Université Clermont II. His work deals with intensive computation model exploration, focusing on new techniques and methods to extract knowledge from models of simulation. He is the creator of the OpenMole platform for model exploration.
-
 
 
 % Cover Letter
@@ -108,12 +101,7 @@
 
 
 
-
-
-
 \begin{abstract}
-%\noindent
-%\setlength{\parindent}{0pt}
 Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain unless their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually taken for granted in geographical models, thus leaving completely unexplored the effect of spatial arrangements on the interactions of agents and of that of agents with their environment. In this paper, we present a method to assess the effect of some initial spatial conditions on simulation models, using a systematic generator controlled by meta-parameters in order to create density grids with which spatial simulation models are initialised. We show, with the example of two classical agent-based models (Schelling's models of segregation and Sugarscape's model of unequal societies) and a straightforward open-source work-flow using high performance computing, that the effect of initial spatial arrangements is significant in the two models. Furthermore, this effect is sometimes larger than the effect of parameters' value change. 
 \end{abstract}
 
@@ -133,12 +121,6 @@ Space \sep Initial conditions \sep Sensitivity \sep ABM \sep Validation
 % - Strong quantitative and qualitative effects of spatial initial conditions are shown for these models.
 
 
-
-%\maketitle
-
-%% main text
-
-\enlargethispage{-15mm}
 
 
 %\textbf{Example track changes : }\added{this is added text}, \deleted{removed} text or \replaced{new}{old} replaced text
@@ -298,12 +280,12 @@ We obtain a very strong sensitivity to initial spatial conditions for the Sugars
 
 
 %%%%%%%%%%%%%
-\begin{figure}
+\begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams}
 \caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by the meta-parameters of their generator.} Relative distance as a function of meta-parameters $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process).}
 \label{fig:sugarscape-distance-meta}
-\end{figure}
+\end{figure*}
 %%%%%%%%%%%%%
 
 Another way of quantifying the density grids, instead of looking at the meta-parameters of their generator, is to look at the resulting indicators of urban form, such as Moran index, average distance, rank-size slope and entropy (see~\cite{LeNechet2015} for precise definition and context). This 4-dimensional space defined a morphological space. For the purpose of interpretability and visualisation, we reduce this space to a bi-dimensional space with a principal component analysis. The first two components represent 92\% of cumulated variance. The first component defines a ``level of sprawl'' and of scattering, whereas the second one represents the level aggregation.\footnote{We have $PC1 = 0.76\cdot distance + 0.60\cdot entropy + 0.03\cdot moran + 0.24\cdot slope$ and $PC2 = -0.26\cdot distance + 0.18\cdot entropy + 0.91\cdot moran + 0.26\cdot slope$.} We find that grids producing the highest deviations are the ones with a low level of sprawl and a high aggregation (top left of figure \ref{fig:sugarscape-distance-pca}). It is confirmed by the behaviour as a function of meta-parameters, as high values of $\alpha$ also yield high distance. In terms of model processes, it shows that congestion mechanisms in the gathering of the resource induces fast increases of inequality. To put these results in perspective of our workflow given in Fig.~\ref{fig:method}, we have a sensitivity to spatial parameters on average greater than the sensitivity to model parameters.
@@ -316,12 +298,12 @@ Another way of quantifying the density grids, instead of looking at the meta-par
 %"slope",0.237217819823539,0.258531718397015,-0.927289147645628,0.130475642169329
 
 %%%%%%%%%%%%%
-\begin{figure}
+\begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/relativedistance_morphspace}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids.} Relative distance as a function of two first principal components of the morphological space (see text). Black point correspond to the reference spatial configuration. Green frame and blue frame give respectively the first and second particular phase diagrams shown in Fig.~\ref{fig:sugarscape-phasediagrams}.}
 \label{fig:sugarscape-distance-pca}
-\end{figure}
+\end{figure*}
 %%%%%%%%%%%%%
 
 \paragraph{Schelling} 
@@ -384,13 +366,13 @@ We now check the sensitivity in terms of qualitative behavior of phase diagrams.
 
 
 %%%%%%%%%%%%%
-\begin{figure}
+\begin{figure*}
 \centering
 \includegraphics[width=0.48\textwidth]{figures/phasediagram_id27_maxSugar110}
 \includegraphics[width=0.48\textwidth]{figures/phasediagram_id0_maxSugar110}
 \caption{\textbf{Examples of phase diagrams.} We show two dimensional phase diagrams on $(P,s_-)$, both at fixed $s_+ = 110$. (Left) Green frame, obtained with $\alpha = 0.79$, $n=2$, $\beta = 0.14$, $N=157$; (Right) Blue frame, obtained with $\alpha = 2.56$, $n=3$, $\beta = 0.13$, $N=128$.}
 \label{fig:sugarscape-phasediagrams}
-\end{figure}
+\end{figure*}
 %%%%%%%%%%%%%
 
 
