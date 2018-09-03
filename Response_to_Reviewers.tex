@@ -110,17 +110,20 @@ We provide now you point-by-point responses to referees comments.
 Concerning specifically the comments made by the first referee:
 
 \begin{itemize}
-	% 1. I think it would be better if the author would focus on a single model. This way they could describe the model and the analyses in more detail. As it stands, the models are treated as black boxes. I believe it would be better to begin with an illustrative example on how two or three initial patterns influence the model results and then use the suggested method for a more extensive analysis
-	\item 
+	% 1. I think it would be better if the author would focus on a single model. This way they could describe the model and the analyses in more detail. As it stands, the models are treated as black boxes. 
+	\item This is indeed a qualified comment. However, after presenting our research to several audiences, we came to the conclusion that the genericity of our approach would be better served by two case studies than with a single model. We acknowledge the fact that this choice led us to shorten their presentations. Nevertheless, we have been taking heed to your remark to improve the description of the models by providing hyperlinks towards the NetLogo pages and Scala code lines (to be done). We believe this is sufficient as the models have not been adjusted from these textbook cases implementations.
+   
+   % I believe it would be better to begin with an illustrative example on how two or three initial patterns influence the model results and then use the suggested method for a more extensive analysis
+   \item 
 	
 	% 2. It is very important to describe the models. This is especially relevant for the Schelling model, which has many variants; each has different dependencies on the initial pattern. In my opinion, the NetLogo implementation is not the best choice because the model does not reach a state of segregation when agents are highly intolerant.
-	\item 
+	\item Thank you for this comment. The reason why we have decided to use the NetLogo implementations was again to help the readers to distance themselves from the case studies and focus on the genericity of the approach. This also explains why we have chosen Sugarscape as a second example: these two models are often used as toy models due to the simplicity of their mechanisms (in the NetLogo scenarios) and therefore do not require a high level of expertise nor technicality to apprehend the impacts of the initial spatial conditions on the model outputs. This is again an argument in favour of our choice: space-dependent variations are to be expected even with the most simple sociospatial models.
 	
 	% 3. I am not sure why the Sugarscape model has been chosen given that the paper seems to be focused on cities.
-	\item 
+	\item See above. Besides, we clarified our choice by adding the following sentence to the model description: "In an urban environment, Sugarscape can be used to model how the spatial distribution of any type of goods or services can influence the spread of wealth among inhabitants."
 	
 	% 4. Consider replacing “meta parameters” with something like “generator parameters” or “initial pattern parameters.”
-	\item 
+	\item Thank you for the suggestion. In order to clarify the concept, we now propose a short definition after the first use of the term (section Methods): "In addition to the usual protocol (upper branch of the figure), which consists of running a model $\mu$ with different values of its parameters, we introduce a spatial generator which depends on its very own set of parameters and feeds the model $\mu$ at initialisation (lower branch). We call these parameters meta-parameters to distinguish from the standard parameters of the models and highlight their higher position in the simulation process".
 	
 	% 5. Line 228: Please explain why the median was chosen. Especially given that you use an L2 norm and variances in the index
 	\item 
