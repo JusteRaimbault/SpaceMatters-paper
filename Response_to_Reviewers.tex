@@ -147,7 +147,7 @@ Concerning specifically the comments made by the first referee:
 	% 10. Explain how the density grids are used in the Schelling model, do you allow more than one agent to be in the same cell? 
 	\item Yes, we allow more agents to be in the same cell. The potential density is defined by the density grid generated, and is population with the same number of agents in all grids. This distribution is the one at initialisation. If the potential density is not reached, more agents can move in the cell, otherwise it is deemed full and unavailable for further moves. The satisfaction and segregation indices are computed with regard to the people in the cell and the people present in neighbouring cells.
 	\comment[JR]{il a mal lu ou on est pas assez explicites, a detailler}
-	\comment[CC]{ça va comme réponse? }
+	\comment[CC]{ça va comme réponse? }[(JR) parfait]
 	\comment[CC]{argumentaire à ajouter dans le papier}
 	
 	% 11. Line 297: I am not sure why empirical density destitutions of cities are important in the context of this study. 
@@ -192,7 +192,7 @@ Concerning the comments made by the second referee:
 	\item \comment[JR]{idem la on parle pas exactement du meme type de modeles, mais son exemple prouve notre propos : le modele tourne sur une situation unique, et on teste pas l'effet de l'espace.}
 	
 	% The authors do not differentiate between data driven empirical models versus theory-driven models. I think a clear differentiation between the two groups and the positioning of the two case studies in the second group would make the paper more balanced.
-	\item \comment[JR]{oui du coup en disant ça ça repond à ses deux points précédents}
+	\item Concerning the remarks on synthetic population generation and the different types of models, we clearly stated our positioning regarding models built from theory, for which the proposed sensitivity analysis workflow is more suited and that our two case studies illustrate.\comment[JR]{oui du coup en disant ça ça repond à ses deux points précédents}\comment[JR]{positionement a plus souligner dans le papier}
 	
 	% In section 1.3 (Previous considerations on the effects of the spatial configuration in simulation models) authors provide a lot of evidence on previous work on the impact of initial spatial conditions on the output of models. This is contrary to the statement in the abstract that initial conditions are often taken for granted.
 	\item Indeed, we have tried to review articles where some kind of sensitivity to initial spatial conditions are tackled. But first, the references cited in this section are few compared to the mass of geosimulation articles published without any mention of dependence of output on initial spatial condition. Second, the references cited mostly provide some hints of impact of initial spatial conditions on the output of models (due to the accuracy of data, shape of boundaries and spatial heterogeneity) but none provide a systematic inquiry into the impact of systematically defined spatial input on the model output in the way we try to provide later on in the paper. We have tried to argue this point at the end of the section.
@@ -200,19 +200,19 @@ Concerning the comments made by the second referee:
 	
 	% The most interesting part of the research to me, is not the way the density layers are generated but the use of the phase diagrams, defined as a vector of final aggregated model outputs. As these are vectors, they are not so different from time series and many techniques exist to compare vectors in this domain. I wonder if the Euclidean distance is the best measure to determine the difference between the phase vectors of different spatial inputs.
 	% -> 
-	\item
+	\item The comment on other possible techniques to compare phase diagrams echoes one other reviewer comment, and we indeed expanded the discussion on this point, showing first that other distance do not change much qualitative results and with more literature for possible extensions. \comment[JR]{analyse à ajouter}
 	
 	% Last paragraph of page 5, you do not state explicitly if genetic algorithms were use within the OpenMOLE platform.
 	\item The functionalities of OpenMOLE we used were detailed; we did not use genetic algorithms but sampling methods and high performance computing environments.
     \comment[CC]{argumentaire à ajouter dans le papier}
 	
 	% In section 3.1, page 8, line 404-405 the authors mention that the distance of the phase diagrams was measured with respect to the reference phase diagram computed on the default initial spatial conditions. Actually this came as a surprise to me. I had the impression that all phase diagrams would be evaluated against all other diagrams. Perhaps this should be explained earlier in the paper.
-	\item 
+	\item \comment[JR]{ce qu'il suggère c'est un indice intégré sur l'ensemble des phases diagramme, donc un ``meta-meta-indice'' en quelque sorte, nous on reste à un niveau de meta seulement car on regarde juste pour chaque s'il bouge par rapport à un point de reference. En termes thematique c'est plus coherent pour nous, lui doit avoir en tete des indices de sensibilite globaux type Saltelli. $\rightarrow$ a voir comment justifier ca bien}
 	
 	% Figure 4 and 5: I find it confusing that the green color indicates higher distance values and the red color indicates lower values. I think this should be reversed.
     
-	\item \comment[JR]{Clem tu es d'accord là dessus ?}
-    \comment[CC]{Non mais il chipote complètement à ce niveau! Vu la figure pour moi c'est totalement équivalent dans un sens et dans l'autre, le tout c'était qu'il y'a une double descente chromatique et y'a même pas de densité = rouge ou quoi puisque c'est un rapport. Si tu veux lui faire plaisir on change mais je vois pas trop la nécessité.}
+	\item Color scale for distance was reversed.
+    \comment[JR]{Clem tu es d'accord là dessus ?}[(CC) Non mais il chipote complètement à ce niveau! Vu la figure pour moi c'est totalement équivalent dans un sens et dans l'autre, le tout c'était qu'il y'a une double descente chromatique et y'a même pas de densité = rouge ou quoi puisque c'est un rapport. Si tu veux lui faire plaisir on change mais je vois pas trop la nécessité.][(JR) bon je vais refaire la figure pour caresser dans le sens du poil - TODO]
 	
 	% I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
 	Thanks for the remark. We have tried to shorten the considerations which you have found not too useful and will let the readers decide if the grids could be of any use to them.
@@ -238,7 +238,7 @@ Concerning the comments made by the third referee:
 	
 	% Geosimulation is introduced but not defined or referenced.  This should be clarified as the term has several meanings etc.
 	\item For the definition of geosimulation, we meant the one coined by (Benenson and Torrens, 2004), this was made explicit and the reference was added. 
-    \comment[CC]{à ajouter dans le papier}
+    \comment[CC]{à ajouter dans le papier}[(JR) fait au début]
 	
 	% In places the English along with the overall argument could be better articulated. For example, on page 1 you write: “We think simulation can become a very good tool to achieve this,”  Could this be rewritten or better argued. You are not the only one to believe this but you don’t show this in your paper.
 	\item 
@@ -273,7 +273,7 @@ Concerning the comments made by the fourth referee:
 	\item 
 	
 	% Rigorous experimental method described. In the matching of European metropolitan areas to your generated outputs, I wonder what you are missing by not using cities from other continents. i.e. by widening the cities available to your study it may be possible to even better discover real-world examples of your archtypes (compact, polycentric, discontinuous).
-	\item \comment[JR]{}
+	\item \comment[JR]{to the best of my knowledge there is no full-world morphological classification of cities (and surely because global 1km density dataset is not robust enough for that - already with the European grid it is not perfect)}
 	
 	% Why do you not have the same amount of repetitions for your Sugarscape (50 repetitions) and Schelling (100 repetitions) model runs?
 	\item \comment[JR]{no justification for the difference in number of runs (just experimental setup contingence\ldots ) $\rightarrow$ either new runs or redo computations with 50 for Schelling}
