@@ -104,12 +104,12 @@ Concerning specifically the comments made by the first referee:
     %We believe this is sufficient as the models have not been adjusted from these textbook cases implementations.
    
    % I believe it would be better to begin with an illustrative example on how two or three initial patterns influence the model results and then use the suggested method for a more extensive analysis
-   \item \comment[JR]{Possibility to find configuration with an ``eyeball'' difference ? i'm not sure of that..} \comment[CC]{peut-être en prenant des cas extrêmes sur Sugarscape?}
+   \item \comment[JR]{Possibility to find configuration with an ``eyeball'' difference ? i'm not sure of that..} \comment[CC]{peut-être en prenant des cas extrêmes sur Sugarscape?}[(JR) je regarde...]
 	
 	% 2. It is very important to describe the models. This is especially relevant for the Schelling model, which has many variants; each has different dependencies on the initial pattern. In my opinion, the NetLogo implementation is not the best choice because the model does not reach a state of segregation when agents are highly intolerant.
 	\item There was a misunderstanding for the Schelling implementation actually used, as we used our own implementation which pseudo-code has been added in Appendix of the paper and source code is openly available on the git repository of the project. This version implements the one used by (Gauvin et al., 2009), which also influenced us for the use of the term ``phase diagram''.% It does not reach a segregated state for high values of intolerance, but it does not cause a problem in our case as indicators can be computed on any model state (and actually reflect the fact that it is not segregated).
 	 \comment[CC]{le modèle ne produit pas de ségrégation quand les individus sont très intolérants? Comment ça? Bien sûr qu'il le fait (sous contrainte du taux de vacance).
-	  Cela dit y'a bien un point sur lequel l'implem Netlogo n'est pas bonne: c'est que la relocalisation des mécontents est random alors que dans le bouquin de Schelling, apparemment, c'était dans un voisinage proche.}
+	  Cela dit y'a bien un point sur lequel l'implem Netlogo n'est pas bonne: c'est que la relocalisation des mécontents est random alors que dans le bouquin de Schelling, apparemment, c'était dans un voisinage proche.}[(JR) ah oui cest selon la vacance ; mais il y a des regimes ou ca converge jamais sous forme de cluster et ca reste un etat dynamique sans structure ; oui par contre on a du reprendre la random reloc, c'est ce que font les physiciens aussi]
 
     \item More generally concerning the choice of these two models, we aim at helping the readers to distance themselves from the case studies and focus on the genericity of the approach. This also explains why we have chosen Sugarscape as a second example: these two models are often used as toy models due to the simplicity of their mechanisms and therefore do not require a high level of expertise nor technicality to apprehend the impacts of the initial spatial conditions on the model outputs. This is again an argument in favour of our choice: space-dependent variations are to be expected even with the most simple sociospatial models.
 	
@@ -125,7 +125,7 @@ Concerning specifically the comments made by the first referee:
 	
 	% 5. Line 228: Please explain why the median was chosen. Especially given that you use an L2 norm and variances in the index
 	\item \comment[JR]{je pensais qu'on prenait la moyenne ? je verifie... ligne 175 on écrit la médiane en effet}
-	\comment[CC]{ça doit être moi parce que je pensais qu'on prenait effectivement la médiane, qui est plus robuste aux extrêmes, mais si c'est la moyenne et que ça reste proche entre différentes réplications why not.}
+	\comment[CC]{ça doit être moi parce que je pensais qu'on prenait effectivement la médiane, qui est plus robuste aux extrêmes, mais si c'est la moyenne et que ça reste proche entre différentes réplications why not.}[(JR) il me semble que les distribs sont assez centrées et que ca revient quasiment au même ; par contre Clem si tu as pris median pour les stats et moi mean pour les plots c'est pas fou ; tu as encore le code des analyses stats ? (c'est sur le git ?)]
 	
 	
 	% 6. Line 232: comparing phase diagrams is related to the topic of comparing patterns. It would make sense to mention the methods that are usually used to compare patterns
@@ -186,7 +186,7 @@ Concerning the comments made by the second referee:
 \comment[CC]{argumentaire à ajouter dans le papier}
 
 	% Page 2 line 88: the authors state that “Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents is still approximated by a constant density”, I do not think this is true. Many models generate a heterogeneous synthetic population that is based on local data (replicating the actual population as closely as possible) and in far more detail then what is done in this paper. I am thinking of work in the line of disease diffusion, crime etc.
-	\item \comment[JR]{il a un point car ce sont des classes de modeles qu'on a pas trop cité ? par contre la sensibilite a ces distribs precises n'est pas testée, ou pas systeématiquement : il faut qu'on clarifie ou reformule}
+	\item \comment[JR]{il a un point car ce sont des classes de modèles qu'on a pas trop cité ? par contre la sensibilite a ces distribs precises n'est pas testée, ou pas systeématiquement : il faut qu'on clarifie ou reformule}
 	
 	% Page 2 line 98: “However, this step is rarely explicit and authors tend to generalize the conclusion of the model from a single, spatial case study”. I do not understand the first part of the this statement. The steps taken are often very explicit. Due to the amount of time it takes to correctly represent all spatial data, including population densities and the variation of other population variables over space, many authors indeed restrict themselves to a single case study due to the time intensity of this task. Many agent-based models are also not valid for other areas.
 	\item \comment[JR]{idem la on parle pas exactement du meme type de modeles, mais son exemple prouve notre propos : le modele tourne sur une situation unique, et on teste pas l'effet de l'espace.}
