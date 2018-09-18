@@ -82,7 +82,7 @@ Thank you for the feedback on the draft paper ``Space Matters: extending sensiti
 As a response to several reviewers, we made the following general changes:
 
 \begin{itemize}
-	\item Several comments, from the first and third referees especially, suggested that we clarity and explicit the description of our two models: we clarified the descriptions and justified our choices more thoroughly, and also provided pseudo-codes for each model in the Appendix so as to help the reader navigate the implementation chosen compared to other articles. Finally, we mentioned more clearly in the text the fact that source codes are openly available in a github repository.
+	\item Several comments, from the first and third referees especially, suggested that we clarify and explicit the description of our two models: we clarified the descriptions and justified our choices more thoroughly, and also provided pseudo-codes for each model in the Appendix so as to help the reader navigate the implementation chosen compared to other articles. Finally, we mentioned more clearly in the text the fact that source codes are openly available in a github repository.
     \item There was a conflict between the comments of the third referee and the other referees about the comparison of phase diagram. In order to conciliate as much as possible the different parties, we added some developments and comments about how we defined, built, justified and compared phase diagrams in the paper.
     \end{itemize}
 
@@ -121,7 +121,8 @@ Concerning specifically the comments made by the first referee:
 	%In order to clarify the concept of ``meta-parameter'' that we prefer to keep, we now propose a short definition after the first use of the term (section Methods): "In addition to the usual protocol (upper branch of the figure), which consists of running a model $\mu$ with different values of its parameters, we introduce a spatial generator which depends on its very own set of parameters and feeds the model $\mu$ at initialisation (lower branch). We call these parameters meta-parameters to distinguish from the standard parameters of the models and highlight their higher position in the simulation process".
     \item \comment[JR]{TB la def Marion ; là on peut choisir de virer en effet le terme, ou dire que les 3 sont interchangeable mais que "meta-" est plus pratique, qu'en pensez vous ?}
     \comment[CC]{d'acc.}
-	
+    \comment[MLT]{Du coup, dans nos échanges par mails on disait qu'on était ok pour changer, mais finalement cette solution vous convient? Je comprends pourquoi il/elle a tiqué sur le terme, mais c'est pas non plus hors de propos vu l'application qu'on en fait... bref, je suis partagée!}
+
 	
 	% 5. Line 228: Please explain why the median was chosen. Especially given that you use an L2 norm and variances in the index
 	\item \comment[JR]{je pensais qu'on prenait la moyenne ? je verifie... ligne 175 on écrit la médiane en effet}
@@ -137,25 +138,24 @@ Concerning specifically the comments made by the first referee:
 	% 8. Regarding the spatial generator: the authors should explain why this generator is relevant to these two models? 
 	\item This spatial generator is relevant to both model as it produces density grids at a ``metropolitan scale'' (see detailed discussion added in Appendix and the original paper from which we used the generator), which is the scale at which both model were initially intended to be. We made this aspect more explicit. 
 	
-	In the case of Schelling, this is the scale at which most empirical segregation indices are computed. In the case of Sugarscape, it corresponds to the whole city if the model is a metaphor for city resources (Batty....), or to a generic landscape where a resource is grown otherwise. In both cases, our point is that there exist many different patterns of density distribution in resource location and urban density, and that not acknowledging this diversity leads to potentially false results. Furthermore, in urban models, we argue that the hypothesis of isotropic density is potentially the most harmful one (e.g. the least realistic, although this is the case of most Schelling models).
-	\comment[CC]{argumentaire à ajouter dans le papier}
+	\item In the case of Schelling, this is the scale at which most empirical segregation indices are computed. In the case of Sugarscape, it corresponds to the whole city if the model is a metaphor for city resources (Batty....), or to a generic landscape where a resource is grown otherwise. In both cases, our point is that there exist many different patterns of density distribution in resource location and urban density, and that not acknowledging this diversity leads to potentially false results. Furthermore, in urban models, we argue that the hypothesis of isotropic density is potentially the most harmful one (e.g. the least realistic, although this is the case of most Schelling models).
+	\comment[CC]{Ref du papier de batty à ajouter (je ne l'ai pas trouvée}
 	
 	
 	% 9. The authors should illustrate the contribution of each parameter of the generator to the generated initial pattern using a figure. Details of the generators should be included in an appendix
 	\item The behavior of the spatial generator was described with more details in Appendix.
 	
 	% 10. Explain how the density grids are used in the Schelling model, do you allow more than one agent to be in the same cell? 
-	\item Yes, we allow more agents to be in the same cell. The potential density is defined by the density grid generated, and is population with the same number of agents in all grids. This distribution is the one at initialisation. If the potential density is not reached, more agents can move in the cell, otherwise it is deemed full and unavailable for further moves. The satisfaction and segregation indices are computed with regard to the people in the cell and the people present in neighbouring cells.
+	\item Yes, we allow more agents to be in the same cell. The potential density is defined by the density grid generated, and its population with the same number of agents in all grids. This distribution is the one at initialisation. If the potential density is not reached, more agents can move in the cell, otherwise it is deemed full and unavailable for further moves. The satisfaction and segregation indices are computed with regard to the people in the cell and the people present in neighbouring cells.
 	\comment[JR]{il a mal lu ou on est pas assez explicites, a detailler}
 	\comment[CC]{ça va comme réponse? }[(JR) parfait]
-	\comment[CC]{argumentaire à ajouter dans le papier}
+	\comment[CC]{argumentaire à ajouter dans le papier}[(cc)done]
 	
 	% 11. Line 297: I am not sure why empirical density destitutions of cities are important in the context of this study. 
 	\item cf infra. 
 	\item density distributions of empirical cities are important because we want to test models with realistic ranges of initial patterns of density distribution. Therefore we cannot limit ourselves to a single 2-peak mountain in the classical Sugarscape model and an isotropic square city in Schelling. We chose to use actual distribution of European cities to constraint our density generation.
-\comment[CC]{argumentaire à ajouter dans le papier}
-	
-	
+\comment[CC]{argumentaire à ajouter dans le papier}[(cc) done]
+		
 	
 	% 12. Line 641: NetLogo supports grids, continuous space, and GIS elements. It does not restrict the user in any way.
     % \comment[JR]{plutot d'accord avec lui mais parce que proficient en NetLogo, peut etre que des debutants sont plus contraints ? quelquun aurait une ref là dessus ?}
@@ -183,20 +183,22 @@ Concerning the comments made by the second referee:
 	% In the abstract the authors claim that initial spatial conditions are often taken for granted. I do not agree to this statement. Initial spatial condition can have a large impact on the results of a model, however I do not think that the initial spatial conditions are often taken for granted.
 	\item We forcefully agree with the referee in that initial spatial conditions can have a large impact on the results of the model. Maybe not all papers take them for granted, but what we meant is that compared to other parameters, initial spatial conditions are much less often explored using sensitivity analysis. Actually, we know only a few papers which have explored the impact of initial spatial conditions as a systematic criterion in a sensitivity analysis of model results. We clarified this point in the introduction.
     \comment[JR]{il s'agirait de nuancer ici}
-\comment[CC]{argumentaire à ajouter dans le papier}
+\comment[CC]{argumentaire à ajouter dans le papier}[(cc) done]
 
 	% Page 2 line 88: the authors state that “Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents is still approximated by a constant density”, I do not think this is true. Many models generate a heterogeneous synthetic population that is based on local data (replicating the actual population as closely as possible) and in far more detail then what is done in this paper. I am thinking of work in the line of disease diffusion, crime etc.
 	\item \comment[JR]{il a un point car ce sont des classes de modèles qu'on a pas trop cité ? par contre la sensibilite a ces distribs precises n'est pas testée, ou pas systeématiquement : il faut qu'on clarifie ou reformule}
+    \comment[MLT]{En fait, c'est là aussi une question de reformulation. Je crois qu'il faudrait répondre quelque chose comme : "We acknowledge the fact that many ABM applications use "real" data and spatial features for their simulations. However, as explained by (Thomas et al. 2017) in the case of LUTI models for instance, most simulations do not evaluate the impact of city delineations nor MAUP on the output of the models, which constitutes a potential limit in the interpretation of results.}
 	
 	% Page 2 line 98: “However, this step is rarely explicit and authors tend to generalize the conclusion of the model from a single, spatial case study”. I do not understand the first part of the this statement. The steps taken are often very explicit. Due to the amount of time it takes to correctly represent all spatial data, including population densities and the variation of other population variables over space, many authors indeed restrict themselves to a single case study due to the time intensity of this task. Many agent-based models are also not valid for other areas.
 	\item \comment[JR]{idem la on parle pas exactement du meme type de modeles, mais son exemple prouve notre propos : le modele tourne sur une situation unique, et on teste pas l'effet de l'espace.}
+    \comment[MLT]{Bon, c'est clairement quelqu'un qui fait de l'appliqué et qui veut pas entendre notre argument ;) On peut aller dans son sens et modifier notre propos en écrivant : "However, this step is rarely explicit and authors are therefore not able to generalize the conclusion of the model to other spatial entities."}
 	
 	% The authors do not differentiate between data driven empirical models versus theory-driven models. I think a clear differentiation between the two groups and the positioning of the two case studies in the second group would make the paper more balanced.
 	\item Concerning the remarks on synthetic population generation and the different types of models, we clearly stated our positioning regarding models built from theory, for which the proposed sensitivity analysis workflow is more suited and that our two case studies illustrate.\comment[JR]{oui du coup en disant ça ça repond à ses deux points précédents}\comment[JR]{positionement a plus souligner dans le papier}
 	
 	% In section 1.3 (Previous considerations on the effects of the spatial configuration in simulation models) authors provide a lot of evidence on previous work on the impact of initial spatial conditions on the output of models. This is contrary to the statement in the abstract that initial conditions are often taken for granted.
 	\item Indeed, we have tried to review articles where some kind of sensitivity to initial spatial conditions are tackled. But first, the references cited in this section are few compared to the mass of geosimulation articles published without any mention of dependence of output on initial spatial condition. Second, the references cited mostly provide some hints of impact of initial spatial conditions on the output of models (due to the accuracy of data, shape of boundaries and spatial heterogeneity) but none provide a systematic inquiry into the impact of systematically defined spatial input on the model output in the way we try to provide later on in the paper. We have tried to argue this point at the end of the section.
-    \comment[CC]{argumentaire à ajouter dans le papier}
+    \comment[CC]{argumentaire à ajouter dans le papier}[(cc) done]
 	
 	% The most interesting part of the research to me, is not the way the density layers are generated but the use of the phase diagrams, defined as a vector of final aggregated model outputs. As these are vectors, they are not so different from time series and many techniques exist to compare vectors in this domain. I wonder if the Euclidean distance is the best measure to determine the difference between the phase vectors of different spatial inputs.
 	% -> 
@@ -204,7 +206,6 @@ Concerning the comments made by the second referee:
 	
 	% Last paragraph of page 5, you do not state explicitly if genetic algorithms were use within the OpenMOLE platform.
 	\item The functionalities of OpenMOLE we used were detailed; we did not use genetic algorithms but sampling methods and high performance computing environments.
-    \comment[CC]{argumentaire à ajouter dans le papier}
 	
 	% In section 3.1, page 8, line 404-405 the authors mention that the distance of the phase diagrams was measured with respect to the reference phase diagram computed on the default initial spatial conditions. Actually this came as a surprise to me. I had the impression that all phase diagrams would be evaluated against all other diagrams. Perhaps this should be explained earlier in the paper.
 	\item \comment[JR]{ce qu'il suggère c'est un indice intégré sur l'ensemble des phases diagramme, donc un ``meta-meta-indice'' en quelque sorte, nous on reste à un niveau de meta seulement car on regarde juste pour chaque s'il bouge par rapport à un point de reference. En termes thematique c'est plus coherent pour nous, lui doit avoir en tete des indices de sensibilite globaux type Saltelli. $\rightarrow$ a voir comment justifier ca bien}
@@ -216,8 +217,7 @@ Concerning the comments made by the second referee:
 	
 	% I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
 	Thanks for the remark. We have tried to shorten the considerations which you have found not too useful and will let the readers decide if the grids could be of any use to them.
-	\comment[CC]{argumentaire à ajouter dans le papier}
-    
+   
 \end{itemize}
 
 
@@ -230,7 +230,7 @@ Concerning the comments made by the third referee:
 \begin{itemize}
 	% I found the research question posed by the author(s) interesting and I agree with the author(s) that many modelers don’t consider how spatial arrangements impact the outcomes of the model and tend to focus only on the parameters. The paper makes good use of the complexity and spatial literature in defining the problem and demonstrates how urban form impacts the results. However, while the paper is innovative, I found it really difficult to interpret and follow the results. I would suggest to the author to rewrite the results and methodology so that they flow better and also provide more context with respect to how to interpret the results.
 	\item We have tried to make the methodology and result section flow better in the corresponding sections.
-    \comment[CC]{à faire dans le papier}
+    \comment[CC]{à faire en derniere relecture}
 	
 	% On a side note, one of your key words you use “validation” but in what sense?  You don’t really come back to this in the paper, also you write about “the validity of generative models is uncertain until their results are proven robust and representative of ’real-world’ conditions.” In the abstract but this is it.  What do you consider real world conditions to be? You seem to allude that you need to have the spatial generator to generate realistic (styles) city shapes for testing on the Schelling model but I am not convinced.  After the abstract all notion of validation is missing.
 	\item We have agreed with the reviewer and removed the concept of validation altogether, replacing it with model evaluation or sensitivity analysis.
@@ -238,25 +238,32 @@ Concerning the comments made by the third referee:
 	
 	% Geosimulation is introduced but not defined or referenced.  This should be clarified as the term has several meanings etc.
 	\item For the definition of geosimulation, we meant the one coined by (Benenson and Torrens, 2004), this was made explicit and the reference was added. 
-    \comment[CC]{à ajouter dans le papier}[(JR) fait au début]
-	
+    	
 	% In places the English along with the overall argument could be better articulated. For example, on page 1 you write: “We think simulation can become a very good tool to achieve this,”  Could this be rewritten or better argued. You are not the only one to believe this but you don’t show this in your paper.
-	\item 
+	\item We have worked towards improving the English along with the overall argument. 
+      \comment[CC]{ok pour cette phrase + derniere relecture a faire}
 	
 	% Page 4: you write “Generally, sensitivity analyses have focused either on the spatial context (extent of the environment, shape of the zones if applicable - squares, hexagons, etc., objects - links, rasters, etc.); either on the spatial encoding of the heterogeneity of space (algorithms of disaggregation, interpolation, etc.), but rarely on both at the same time” This makes little sense. What it should be is “Generally, sensitivity analyses have focused either on the spatial context or the heterogeneity of space” or something like that. Basically you need the “or”.
-	\item 
+	\item Thank you for the suggestion. We have modified the paragraph accordingly.
+
 
 	% You write “To our knowledge there exist no single well established method to compare phase diagrams in the agent-based modelling and geosimulation literature.” As this is new you may want to discuss how say its done in other fields?  
-	\item \comment[JR]{cf remarques other reviewers sur ce point}
+	\item
+    \comment[JR]{cf remarques other reviewers sur ce point}[(MLT) Sa remarque fait sens, mais j'avoue ne pas être trop au point sur cette partie de la littérature... vous avez des références?]
 	
 	% In the Schelling and sugarscape models how are the initial population of agents distributed? Is it random? I ask as this is unclear in the current version of the paper but it is vital if your purpose is to explore how the initial spatial configuration impacts the results of the model. Should the agents not be all located at the same location for each run to rule out the impact of initial placement of agents on the resulting patterns? This is something that is not addressed in the paper. I know for example, the Schelling model in NetLogo normally places the agents at random locations but in your reimplementation how is this done? The same goes for the sugarscape model in NetLogo. I believe a clearer description of the model initialization would be good and how its not the initial random placement of agents but the actual environment that impacts the outcomes. Maybe this was explained in the paper but I missed it.  
-	\item \comment[JR]{on regarde des indicateurs aggreges qui ne dependent pas de la trajectoire de chaque agent, si le placement initial est random il na aucune influence sur ceux-ci (cf les distribs) -> ajouter des graphes de comportement stat des modeles en Appendix ?}
-	
+	\item Yes, classically, the initial distribution of agents is random in both models and, most importantly for our point, it follows a uniform distribution of density. In our implementation, the initial location of agents is also random in Schelling, but it follows a distribution of density given by the generated grid. In Sugarscape, the agents are initialised at random but the resources follow a distribution of density given by the generated grid. We have clarified this point in section 2.3
+    \item
+    \comment[JR]{on regarde des indicateurs aggreges qui ne dependent pas de la trajectoire de chaque agent, si le placement initial est random il na aucune influence sur ceux-ci (cf les distribs) -> ajouter des graphes de comportement stat des modeles en Appendix ?}
+	       \comment[CC]{à modifier dans le papier section 2.3}[(cc) done]
+           
 	% In Section 1.2 talk about “(monocentric vs. polycentric for example)” but in the results you don’t discuss the monocentric versions explicitly using these terms.
-	\item 
+	\item We believe that the monocentric versions are explicitly analysed in table 1: the term "monocentric" itself does not appear in the regression results but it is only because it is taken as the reference case under the term "compact' in the regression. We have clarified this in section 3.2.
+           \comment[CC]{à modifier dans le papier section 3.2}[(cc) done]
 	
 	% Also I appreciate you are trying to show rather complex results but reading the results several times I found the presentation of them (both written and visual) really hard to follow and understand. I was wondering if maybe you could find a better way to show / discuss them. Maybe a  worked example of how each set of parameters leads to a point in say Figure 4. Also it is confusing why the results from both models are not presented using the same styles of figures. For example, for the sugar scape model you different styles of figures than for the segregation model.   
-	\item Additional figures for the Schelling model presenting the results in a similar way were provided. Figures showing grid estimates of phase diagrams could not be realized for the Schelling model because of the different sampling of the parameter space used.
+	\item Additional figures for the Schelling model presenting the results in a similar way were provided and commented in a way that tries to make it easier to grasp for the reader. Unfortunately, the figures showing grid estimates of phase diagrams could not be realized for the Schelling model because of the different sampling of the parameter space used.
+
 \end{itemize}
 
 
@@ -266,14 +273,11 @@ Concerning the comments made by the fourth referee:
 
 
 \begin{itemize}
-	% In sensitivity analysis of spatial models, stochastic effects and small parameter changes are normally applied. What about initial conditions? The authors test the effects of different arrangements (e.g. monocentric vs. polycentric density patterns) on agent-based Schelling segregation models and Sugarscape's unequal societies model.
-	\item 
-	
-	% Overall, I find this to be a very good paper. Very well written in general. Good review of the problem, clearly outlining (with references) the need for focus on initial conditions in geosimulation. The chief factors (data uncertainty, nature of spatial units (e.g. shape) and spatial heterogeneity) on initial spatial conditions are covered: -how many of these do you test? I see heterogeneity addressed, but what about shape and uncertainty? You touch upon shape when talking about NetLogo's use of raster as opposed to vector in the Discussion - could you expand on this?
-	\item 
+	% In sensitivity analysis of spatial models, stochastic effects and small parameter changes are normally applied. What about initial conditions? The authors test the effects of different arrangements (e.g. monocentric vs. polycentric density patterns) on agent-based Schelling segregation models and Sugarscape's unequal societies model. Overall, I find this to be a very good paper. Very well written in general. Good review of the problem, clearly outlining (with references) the need for focus on initial conditions in geosimulation. The chief factors (data uncertainty, nature of spatial units (e.g. shape) and spatial heterogeneity) on initial spatial conditions are covered: -how many of these do you test? I see heterogeneity addressed, but what about shape and uncertainty? You touch upon shape when talking about NetLogo's use of raster as opposed to vector in the Discussion - could you expand on this?
+	\item We have not addressed the shape of cells and the uncertainty of data in this paper, only the diversity of shapes of urban morphologies (e.g. heterogeneity). 
 	
 	% Rigorous experimental method described. In the matching of European metropolitan areas to your generated outputs, I wonder what you are missing by not using cities from other continents. i.e. by widening the cities available to your study it may be possible to even better discover real-world examples of your archtypes (compact, polycentric, discontinuous).
-	\item \comment[JR]{to the best of my knowledge there is no full-world morphological classification of cities (and surely because global 1km density dataset is not robust enough for that - already with the European grid it is not perfect)}
+	\item \comment[JR]{to the best of my knowledge there is no full-world morphological classification of cities (and surely because global 1km density dataset is not robust enough for that - already with the European grid it is not perfect)}[(MLT) Peut-être qu'on peut intégrer sa remarque dans la partie discussion? Je ne connais pas non plus de classification morphologique des villes à l'échelle du monde. Les cas européens sont privilégiés du fait de la disponibilité de données comme Corine Land Cover et Urban Atlas (pour l'usage du sol) ou Geostat (grilles de densité de pop de résolution 1km), mais ça doit aussi exister pour les US au moins? Il y a aussi le projet gridded population of the world de l'université de Columbia mais la résolution n'est pas assez fine (2.5 arcminute) pour une analyse de la morpho urbaine.]
 	
 	% Why do you not have the same amount of repetitions for your Sugarscape (50 repetitions) and Schelling (100 repetitions) model runs?
 	\item \comment[JR]{no justification for the difference in number of runs (just experimental setup contingence\ldots ) $\rightarrow$ either new runs or redo computations with 50 for Schelling}
