@@ -36,6 +36,8 @@
 \usepackage{multirow}
 
 \usepackage{listings}
+\lstset{escapeinside={(*@}{@*)}}
+
 \usepackage{mdframed}
 
 \usepackage{soul}
@@ -251,7 +253,9 @@ We choose different experiment designs, both for \replaced{generator parameters}
 \section{Results}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\todo{add code and data availability statement here}
+
+\added{The implementations of the models were done in NetLogo. We modified the sugarscape version with wealth of NetLogo model library (to be able to explore it intensively) and we implemented from scratch the Schelling model. Both pseudo-codes are available in Appendix~\ref{app:code}, and source code for models, grid classification and simulation results analysis is available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. Density grids are also available at this address. Simulation data are available for reproducibility on the dataverse repository at \url{https://doi.org/10.7910/DVN/A0N5GV}.}
+
 
 \subsection{Quantitative variation across grids}
 
@@ -372,11 +376,7 @@ We consider that the method presented in this paper holds great potential for st
 
 \subsection{Limits}
 
-\paragraph{Comparing phase diagrams} Comparing phase diagrams is as we saw not so straightforward, and further developments of our method imply testing alternative methods for this particular point. For example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \deleted{\emph{meta phase transitions}} phase transitions in the space of \replaced{generator}{meta} parameters. The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\citep{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numeral tools to compare two dimensional fields~\citep{visser2006map}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\citep{10.1371/journal.pone.0178165}. The investigation of diverse approaches to systematically quantify differences between phase diagrams is an important potential development of our method.
-
-\added{\cite{kuhnert2005comparing} map comparison techniques}
-
-\added{\cite{kruskal1983overview} parallel with time-series comparison techniques (see reviewer comment - however more constrained as two dimensional indexing)}
+\paragraph{Comparing phase diagrams} Comparing phase diagrams is as we saw not so straightforward, and further developments of our method imply testing alternative methods for this particular point. For example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \deleted{\emph{meta phase transitions}} phase transitions in the space of \replaced{generator}{meta} parameters. The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\citep{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numeral tools to compare two dimensional fields~\citep{visser2006map,kuhnert2005comparing}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\citep{10.1371/journal.pone.0178165}. \added{The transfer of methods used to compare sequences \citep{kruskal1983overview} or time-series \citep{liao2005clustering} is a possible way to develop measures between phase diagrams. The higher dimension of the phase diagram we study must however be considered with caution when transferring method, in a way analog to the application of global sensitivity indices to spatial data \citep{lilburne2009sensitivity}.} The investigation of diverse approaches to systematically quantify differences between phase diagrams is an important potential development of our method.
 
 \paragraph{Platform constraints and docking challenges}
 
@@ -391,7 +391,9 @@ An aspect that we have not touched upon in the article with respect to the sensi
 
 
 Although the applications we present here are limited by the simplicity of the models, we think that the method could (and should) be applied to larger models including domain mechanisms and more empirical initialisation data, for example synthetic populations. The sensitivity analysis to initial spatial conditions could then be either a replication on the spatial allocation of the synthetic population, or a series of spatial permutations of the empirical spatial inputs.
-We want to foster this extension of our work by releasing the density grids also generated, as well as the generating work-flow and the model implementation. They are available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. Another way to go would be to implement additional generators, such as social networks \citep{alizadeh2016generating} with localised agents. 
+We want to foster this extension of our work by releasing the density grids also generated, as well as the generating work-flow and the model implementation. They are available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. \added{Future work could be done to compare these or generate grids with a larger morphological span, covering other typical urban forms that can be found in the world.}
+
+Another way to go would be to implement additional generators, such as social networks \citep{alizadeh2016generating} with localised agents, \added{transportation networks generators \citep{raimbault2018multi}, or coupled road network and population raster generators \citep{raimbault2018urban}.} 
 
 
 \paragraph{An emancipation opportunity for social sciences.}
@@ -424,27 +426,28 @@ After reviewing the extensive literature on spatial biases in statistical and si
 
 \appendix
 
+\newpage
+
 \section{\added{Behavior of the density grid generator}}
 
-\added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$.}
+\added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$. To put it in a simple way, high values of $\alpha$ give highly hierarchical configurations, and diminishing $\beta$ increase the number of centers. Low values of $\alpha$ give diffuse patterns, with however clear centers for a high diffusion. We do not discuss it the role of other parameters, but according to \cite{raimbault2018calibration}, diffusion steps give smoother forms, and the rate between total population and the population increment at each step (which is equivalent to the total number of steps) is crucial to select non-stationary distributions that are closer to real configurations. \cite{raimbault2018calibration} also shows the existence of non-linear behaviors in some regions of the parameter space, so the description we gave here shall not be interpreted as a linear link between generator parameters and the morphological properties of the generated grids.}
 
-\todo{bla bla on generator scale / real configs in the initial paper}
 
 %%%%%%%%%%%%%%
 \begin{figure*}
 	\includegraphics[width=0.49\linewidth]{figures/alpha_beta_examples.png}
-    \includegraphics[width=0.49\linewidth]{figures/alpha_beta_schemas.png}
-    \caption{\added{\textbf{Stylized behavior of the density grid generator.}}\label{fig:stylized-generator}}
+    \includegraphics[width=0.47\linewidth]{figures/alpha_beta_schemas.png}
+    \caption{\added{\textbf{Stylized behavior of the density grid generator.} (Left) Examples of grids with their position in the $(\alpha,\beta)$ parameter space; (Right) Stylized interpretation of the forms obtained as a function of $\alpha$ and $\beta$.}\label{fig:stylized-generator}}
 \end{figure*}
 %%%%%%%%%%%%%%
 
 
 \section{\added{Additional figures for the Schelling model}}
 
-\added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here.}
+\added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here. We however obtain measures ranging from 0.3 to 1, what is however characteristic of a significant sensitivity to space.}
 
 %%%%%%%%%%%%%
-\begin{figure*}[h!]
+\begin{figure*}
 \centering
 \includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_metaparams_red}
 \includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_morphspace_red}
@@ -453,59 +456,82 @@ After reviewing the extensive literature on spatial biases in statistical and si
 %%%%%%%%%%%%%
 
 
+\section{\added{Comparison of phase diagram with other distances}}
+
+\added{We describe here the tests done with other distances to compare phase diagrams.}
+
+
+
 \section{\added{Pseudo-code for models}}
 \label{app:code}
 
-\added{We give below the pseudo-code for the implementations we used of both models.}
-
-
-\begin{figure*}
-%\begin{frame}
-% Minimal netlogo code for the sugarscape model
-\begin{lstlisting}
-	to main-loop
-    	regrow-patches
-        update-agetns
-    end
-    
-    to regrow-patches
-    	ask patches [set psugar min (list max-psugar (psugar + 1))]
-    end
-    
-    to update-agents
-    	ask turtles [
-    		let move-candidates (patch-set patch-here (patches at-points vision-points) with [not any? turtles-here])
-  let possible-winners move-candidates with-max [psugar]
-  if any? possible-winners [
-    ;; if there are any such patches move to one of the patches that is closest
-    move-to min-one-of possible-winners [distance myself]
-  ]
-            
-            ; 
-            set sugar (sugar - metabolism + psugar)
-  			set psugar 0
-            
-    		set age (age + 1)
-    		if sugar <= 0 or age > max-age [
-      			hatch 1 [ new-turtle ]
-      			die
-    		]
-  		]
-    end
-    
-\end{lstlisting}
-%\end{frame}
-\end{figure*}
+\added{We give below the pseudo-code for the implementations we used of both sugarscape and schelling models. We recall that source code is openly available at} \url{https://github.com/AnonymousAuthor2/SpaceMatters}.
 
 
 
 %%%%%%%%%%%%%%%
 \begin{figure*}
+	\caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.}}}
+	\begin{mdframed}
 	\begin{lstlisting}
-    
+	while (*@\textit{not stopping-condition}@*) [
+    	ask turtles [
+    		set unsatisfied? false
+    		let neighboragents turtles in-radius neighborhood-radius
+    		let wantedcolor color
+    		let stranger-rate count neighboragents with [color = wantedcolor] / count neighboragents
+    		if stranger-rate < similar-wanted [
+    set unsatisfied? true random-move
+    ]
+  ]
     \end{lstlisting}
+    \end{mdframed}
 \end{figure*}
 %%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%
+\begin{figure*}
+% Minimal netlogo code for the sugarscape model
+\caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}
+\begin{mdframed}
+\begin{lstlisting}
+while [time < final-time] [
+	; regrow the patch resources
+    ask patches [set psugar min (list max-psugar (psugar + 1))]
+        
+    ; make agents exploit resources
+    ask turtles [
+    	; candidate patches to which the turtle can move
+    	let move-candidates (*@\textit{patches in vision range with no turtles}@*)
+    	
+    	; select the patch with maximal resource
+ 		let possible-winners move-candidates with-max [psugar]
+  		if any? possible-winners [
+  			move-to one-of (*@\textit{possible-winners at minimal distance}@*)
+  		]
+            
+        ; eat the sugar on the patch
+        set sugar (sugar - metabolism + psugar)
+  		set psugar 0
+            
+        ; age and die if necessary
+    	set age (age + 1)
+    	if sugar <= 0 or age > max-age [
+    		; hatch an other turtle before dying
+      		hatch 1 [ new-turtle ]
+      		die
+    	]
+  	]
+]
+\end{lstlisting}
+\end{mdframed}
+\end{figure*}
+%%%%%%%%%%%%%%%
+
+
+
 
 
 
