@@ -62,27 +62,27 @@
 
 \title{Space Matters: extending sensitivity analysis to initial spatial conditions in geosimulation models}
 
-\author[a,b]{Juste Raimbault\corref{cor1}}
-\author[c,d]{Cl{\' e}mentine Cottineau}
-\author[e]{Marion Le Texier}
-\author[f]{Florent Le N{\' e}chet}
-\author[a]{Romain Reuillon}
-%\author{}
+%\author[a,b]{Juste Raimbault\corref{cor1}}
+%\author[c,d]{Cl{\' e}mentine Cottineau}
+%\author[e]{Marion Le Texier}
+%\author[f]{Florent Le N{\' e}chet}
+%\author[a]{Romain Reuillon}
+\author{}
 
-\address[a]{UPS CNRS 3611 ISC-PIF, Paris, France}
-\address[b]{UMR CNRS 8504 G{\'e}ographie-cit{\'e}s, Paris, France}
-\address[c]{Centre for Advanced Spatial Analysis, University College London, UK}
-\address[d]{UMR CNRS 8097 Centre Maurice Halbwachs, Paris, France}
-\address[e]{UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France}
-\address[f]{Universit{\'e} Paris-Est, Laboratoire Ville Mobilité Transport, Marne-la-Vallée, France}
+%\address[a]{UPS CNRS 3611 ISC-PIF, Paris, France}
+%\address[b]{UMR CNRS 8504 G{\'e}ographie-cit{\'e}s, Paris, France}
+%\address[c]{Centre for Advanced Spatial Analysis, University College London, UK}
+%\address[d]{UMR CNRS 8097 Centre Maurice Halbwachs, Paris, France}
+%\address[e]{UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France}
+%\address[f]{Universit{\'e} Paris-Est, Laboratoire Ville Mobilité Transport, Marne-la-Vallée, France}
 
 
-\cortext[cor1]{Corresponding author: juste.raimbault@polytechnique.edu}
+%\cortext[cor1]{Corresponding author: juste.raimbault@polytechnique.edu}
 
 
 
 \begin{abstract}
-Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain unless their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually taken for granted in geographical models, thus leaving completely unexplored the effect of spatial arrangements on the interactions of agents and of that of agents with their environment. In this paper, we present a method to assess the effect of some initial spatial conditions on simulation models, using a systematic \added{spatial configuration} generator \deleted{controlled by meta-parameters} in order to create density grids with which spatial simulation models are initialised. We show, with the example of two classical agent-based models (Schelling's models of segregation and Sugarscape's model of unequal societies) and a straightforward open-source work-flow using high performance computing, that the effect of initial spatial arrangements is significant in the two models. Furthermore, this effect is sometimes larger than the effect of parameters' value change. 
+Although simulation models of geographical systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain unless their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually \replaced{not modified systematically}{taken for granted} in geographical models, thus leaving \deleted{completely} unexplored the effect of \added{initial} spatial arrangements on the interactions of agents \replaced{with one another as well as}{and of that of agents} with their environment. In this paper, we present a method to assess the effect of some initial spatial conditions on simulation models, using a systematic \added{spatial configuration} generator \deleted{controlled by meta-parameters} in order to create density grids with which spatial simulation models are initialised. We show, with the example of two classical agent-based models (Schelling's models of segregation and Sugarscape's model of unequal societies) and a straightforward open-source work-flow using high performance computing, that the effect of initial spatial arrangements is significant \replaced{on}{in} the two models. Furthermore, this effect is sometimes larger than the effect of parameters' value change. 
 \end{abstract}
 
 \begin{keyword}
@@ -99,12 +99,6 @@ Space \sep Initial conditions \sep Sensitivity \sep ABM
 % - We generate stylized population density grids.
 % - We assess the sensitivity of two classical agent-based models, Schelling's model and Sugarscape's model.
 % - Strong quantitative and qualitative effects of spatial initial conditions are shown for these models.
-
-
-
-
-%\textbf{Example track changes : }\added{this is added text}, \deleted{removed} text or \replaced{new}{old} replaced text
-
 
 
 
@@ -254,7 +248,7 @@ We choose different experiment designs, both for \replaced{generator parameters}
 %%%%%%%%%%%%%%%%%%%%%%
 
 
-\added{The implementations of the models were done in NetLogo. We modified the sugarscape version with wealth of NetLogo model library (to be able to explore it intensively) and we implemented from scratch the Schelling model. Both pseudo-codes are available in~\ref{app:code}, and source code for models, grid classification and simulation results analysis is available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. Density grids are also available at this address. Simulation data are available for reproducibility on the dataverse repository at \url{https://doi.org/10.7910/DVN/A0N5GV}.}
+\added{The implementations of the models were done in NetLogo. We modified the sugarscape version with wealth of NetLogo model library (to be able to explore it intensively) and we implemented from scratch the Schelling model. Both pseudo-codes are available in~\ref{app:code}, and source code for models, grid classification and simulation results analysis is available on the open repository of the project at} \url{https://github.com/AnonymousAuthor2/SpaceMatters}. \added{Density grids are also available at this address. Simulation data are available for reproducibility on the dataverse repository at }\url{https://doi.org/10.7910/DVN/A0N5GV}.
 
 
 \subsection{Quantitative variation across grids}
@@ -325,7 +319,7 @@ Simulation outcome by segregation index:    & \multicolumn{2}{c|}{\textbf{Dissim
 \textbf{Similarity Wanted (S)}              & 1.212 ***  & 1.212 ***                        & 1.250 ***         & 1.250 ***         & 0.550 ***            & 0.550 ***                \\ 
 \textbf{quadratic term ($S^2$)}               & -0.942 *** & -0.942 ***                       & -0.963 ***        & -0.963 ***        & -0.428 ***           & -0.438 ***               \\ 
 \textbf{Vacancy Rate (V)}                   & 0.602 ***  & 0.602 ***                        & 0.453 ***         & 0.453 ***         & -0.027 ***           & -0.027 ***               \\ 
-\textbf{Minority Index (\%Maj - \%Min)}     & 0.307å ***  & 0.307 ***                        & 0.130 ***         & 0.130 ***         & -0.067 ***           & -0.067 ***               \\ \hline
+\textbf{Minority Index (\%Maj - \%Min)}     & 0.307 ***  & 0.307 ***                        & 0.130 ***         & 0.130 ***         & -0.067 ***           & -0.067 ***               \\ \hline
 \textbf{Density Grid = Polycentric}         &            & 0.087 ***                        &                   & 0.052 ***         &                      & 0.001 ***                \\ 
 \textbf{Density Grid = Discontinuous}       &            & 0.111 ***                        &                   & 0.068 ***         &                      & \textit{0.00}              \\
 \textbf{Attraction \replaced{generator }{meta-}parameter $\alpha$} &            & -0.083 ***                       &                   & -0.053 ***        &                      & 0.014 ***                \\ 
@@ -442,15 +436,51 @@ After reviewing the extensive literature on spatial biases in statistical and si
 %%%%%%%%%%%%%%
 
 
+%%%%%%%%%%%%%%%%%
+\section{\added{Additional statistical analysis}}
+
+
+%%%
+%% Sugarscape
+
+% Sharpes
+%summary(sres$giniSharpe)
+%   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+%  2.343  14.413  20.993  20.098  26.208  49.808 
+
+% # ks
+% # table(sres$distrib)
+% #gamma  geom lnorm  norm  unif 
+% #1090  9794 16212 14263 13201 
+% AIC
+% table(sres$distrib)
+% exp gamma lnorm  norm 
+%  1451  9707 22825 20577 
+
+
+%%%
+%% Schelling
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%
 \section{\added{Additional figures for the Schelling model}}
 
-\added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here. We however obtain measures ranging from 0.3 to 1, what is however characteristic of a significant sensitivity to space.}
+\added{The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as a function of generator parameters and morphological components, similarly to the Sugarscape model in main text. In absolute, this version of the Schelling model seems less sensitive to density grids than the sugarscape model, as we do not obtain a high range of values here. We however obtain measures ranging from 0 to 0.85 with the euclidian distance, what is however characteristic of a significant sensitivity to space.}
+
+%summary(dists)
+%   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+% 0.0000  0.2164  0.3325  0.3700  0.4846  0.8473 
 
 %%%%%%%%%%%%%
 \begin{figure*}
 \centering
-\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_metaparams_red}
-\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_morphspace_red}
+\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_metaparams_mean.png}
+\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_morphspace_mean.png}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids for the Schelling model.} Each point corresponds to a spatial configuration and colour gives the relative distance to one of the phase diagrams. We show them in the \replaced{generator }{meta-}parameter space (Left) and in the reduced morphological space (Right).\label{fig:schelling-distance-meta}}
 \end{figure*}
 %%%%%%%%%%%%%
