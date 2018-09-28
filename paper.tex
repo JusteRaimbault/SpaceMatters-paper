@@ -365,7 +365,7 @@ We consider that the method presented in this paper holds great potential for st
 
 \subsection{Limits}
 
-\paragraph{Comparing phase diagrams} Comparing phase diagrams is as we saw not so straightforward, and further developments of our method imply testing alternative methods for this particular point. For example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \deleted{\emph{meta phase transitions}} phase transitions in the space of \replaced{generator}{meta} parameters. The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\citep{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numerous tools to compare two dimensional fields~\citep{visser2006map,kuhnert2005comparing}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\citep{10.1371/journal.pone.0178165}. \added{The transfer of methods used to compare sequences \citep{kruskal1983overview} or time-series \citep{liao2005clustering} is a possible way to develop measures between phase diagrams. The higher dimension of the phase diagrams we study must however be considered with caution when transferring methods, in a way analog to the application of global sensitivity indices to spatial data \citep{lilburne2009sensitivity}.} The investigation of diverse approaches to systematically quantify differences between phase diagrams is an important potential development of our method.
+\paragraph{Comparing phase diagrams} Comparing phase diagrams is as we saw not so straightforward, and further developments of our method imply testing alternative methods for this particular point. For example in the case of the Schelling model, an anisotropic spatial segregation index (giving the number of clusters found and in which region in the parameter spaces they are roughly situated) would differentiate strong \deleted{\emph{meta phase transitions}} phase transitions in the space of \replaced{generator}{meta} parameters. The use of metrics comparing spatial distributions, such as the Earth Movers Distance which is used for example in Computer Vision to compare probability distributions~\citep{rubner2000earth}, or the comparison of aggregated transition matrices of the dynamic associated to the potential described by each distribution, would also be potential tools. Map comparison methods, popular in environmental sciences, provide numerous tools to compare two dimensional fields~\citep{visser2006map,kuhnert2005comparing}. To compare a spatial field evolving in time, elaborated methods such as Empirical Orthogonal Functions that isolates temporal from spatial variations, would be applicable in our case by taking time as a parameter dimension, but these have been shown to perform similarly to direct visual inspection when averaged over a crowdsourcing~\citep{10.1371/journal.pone.0178165}. \added{The transfer of methods used to compare sequences \citep{kruskal1983overview} or time-series \citep{liao2005clustering} is a possible way to develop measures between phase diagrams. The higher dimension of the phase diagrams we study must however be considered with caution when transferring methods, in a way analog to the application of global sensitivity indexes to spatial data \citep{lilburne2009sensitivity}. We can also note than more generally, this problem of comparing phase diagrams is a particular instance of the more generic issue of comparing patterns, which for example include unsupervised learning techniques \citep{hastie2009unsupervised}.} The investigation of diverse approaches to systematically quantify differences between phase diagrams is an important potential development of our method.
 
 \paragraph{Platform constraints and docking challenges}
 
@@ -583,6 +583,7 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 %%%%%%%%%%%%%%%
 \begin{figure*}
 \caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}
+\bigskip
 \begin{mdframed}
 \begin{lstlisting}
 while (*@\textit{not stopping-condition}@*) [
@@ -607,11 +608,15 @@ while (*@\textit{not stopping-condition}@*) [
 \begin{figure*}
 % Minimal netlogo code for the sugarscape model
 \caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} Conventions are the same than for Schelling pseudo-code.}}
+\bigskip
 \begin{mdframed}
 \begin{lstlisting}
 while [time < final-time] [
+	;regrow the patch resources
     ask patches [set psugar min (list max-psugar (psugar + 1))]
-	ask turtles [
+	
+    ; make agents exploit resources
+    ask turtles [
 		; candidate patches to which the turtle can move
 		let move-candidates (*@\textit{patches in vision range with no turtles}@*)
 		
