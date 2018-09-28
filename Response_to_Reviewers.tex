@@ -105,8 +105,8 @@ Concerning specifically the comments made by the first referee:
    % I believe it would be better to begin with an illustrative example on how two or three initial patterns influence the model results and then use the suggested method for a more extensive analysis
    \item We agree that illustrative examples would provide a relevant starting point to  the analysis but we were afraid that their addition to the paper would make the introduction less straightforward and have the opposite effect to the one we were seeking. As we were nevertheless very interested by your remark, we provide a short answer to your proposition.
    
-In order to get a first idea of the potential impact of spatial initial conditions on to the results of the simulation, we implemented on Segregation model a geographical constraint: some cells cannot be inhabited (yellow cells in Figure \ref{Fig1}). The way those “forbidden” cells are distributed throughout space will indeed influence the steps of the model. 
-We introduced various spatial initial conditions in the model that we controlled by one clustering parameter on the forbidden cells. A value of 0 would indicate a spatial distribution of yellow cells so as to minimize spatial autocorrelation. A value of 1 indicates on the contrary a concentration process that tends towards a high value of autocorrelation (see below Figure \ref{Fig1}). 
+In order to get a first idea of the potential impact of spatial initial conditions on to the results of the simulation, we implemented on Segregation model a geographical constraint: some cells cannot be inhabited (yellow cells in Figure 1). The way those “forbidden” cells are distributed throughout space will indeed influence the steps of the model. 
+We introduced various spatial initial conditions in the model that we controlled by one clustering parameter on the forbidden cells. A value of 0 would indicate a spatial distribution of yellow cells so as to minimize spatial autocorrelation. A value of 1 indicates on the contrary a concentration process that tends towards a high value of autocorrelation (see below Figure 1). % note : no fig envt in moderncv
 
 We then compute the number of communities arising when the model converge, hence the number of different related components of similar neighbors.
 Using 270 replications of 11 values of the clustering parameter (from 0 to 1 by step 0.1), we obtained a significant growth in terms of number of communities when the constraints on residential locations are concentrated in space, which might be interpreted in such example as a bigger segregation when density of housing is heterogeneously distributed through space. 
@@ -115,9 +115,9 @@ Using 270 replications of 11 values of the clustering parameter (from 0 to 1 by 
 %%%%%%%%%%%%%%
 \begin{minipage}{\textwidth}
 \begin{center} 
-\resizebox{0.9\textwidth}{!}{ 
-	\includegraphics{figures/SpaceMatters2.bmp}
-} \textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (implementation on Netlogo).} \label{fig:Fig1}
+	\includegraphics[width=\textwidth]{figures/SpaceMatters2.png}
+
+\textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (Netlogo implementation).}
 \end{center}
 \end{minipage}
 %%%%%%%%%%%%%%
@@ -209,7 +209,8 @@ Concerning the comments made by the second referee:
 	\item \comment[JR]{ce qu'il suggère c'est un indice intégré sur l'ensemble des phases diagramme, donc un ``meta-meta-indice'' en quelque sorte, nous on reste à un niveau de meta seulement car on regarde juste pour chaque s'il bouge par rapport à un point de reference. En termes thematique c'est plus coherent pour nous, lui doit avoir en tete des indices de sensibilite globaux type Saltelli. $\rightarrow$ a voir comment justifier ca bien}{(JR) inclure en mise en contexte ce lien avec les Saltelli et indexes globaux}\comment[FL]{oui je trouve qu'on a le droit de rester limiter à cela c'est déjà pas mal!}
 	
 	% Figure 4 and 5: I find it confusing that the green color indicates higher distance values and the red color indicates lower values. I think this should be reversed.
-    \item The double color progression in Fig 4 and 5 is used to highlight the opposition between ratio values above/under 1 but is not meant to introduce any hierarchy in the interpretation. We would therefore prefer to keep the figures as they are if this is ok for you?
+    \item The double color progression in Fig 4 and 5 is used to highlight the opposition between ratio values above/under 1 but is not meant to introduce any hierarchy in the interpretation. We reversed the order of color according to your remark.
+    %We would therefore prefer to keep the figures as they are if this is ok for you?
    	
 	% I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
 	\item Thanks for the remarks on discussion, in particular on releasing density grids. We have tried to shorten the considerations which you have found not too useful and will let the readers decide if the grids could be of any use to them.
