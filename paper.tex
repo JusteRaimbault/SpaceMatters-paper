@@ -1,4 +1,4 @@
-\documentclass[preprint,5p,times,twocolumn,authoryear,draft]{elsarticle}
+\documentclass[preprint,5p,times,twocolumn,authoryear]{elsarticle}
 
 \usepackage{amssymb,amsmath,bbm}
 \usepackage{url}
@@ -545,7 +545,7 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 \begin{table*}
 	\caption{\added{\textbf{Summary statistics of different distances for schelling.}}}\label{tab:schellingdistances}
 	\centering
-	\begin{tabular}{|ccccccc|}
+	\begin{tabular}{|c|cccccc|}
 	\hline
     	$q$ & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\\hline
         1 & 0.00000 & 0.02838 & 0.06263 & 0.10608 & 0.16818 & 0.37018 \\
@@ -558,7 +558,7 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 \begin{table*}
 	\caption{\added{\textbf{Summary statistics of different distances for sugarscape.}}}\label{tab:sugarscapedistances}
 	\centering
-	\begin{tabular}{|ccccccc|}
+	\begin{tabular}{|c|cccccc|}
 	\hline
     	$q$ & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\\hline
         1 & 0.07184 & 0.13996 & 0.39816 & 0.42452 & 0.64751 & 1.13169\\
@@ -610,10 +610,7 @@ while (*@\textit{not stopping-condition}@*) [
 \begin{mdframed}
 \begin{lstlisting}
 while [time < final-time] [
-;regrow the patch resources
     ask patches [set psugar min (list max-psugar (psugar + 1))]
-
-	; make agents exploit resources
 	ask turtles [
 		; candidate patches to which the turtle can move
 		let move-candidates (*@\textit{patches in vision range with no turtles}@*)
