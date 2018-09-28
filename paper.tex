@@ -45,8 +45,8 @@
 \soulregister\citep7
 \soulregister\ref7
 
-%\usepackage[final]{changes}
-\usepackage{changes}
+\usepackage[final]{changes}
+%\usepackage{changes}
 
 
 \setaddedmarkup{\textcolor{black}{\hl{#1}}}
@@ -74,7 +74,7 @@
 \address[c]{Centre for Advanced Spatial Analysis, University College London, UK}
 \address[d]{UMR CNRS 8097 Centre Maurice Halbwachs, Paris, France}
 \address[e]{UMR 6266 IDEES, Universit{\'e} de Rouen Normandie, France}
-\address[f]{Universit{\'e} Paris-Est, Laboratoire Ville Mobilité Transport, Marne-la-Vallée, France}
+\address[f]{Universit{\'e} Paris-Est, Laboratoire Ville Mobilit{\'e} Transport, Marne-la-Vallée, France}
 
 
 \cortext[cor1]{Corresponding author: juste.raimbault@polytechnique.edu}
@@ -229,7 +229,7 @@ For Sugarscape, we explore three dimensions of the parameter space: the total po
 
 For Schelling's model, we also explore three dimensions of the parameter space of the model: the minimum proportion of similar agents required in the neighbourhood for the agent to be satisfied (or intolerance level) $S\in \left[0;1\right]$, the initial split of population, derived from the proportion of green population, $G\in \left[0;1\right]$ and the vacancy rate of the city $V\in \left[0;1\right]$. We sample 1000 parameter values using a Sobol sampling and run 100 repetitions for each configuration. We first try the same experiment design (50 density grids generated on the fly), then look at clustered grids representing urban densities. We choose 45 different grids among the ones which are most representative of the three types of urban morphology: 15 compact grids, 15 polycentric grids and 15 discontinuous grids. The last experiment thus equates to 4,500,000 simulations (1000 parameter combinations x 45 density grids x 100 replications). We use OpenMOLE to distribute the computation, and apply segregation measures to characterise the results.
 
-\added{As detailed in supplementary material~\ref{app:convergence}, more repetitions are needed for Schelling indicators than for Sugarscape, in order to obtain a similar relative confidence in the estimation of averages. We ran for this reason a different number of replications for each model.}
+\added{As detailed in~\ref{app:convergence}, more repetitions are needed for Schelling indicators than for Sugarscape, in order to obtain a similar relative confidence in the estimation of averages. We ran for this reason a different number of replications for each model.}
 
 
 
@@ -248,7 +248,7 @@ We choose different experiment designs, both for \replaced{generator parameters}
 
 \subsection{Quantitative variation across grids}
 
-We measure the distance of the phase diagrams for all density grids with respect to the reference phase diagram computed on the default initial spatial condition setup (a bi-centric symmetrical non toroidal configuration) using the measure defined in equation~\ref{eq:phase-distance}. For each density grid, we obtain the average squared distance between corresponding points of the phase diagrams, i.e. the \replaced{mean}{median} value of the final output measure, such as segregation or inequality, for a given value of parameters in the two setups (isotropic and generated). This average squared distance for each point is then related to the average variance of each of the phase diagram (the reference one and the one for the grid under inquiry). Therefore, values greater than 1 will mean that inter-diagram variability is more important than intra-diagram variability. \added{We tested the sensitivity to the type of distance, using a Minkovski distance with a varying exponent. The results are presented in supplementary material~\ref{app:distances}, and show a similar sensitivity to spatial initial conditions.}
+We measure the distance of the phase diagrams for all density grids with respect to the reference phase diagram computed on the default initial spatial condition setup (a bi-centric symmetrical non toroidal configuration) using the measure defined in equation~\ref{eq:phase-distance}. For each density grid, we obtain the average squared distance between corresponding points of the phase diagrams, i.e. the \replaced{mean}{median} value of the final output measure, such as segregation or inequality, for a given value of parameters in the two setups (isotropic and generated). This average squared distance for each point is then related to the average variance of each of the phase diagram (the reference one and the one for the grid under inquiry). Therefore, values greater than 1 will mean that inter-diagram variability is more important than intra-diagram variability. \added{We tested the sensitivity to the type of distance, using a Minkovski distance with a varying exponent. The results are presented in~\ref{app:distances}, and show a similar sensitivity to spatial initial conditions.}
 
 \paragraph{Sugarscape} 
 
@@ -263,7 +263,7 @@ We obtain a very strong sensitivity to initial spatial conditions for the Sugars
 %%%%%%%%%%%%%
 \begin{figure*}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams}
+\includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams.png}
 \caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by \replaced{their generator parameters}{the meta-parameters of their generator}.} Relative distance as a function of \replaced{generator parameters}{meta-parameters} $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process).}
 \label{fig:sugarscape-distance-meta}
 \end{figure*}
@@ -281,7 +281,7 @@ Another way of quantifying the density grids, instead of looking at the \replace
 %%%%%%%%%%%%%
 \begin{figure*}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/relativedistance_morphspace}
+\includegraphics[width=0.8\textwidth]{figures/relativedistance_morphspace.png}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids.} Relative distance as a function of two first principal components of the morphological space (see text). Black point correspond to the reference spatial configuration. Green frame and blue frame give respectively the first and second particular phase diagrams shown in Fig.~\ref{fig:sugarscape-phasediagrams}.}
 \label{fig:sugarscape-distance-pca}
 \end{figure*}
@@ -382,7 +382,8 @@ An aspect that we have not touched upon in the article with respect to the sensi
 Although the applications we present here are limited by the simplicity of the models, we think that the method could (and should) be applied to larger models including domain mechanisms and more empirical initialisation data, for example synthetic populations. The sensitivity analysis to initial spatial conditions could then be either a replication on the spatial allocation of the synthetic population, or a series of spatial permutations of the empirical spatial inputs.
 We want to foster this extension of our work by releasing the density grids also generated, as well as the generating work-flow and the model implementation. They are available on the open repository of the project at \url{https://github.com/AnonymousAuthor2/SpaceMatters}. \added{Future work could be done to compare these or generate grids with a larger morphological span, covering other typical urban forms that can be found in the world.}
 
-Another way to go would be to implement additional generators, such as social networks \citep{alizadeh2016generating} with localised agents, \added{transportation networks generators \citep{raimbault2018multi}, or coupled road network and population raster generators \citep{raimbault2018urban}.} 
+Another way to go would be to implement additional generators, such as social networks \citep{alizadeh2016generating} with localised agents, \added{transportation networks generators \citep{raimbault2018multi}, or coupled road network and population raster generators \citep{raimbault2018urban}.}
+% Generators of abstract urban systems at a macroscopic scale could also be useful tools to better understand urban growth models as sketched by \cite{raimbault2018unveiling}.}  
 
 
 \paragraph{An emancipation opportunity for social sciences.}
@@ -419,7 +420,7 @@ After reviewing the extensive literature on spatial biases in statistical and si
 
 \section{\added{Behavior of the density grid generator}}
 
-\added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$. To put it in a simple way, high values of $\alpha$ give highly hierarchical configurations, and diminishing $\beta$ increase the number of centers. Low values of $\alpha$ give diffuse patterns, with however clear centers for a high diffusion. We do not discuss it the role of other parameters, but according to \cite{raimbault2018calibration}, diffusion steps give smoother forms, and the rate between total population and the population increment at each step (which is equivalent to the total number of steps) is crucial to select non-stationary distributions that are closer to real configurations. \cite{raimbault2018calibration} also shows the existence of non-linear behaviors in some regions of the parameter space, so the description we gave here shall not be interpreted as a linear link between generator parameters and the morphological properties of the generated grids.}
+\added{We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behavior of the density grid generator, according to parameters $(\alpha,\beta)$. To put it in a simple way, high values of $\alpha$ give highly hierarchical configurations, and diminishing $\beta$ increase the number of centers. Low values of $\alpha$ give diffuse patterns, with however clear centers for a high diffusion. We do not discuss here the role of other parameters, but according to \cite{raimbault2018calibration}, diffusion steps give smoother forms, and the rate between total population and the population increment at each step (which is equivalent to the total number of steps) is crucial to select non-stationary distributions that are closer to real configurations. \cite{raimbault2018calibration} also shows the existence of non-linear behaviors in some regions of the parameter space, so the description we gave here shall not be interpreted as a linear link between generator parameters and the morphological properties of the generated grids.}
 
 
 %%%%%%%%%%%%%%
@@ -466,7 +467,7 @@ After reviewing the extensive literature on spatial biases in statistical and si
 %  0.0001   0.5554   0.7782   3.2724   3.8979 121.6829 
 
 
-\added{For both models we estimate the Sharpe ratios for each indicator by $S(X) = \hat{\mathbb{E}{X}}/\hat{\sigma}(X)$ with standard estimators for average and standard deviation. The summary statistics of this ratio computed on repetitions for all parameter points are given in Table~\ref{tab:summarysharpes}. Under the assumption of a normal distribution, the width of the confidence interval at level $c$ is given by $\left|\mu_+ - \mu_-\right| = 4\cdot\sigma \sigma z_{c} \sqrt{n}$ where $\sigma$ is the standard deviation, $z_{c}$ is the quantile at which $c$ is attained by the cumulative distribution, which is around $1.96$ for a 95\% confidence interval. This means that to obtain a confidence interval of width $\kappa \cdot \sigma$, one needs a number $n \simeq (8 / \kappa )^2$ of repetitions. This gives 64 repetitions for $\kappa = 1$. As the Sharpes ratios are in general smaller for Schelling indicators than for Sugarscape, we take $n = 50$ for Sugarscape and $n = 100$ for Schelling to have s similar confidence in estimations.}
+\added{For both models we estimate the Sharpe ratios for each indicator by $S(X) = \hat{\mathbb{E}}\left[X\right]/\hat{\sigma}(X)$ with standard estimators for average and standard deviation. The summary statistics of this ratio computed on repetitions for all parameter points are given in Table~\ref{tab:summarysharpes}. Under the assumption of a normal distribution, the width of the confidence interval at level $c$ is given by $\left|\mu_+ - \mu_-\right| = 4\cdot \sigma \cdot z_{c} / \sqrt{n}$ where $\sigma$ is the standard deviation, $z_{c}$ is the quantile at which $c$ is attained by the cumulative distribution, which is around $1.96$ for a 95\% confidence interval. This means that to obtain a confidence interval of width $\kappa \cdot \sigma$, one needs a number $n \simeq (8 / \kappa )^2$ of repetitions. This gives 64 repetitions for $\kappa = 1$. As the Sharpe ratios are in general smaller for Schelling indicators than for Sugarscape, we take $n = 50$ for Sugarscape and $n = 100$ for Schelling to have a similar confidence in estimations.}
 
 
 %%%%%%%%%%%%%%
@@ -510,7 +511,7 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 
 \label{app:distances}
 
-\added{We describe here the tests done with other distances to compare phase diagrams. We tested normalized Minkovski distances, defined by $d(x,y) = \left(\frac{1}{N}\cdot \sum_i \left|x_i - y_i\right|^{q}\right)^{\frac{1}{q}}$, for varying values of $q$ from $q = 1$ (Manhattan distance) to $q = 10$, including $q = 2$ (Euclidian distance) which is used in main text. The Table~\ref{tab:schellingdistances} gives the summary statistics of each distance computed on all initial configurations for the Schelling model. The Table~\ref{tab:sugarscapedistances} gives the same statistics for the sugarscape model. We naturally obtain smaller difference with the Manhattan distance but which remain significant (averages of 10\% for the Schelling model and 40 \% for Sugarscape), and variabilities with higher values of the Minkovski exponent are much higher. This results confirm the high variability observed in main text with the Euclidian distance.}
+\added{We describe here the tests done with other distances to compare phase diagrams. We tested normalized Minkovski distances, defined by $d(x,y) = \left(\frac{1}{N}\cdot \sum_i \left|x_i - y_i\right|^{q}\right)^{\frac{1}{q}}$, for varying values of $q$ from $q = 1$ (Manhattan distance) to $q = 10$, including $q = 2$ (Euclidian distance) which is used in main text. The Table~\ref{tab:schellingdistances} gives the summary statistics of each distance computed on all initial configurations for the Schelling model. The Table~\ref{tab:sugarscapedistances} gives the same statistics for the sugarscape model. We naturally obtain smaller difference with the Manhattan distance but which remain significant (averages of 10\% for the Schelling model and 40 \% for sugarscape), and variabilities with higher values of the Minkovski exponent are much higher. This results confirm the high variability observed in main text with the Euclidian distance.}
 
 % Schelling
 % [1] "alpha = 1"
@@ -576,13 +577,13 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 \section{\added{Pseudo-code for models}}
 \label{app:code}
 
-\added{We give below the pseudo-code for the implementations we used of both sugarscape and schelling models. We recall that source code is openly available at} \url{https://github.com/AnonymousAuthor2/SpaceMatters}. \added{The pseudo-code is in the style of NetLogo code, which is already easily readable.}
+\added{We give below the pseudo-code for the implementations we used of both sugarscape (Fig.~\ref{frame:sugarscapecode}) and Schelling (Fig.~\ref{frame:schellingcode}) models. We recall that source code is openly available at} \url{https://github.com/AnonymousAuthor2/SpaceMatters}. \added{The pseudo-code is in the style of NetLogo code, which is already easily readable.}
 
 
 
 %%%%%%%%%%%%%%%
 \begin{figure*}
-\caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}
+\caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}\label{frame:schellingcode}
 \bigskip
 \begin{mdframed}
 \begin{lstlisting}
@@ -607,12 +608,12 @@ while (*@\textit{not stopping-condition}@*) [
 %%%%%%%%%%%%%%%
 \begin{figure*}
 % Minimal netlogo code for the sugarscape model
-\caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} Conventions are the same than for Schelling pseudo-code.}}
+\caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} Conventions are the same than for Schelling pseudo-code.}}\label{frame:sugarscapecode}
 \bigskip
 \begin{mdframed}
 \begin{lstlisting}
 while [time < final-time] [
-	;regrow the patch resources
+    ;regrow the patch resources
     ask patches [set psugar min (list max-psugar (psugar + 1))]
 	
     ; make agents exploit resources
