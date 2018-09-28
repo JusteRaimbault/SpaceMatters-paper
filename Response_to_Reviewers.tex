@@ -114,11 +114,13 @@ Using 270 replications of 11 values of the clustering parameter (from 0 to 1 by 
 
 %%%%%%%%%%%%%%
 \begin{minipage}{\textwidth}
+\bigskip\bigskip
 \begin{center} 
 	\includegraphics[width=\textwidth]{figures/SpaceMatters2.png}
 
-\textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (Netlogo implementation).}
+Fig. 1: \textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (Netlogo implementation).}
 \end{center}
+\bigskip\bigskip
 \end{minipage}
 %%%%%%%%%%%%%%
     
@@ -199,8 +201,7 @@ Concerning the comments made by the second referee:
 	\item Indeed, we have tried to review articles where some kind of sensitivity to initial spatial conditions are tackled. However we would like to emphasize that the references cited in this section are few compared to the mass of geosimulation articles published with hardly any mention of dependence of output on initial spatial condition. Moreover, even if such sensitivity is analysed, it mostly provide some hints of impact of initial spatial conditions on the output of models (due to the accuracy of data, shape of boundaries and spatial heterogeneity) but to the best of our knowledge no article provide a systematic inquiry into the impact of systematically defined spatial input on the model output in the way we try to provide later on in the paper. We have tried to argue this point at the end of the section.
 	
 	% The most interesting part of the research to me, is not the way the density layers are generated but the use of the phase diagrams, defined as a vector of final aggregated model outputs. As these are vectors, they are not so different from time series and many techniques exist to compare vectors in this domain. I wonder if the Euclidean distance is the best measure to determine the difference between the phase vectors of different spatial inputs.
-	\item The comment on other possible techniques to compare phase diagrams echoes one other reviewer comment, and we indeed expanded the discussion on this point, showing first that other distance do not change much qualitative results and with more literature for possible extensions.
-	%\comment[JR]{analyse à ajouter}
+	\item The comment on other possible techniques to compare phase diagrams echoes one other reviewer comment, and we indeed expanded the discussion on this point, showing first that other distances do not change much qualitative results (analysis added in supplementary material) and with more literature for possible extensions.
 	
 	% Last paragraph of page 5, you do not state explicitly if genetic algorithms were use within the OpenMOLE platform.
 	\item The functionalities of OpenMOLE we used were detailed in the article; we did not use genetic algorithms but sampling methods and high performance computing environments.
@@ -209,8 +210,7 @@ Concerning the comments made by the second referee:
 	\item \comment[JR]{ce qu'il suggère c'est un indice intégré sur l'ensemble des phases diagramme, donc un ``meta-meta-indice'' en quelque sorte, nous on reste à un niveau de meta seulement car on regarde juste pour chaque s'il bouge par rapport à un point de reference. En termes thematique c'est plus coherent pour nous, lui doit avoir en tete des indices de sensibilite globaux type Saltelli. $\rightarrow$ a voir comment justifier ca bien}{(JR) inclure en mise en contexte ce lien avec les Saltelli et indexes globaux}\comment[FL]{oui je trouve qu'on a le droit de rester limiter à cela c'est déjà pas mal!}
 	
 	% Figure 4 and 5: I find it confusing that the green color indicates higher distance values and the red color indicates lower values. I think this should be reversed.
-    \item The double color progression in Fig 4 and 5 is used to highlight the opposition between ratio values above/under 1 but is not meant to introduce any hierarchy in the interpretation. We reversed the order of color according to your remark.
-    %We would therefore prefer to keep the figures as they are if this is ok for you?
+    \item The double color progression in Fig 4 and 5 is used to highlight the opposition between ratio values above/under 1 but is not meant to introduce any hierarchy in the interpretation. We reversed the order of colors according to your remark.
    	
 	% I appreciate the fact that the authors in section 4 clearly indicate the limitations of their work (and I share the limitations listed under “comparing phase diagrams”). Personally I do not think that releasing the density grids is an important opportunity. As mentioned before I think that the core of the work is in the comparison of the phase vectors. I am not so sure the second opportunity listed in 4.2 is very valid. I do not think that the CEUS journal targets social sciences exactly.
 	\item Thanks for the remarks on discussion, in particular on releasing density grids. We have tried to shorten the considerations which you have found not too useful and will let the readers decide if the grids could be of any use to them.
@@ -269,12 +269,10 @@ Concerning the comments made by the fourth referee:
 	\item To the best of our knowledge, there is no study of urban morphologies similar to the one we used but at a global scale (this should be linked to the absence of a raster of population with a resolution fine enough). Working on other regional systems of cities such as the US could be possible but remains out of the scope of this paper. We added this interesting suggestion to the discussion.
 	
 	% Why do you not have the same amount of repetitions for your Sugarscape (50 repetitions) and Schelling (100 repetitions) model runs?
-	\item 
-    %\comment[JR]{no justification for the difference in number of runs (just experimental setup contingence\ldots ) $\rightarrow$ either new runs or redo computations with 50 for Schelling}\comment[JR]{ca va etre chaud patate pour les new computations ; je vais regarder les ratio de sharpe, avec un peu de chance il y a besoin de plus de repets pour schelling...}
+	\item Concerning the number of repetitions, statistical analysis show that Schelling indicators need more repetitions for an equivalent size of confidence interval on the estimated mean, as the Sharpe ratios are mostly lower than for Sugarscape. This remark was added in the paper and the statistical analysis as a supplementary material.
 	
 	% You say your models are open source - do you give details of that source?  
 	\item Concerning the source code of the models, an open public repository was put into place and the link provided in the paper (to an anonymized version to ensure blind review). Similarly, the large simulation datasets used for results presented in the paper are openly available on a dataverse repository (provisorily anonymized also).
-	%\comment[JR]{TODO dataverse. / statement open code and data}
 	
 	% Small edits:
 	% X line 68: "...a different system"
