@@ -117,9 +117,7 @@ Geographical systems can be crudely described as social agents interacting with 
 Self-organization has been shown to be a central feature of geographical systems in general and of cities in particular ~\citep{AllenSanglier1981,saint1989villes, Portugali2000}. In the vocabulary of complex systems, cities also exhibit emergent properties at macroscopic scales~\citep{pumain2006hierarchy, AzizAlaouiBertelle2009}, which can be simulated through microscopic interactions between agents~\citep{Wu2002, Batty2007}. Complexity is partially due to bifurcations, which are determinant in spatial systems~\citep{Wilson1981, Wilson2002}. Indeed, in spatially explicit simulation models, the non-linearity of local interactions is very likely to sublimate small perturbations in the initial spatial setting, making it difficult to interpret the resulting global structures. In that sense, the impact of initial \emph{spatial} settings on final outcomes is assumed to be significant just as \added{any }other initial conditions, but of more interest to the geographer. \\
 
 
-Finally, although this may seem obvious, cities are not regular grids, and the distribution of density (of jobs, residents, buildings, etc.) is far from isotropic, even in \deleted{the most }sprawled cities. On the contrary, there is a significant diversity in the way people, activities and structures are distributed in cities. In Europe for example, \citet{LeNechet2015} quantifies and classifies six broad types of residential density distributions. However, most geographical models, especially cellular automata, still represent cities as uniform grids of isotropic density. Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents \replaced{tend to be}{is still} approximated by a constant density \citep{arribas2014diverse}, although previous research shows that it is computationally and methodologically feasible to use accurate locations in a simple model such as Schelling's \citep{benenson2002entity}. The isotropic simplification is potentially harmful to the representation of urban processes \deleted{under inquiry }because density and accessibility have environmental, economic and social consequences. Additionally, we expect the initial spatial distribution of agents to influence simulation results in the long run \citep{Castellanoetal2009}, because the agents' rule of action itself may depend on the spatial structure of the environment. For example, households can have different preferences with respect to the built-environment they \added{might} want to live in \citep{SpielmanHarrison2014}, or agents \replaced{moving around will sense a different set of objects within the same fixed radius depending on}{can move around and sense their environment up to a certain distance, so that the resulting number of sensed objects will depend on} the topology \citep{Banos2012} and distribution of density of the sensed environment \citep{LauriJaggi2003, FossettDietrich2009}. The way modellers represent \added{initial} space is therefore a central element of geographical simulation models. However, this step is rarely explicit. \deleted{For example
-
-and authors tend to generalise the conclusion of the model from a single spatial case study (be it a theoretical pattern or a singular empirical one. }A meaningful way of representing \added{initial} space might \deleted{thus }be to consider, not necessarily the peculiarities of every city, but at least their broad density structures so as to estimate the variability of the model behaviour \replaced{to different}{in} plausible spatial arrangements.
+Finally, although this may seem obvious, cities are not regular grids, and the distribution of density (of jobs, residents, buildings, etc.) is far from isotropic, even in \deleted{the most }sprawled cities. On the contrary, there is a significant diversity in the way people, activities and structures are distributed in cities. In Europe for example, \citet{LeNechet2015} quantifies and classifies six broad types of residential density distributions. However, most geographical models, especially cellular automata, still represent cities as uniform grids of isotropic density. Even in applied cases when GIS geometries of a particular city are used, the spatial distribution of agents \replaced{tend to be}{is still} approximated by a constant density \citep{arribas2014diverse}, although previous research shows that it is computationally and methodologically feasible to use accurate locations in a simple model such as Schelling's \citep{benenson2002entity}. The isotropic simplification is potentially harmful to the representation of urban processes \deleted{under inquiry }because density and accessibility have environmental, economic and social consequences. Additionally, we expect the initial spatial distribution of agents to influence simulation results in the long run \citep{Castellanoetal2009}, because the agents' rule of action itself may depend on the spatial structure of the environment. For example, households can have different preferences with respect to the built-environment they \added{might} want to live in \citep{SpielmanHarrison2014}, or agents \replaced{moving around will sense a different set of objects within the same fixed radius depending on}{can move around and sense their environment up to a certain distance, so that the resulting number of sensed objects will depend on} the topology \citep{Banos2012} and distribution of density of the sensed environment \citep{LauriJaggi2003, FossettDietrich2009}. The way modellers represent \added{initial} space is therefore a central element of geographical simulation models. However, this step is rarely explicit. \deleted{For example and authors tend to generalise the conclusion of the model from a single spatial case study (be it a theoretical pattern or a singular empirical one. }A meaningful way of representing \added{initial} space might \deleted{thus }be to consider, not necessarily the peculiarities of every city, but at least their broad density structures so as to estimate the variability of the model behaviour \replaced{to different}{in} plausible spatial arrangements.
 
 \subsection{Objective}
 
@@ -415,7 +413,7 @@ After reviewing the extensive literature on spatial biases in statistical and si
 
 \appendix
 
-\newpage
+%\newpage
 
 \section{\added{Behavior of the density grid generator}}
 
@@ -465,13 +463,15 @@ After reviewing the extensive literature on spatial biases in statistical and si
 %  0.0001   0.5554   0.7782   3.2724   3.8979 121.6829 
 
 
-For both models we estimate the Sharpe ratios for each indicator by $S(X) = \hat{\Eb{X}}/\hat{\sigma}(X)$ with standard estimators for average and standard deviation. The summary statistics computed on repetitions for all parameter points are given in Table~\ref{tab:summarysharpes}.
+\added{For both models we estimate the Sharpe ratios for each indicator by $S(X) = \hat{\mathbb{E}{X}}/\hat{\sigma}(X)$ with standard estimators for average and standard deviation. The summary statistics computed on repetitions for all parameter points are given in Table~\ref{tab:summarysharpes}.}
 
 
 %%%%%%%%%%%%%%
 \begin{table*}
 \caption{\added{\textbf{Summary statistics of Sharpe ratio estimated on repetitions for each parameter point.}}\label{tab:summarysharpes}}
-	\begin{tabular}{|cccccc|}
+\centering
+	\begin{tabular}{|ccccccc|}
+	\hline
 Model/Indicator & Min. & 1st Qu. &  Median &  Mean & 3rd Qu. & Max. \\\hline
 Sugarscape/Gini & 2.343 & 14.413 & 20.993 & 20.098 & 26.208 & 49.808\\\hline 
 Schelling/Dissimilarity & 1.053 & 12.368 & 19.434 & 25.268 & 24.328 & 468.563\\
@@ -539,7 +539,9 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 
 \begin{table*}
 	\caption{\added{\textbf{Summary statistics of different distances for schelling.}}}
+	\centering
 	\begin{tabular}{|ccccccc|}
+	\hline
     	$q$ & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\\hline
         1 & 0.00000 & 0.02838 & 0.06263 & 0.10608 & 0.16818 & 0.37018 \\
         2 & 0.0000 & 0.1520 & 0.2517 & 0.3107 & 0.4359 & 0.8155 \\
@@ -550,7 +552,9 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 
 \begin{table*}
 	\caption{\added{\textbf{Summary statistics of different distances for sugarscape.}}}
+	\centering
 	\begin{tabular}{|ccccccc|}
+	\hline
     	$q$ & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\\hline
         1 & 0.07184 & 0.13996 & 0.39816 & 0.42452 & 0.64751 & 1.13169\\
         2 & 0.08909 & 0.19794 & 1.52272 & 1.29594 & 2.16371 & 2.98273\\
@@ -573,19 +577,20 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 
 %%%%%%%%%%%%%%%
 \begin{figure*}
-	\caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.}}}
-	\begin{mdframed}
-	\begin{lstlisting}
-	while (*@\textit{not stopping-condition}@*) [
-    	ask turtles [
-    		set unsatisfied? false
-    		let neighboragents turtles in-radius neighborhood-radius
-    		let wantedcolor color
-    		let stranger-rate count neighboragents with [color = wantedcolor] / count neighboragents
-    		if stranger-rate < similar-wanted [
-    set unsatisfied? true random-move
-    ]
-  ]
+\caption{\added{\textbf{Pseudo-code (NetLogo style) for the Schelling model used here.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}
+\begin{mdframed}
+\begin{lstlisting}
+while (*@\textit{not stopping-condition}@*) [
+	ask turtles [
+		set unsatisfied? false
+		let neighboragents turtles in-radius neighborhood-radius
+		let wantedcolor color
+		let stranger-rate count neighboragents with [color = wantedcolor] /
+			count neighboragents
+		if stranger-rate < similar-wanted [
+			set unsatisfied? true random-move
+		]
+	]
     \end{lstlisting}
     \end{mdframed}
 \end{figure*}
@@ -596,36 +601,36 @@ Schelling/Moran & 0.0001 & 0.5554 & 0.7782 & 3.2724 & 3.8979 & 121.6829\\\hline
 %%%%%%%%%%%%%%%
 \begin{figure*}
 % Minimal netlogo code for the sugarscape model
-\caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} We give a pseudo-code very close to the NetLogo language, at the exception of italic expressions which are not put here in NetLogo to ease understandability.}}
+\caption{\added{\textbf{Pseudo-code (NetLogo style) for the sugarscape model.} Conventions are the same than for Schelling pseudo-code.}}
 \begin{mdframed}
 \begin{lstlisting}
 while [time < final-time] [
-	; regrow the patch resources
+;regrow the patch resources
     ask patches [set psugar min (list max-psugar (psugar + 1))]
-        
-    ; make agents exploit resources
-    ask turtles [
-    	; candidate patches to which the turtle can move
-    	let move-candidates (*@\textit{patches in vision range with no turtles}@*)
-    	
-    	; select the patch with maximal resource
- 		let possible-winners move-candidates with-max [psugar]
-  		if any? possible-winners [
-  			move-to one-of (*@\textit{possible-winners at minimal distance}@*)
-  		]
-            
-        ; eat the sugar on the patch
-        set sugar (sugar - metabolism + psugar)
-  		set psugar 0
-            
-        ; age and die if necessary
-    	set age (age + 1)
-    	if sugar <= 0 or age > max-age [
-    		; hatch an other turtle before dying
-      		hatch 1 [ new-turtle ]
-      		die
-    	]
-  	]
+
+	; make agents exploit resources
+	ask turtles [
+		; candidate patches to which the turtle can move
+		let move-candidates (*@\textit{patches in vision range with no turtles}@*)
+		
+		; select the patch with maximal resource
+		let possible-winners move-candidates with-max [psugar]
+		if any? possible-winners [
+			move-to one-of (*@\textit{possible-winners at minimal distance}@*)
+		]
+		
+		; eat the sugar on the patch
+		set sugar (sugar - metabolism + psugar)
+		set psugar 0
+		
+		; age and die if necessary
+		set age (age + 1)
+		if sugar <= 0 or age > max-age [
+			; hatch an other turtle before dying
+			hatch 1 [ new-turtle ]
+			die
+		]
+	]
 ]
 \end{lstlisting}
 \end{mdframed}
