@@ -84,8 +84,6 @@ As a response to several reviewers, we made the following general changes:
 \begin{itemize}
 	\item Several comments, from the first and third referees especially, suggested that we clarify and explicit the description of our two models: we clarified the descriptions and justified our choices more thoroughly, and also provided pseudo-codes for each model in the Appendix so as to help the reader navigate the implementation chosen compared to other articles. Finally, we mentioned more clearly in the text the fact that source codes are openly available in a github repository.
     \item In order to conciliate as much as possible the different points of view about the comparison of phase diagram, we added some developments and comments about how we defined, built, justified and compared phase diagrams in the paper.
-    %\comment[FL]{je ne sais pas si dire "conflict" sera productif?, de même que de parler de "parties"? ci-dessous en commentaires la réponse précédente, j'ai juste reformulé}[(JR) ok nickel]
-    % \item There was a conflict between the comments of the third referee and the other referees about the comparison of phase diagram. In order to conciliate as much as possible the different parties, we added some developments and comments about how we defined, built, justified and compared phase diagrams in the paper
     \end{itemize}
 
 \medskip
@@ -114,17 +112,18 @@ We then compute the number of communities arising when the model converge, hence
 Using 270 replications of 11 values of the clustering parameter (from 0 to 1 by step 0.1), we obtained a significant growth in terms of number of communities when the constraints on residential locations are concentrated in space, which might be interpreted in such example as a bigger segregation when density of housing is heterogeneously distributed through space. 
 %In the rest of the article, we wish to further investigate such spatial effects in a much more systematic way.
 
-\begin{figure*}[htbp] 
+%%%%%%%%%%%%%%
+\begin{minipage}{\textwidth}
 \begin{center} 
 \resizebox{0.9\textwidth}{!}{ 
 	\includegraphics{figures/SpaceMatters2.bmp}
-} \caption{\textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (implementation on Netlogo).}} \label{fig:Fig1}
+} \textbf{Effects of clustering of forbidden cells on the number of communities emerging from an adapted Schelling model (implementation on Netlogo).} \label{fig:Fig1}
 \end{center}
-\end{figure*}
-	
+\end{minipage}
+%%%%%%%%%%%%%%
+    
 	% 2. It is very important to describe the models. This is especially relevant for the Schelling model, which has many variants; each has different dependencies on the initial pattern. In my opinion, the NetLogo implementation is not the best choice because the model does not reach a state of segregation when agents are highly intolerant.
-	\item There was a misunderstanding for the Schelling implementation actually used, as we used our own implementation which pseudo-code has been added in Appendix of the paper and source code is openly available on the git repository of the project. This version implements the one used by (Gauvin et al., 2009), which also influenced us for the use of the term ``phase diagram''. % It does not reach a segregated state for high values of intolerance, but it does not cause a problem in our case as indicators can be computed on any model state (and actually reflect the fact that it is not segregated).
-	 %\comment[CC]{le modèle ne produit pas de ségrégation quand les individus sont très intolérants? Comment ça? Bien sûr qu'il le fait (sous contrainte du taux de vacance). Cela dit y'a bien un point sur lequel l'implem Netlogo n'est pas bonne: c'est que la relocalisation des mécontents est random alors que dans le bouquin de Schelling, apparemment, c'était dans un voisinage proche.}[(JR) ah oui cest selon la vacance ; mais il y a des regimes ou ca converge jamais sous forme de cluster et ca reste un etat dynamique sans structure ; oui par contre on a du reprendre la random reloc, c'est ce que font les physiciens aussi]
+	\item There was a misunderstanding for the Schelling implementation actually used, as we used our own implementation which pseudo-code has been added in Appendix of the paper and source code is openly available on the git repository of the project. This version implements the one used by (Gauvin et al., 2009), which also influenced us for the use of the term ``phase diagram''.
 
     \item More generally concerning the choice of these two models, we aim at helping the readers to distance themselves from the case studies and focus on the genericity of the approach. This also explains why we have chosen Sugarscape as a second example: these two models are often used as toy models due to the simplicity of their mechanisms and therefore do not require a high level of expertise nor technicality to apprehend the impacts of the initial spatial conditions on the model outputs. This is again an argument in favor of our choice: space-dependent variations are to be expected even with the most simple sociospatial models.
 	
