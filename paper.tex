@@ -217,7 +217,8 @@ The general method workflow of our method is illustrated in Figure \ref{fig:meth
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/SchemaMeta_1.png}
+%\includegraphics[width=0.9\textwidth]{figuresraw/SchemaMeta_1.png}
+\includegraphics[width=0.9\textwidth]{figures/Fig1.png}
 \caption{\textbf{General workflow.}} \label{fig:method}
 \end{figure} %
 %%%%%%%%%%%%%%%%%%%%%%
@@ -232,7 +233,7 @@ To our knowledge there exists no single well established method to compare phase
 d_r\left(\mu_{\vec{\alpha}_1},\mu_{\vec{\alpha}_2}\right) = 2 \cdot \frac{d(\mu_{\vec{\alpha}_1},\mu_{\vec{\alpha}_2})^2}{Var\left[\mu_{\vec{\alpha}_1}\right] + Var\left[\mu_{\vec{\alpha}_2}\right]}
 \end{equation}
 
-where $\mu_{\vec{\alpha}_i}$ are the phase diagrams at given generator parameters $\vec{\alpha}_i$. $d$ is a functional distance that we take simply as Euclidean distance. The internal variabilities are estimated as the variance within each phase diagram $f_{\vec{\alpha_i}}$. For a multi-dimensional phase diagram, we average these relative distances over the components. Given a set of phase diagram to be compared, we will study the distribution of this distance to an arbitrary phase diagram for all diagrams, rather than an aggregated measure which would be similar to global sensitivity methods \citep{saltelli2008global}.
+where $\mu_{\vec{\alpha}_i}$ are the phase diagrams at given generator parameters $\vec{\alpha}_i$. $d$ is a functional distance that we take simply as Euclidean distance. The internal variabilities are estimated as the variance within each phase diagram $\mu_{\vec{\alpha_i}}$. For a multi-dimensional phase diagram, we average these relative distances over the components. Given a set of phase diagram to be compared, we will study the distribution of this distance to an arbitrary phase diagram for all diagrams, rather than an aggregated measure which would be similar to global sensitivity methods \citep{saltelli2008global}.
 
 The last methodological point which we need to emphasize is the relationship between the present workflow and model exploration workflows in general. The ideas of multi-modelling and extensive model exploration are nothing from new - ~\cite{openshaw1983data} already advocated for ``model-crunching'' in 1983 -, but their effective use only begins to emerge thanks to the development of new methods and tools together with an explosion of computation capabilities. The model exploration platform OpenMOLE~\citep{reuillon2013openmole} allows to embed any model as a blackbox, to write flexible exploration workflow using advanced methodologies such as genetic algorithms and to distribute transparently the computation on large scale computation infrastructures such as clusters or computation grids. In our case, this tool is a powerful way to embed both the sensitivity analysis and the sensitivity analysis to initial spatial conditions, and to allow the coupling of any spatial generator with any model in a straightforward way as long as the model can take its spatial configuration as an input or from an input file. In this paper, we use the OpenMOLE platform for the spatial environment and the model coupling, placing ourselves in the framework of multi-modelling \citep{cottineau2015modular}. We use therefore OpenMOLE's functionalities for model embedding through workflow, design of experiments (parameter sampling) and high performance environment access.
 
@@ -245,7 +246,8 @@ The spatial generator applies an urban morphogenesis model \citep{Batty2007} whi
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-	\includegraphics[width=\textwidth]{figures/spatialGen.png}
+	%\includegraphics[width=\textwidth]{figuresraw/spatialGen.png}
+	\includegraphics[width=\textwidth]{figures/Fig2.png}
  \caption{\textbf{Four examples of grids produced by the spatial generator.} The lighter the red, the denser the area. Changing the growth rate $N$ allows to have more or less chaotic shapes (two first compared to the two last grids for example) corresponding to different levels of convergence of the model, whereas local radius can be tuned with the interplay of aggregation strength $\alpha$ and diffusion strength $\beta$. Parameter values used here are for the first grid $(\alpha = 0.4,\beta=0.006, N = 25, n_d = 1, t_f = 971)$, the second $(\alpha = 0.4,\beta=0.006, N = 25, n_d = 1, t_f = 176)$, the third $(\alpha = 1.4,\beta=0.045, N = 102, n_d = 2, t_f = 618)$, and the fourth $(\alpha = 1.8,\beta=0.114, N = 108, n_d = 1, t_f = 227)$.}
 \label{fig:spatialGen}
 \end{figure} %
@@ -265,7 +267,8 @@ The spatial generator and its resulting grids are relevant to the case study mod
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-	\includegraphics[width=0.9\textwidth]{figures/GridPresentation.png}
+	%\includegraphics[width=0.9\textwidth]{figuresraw/GridPresentation.png}
+	\includegraphics[width=0.9\textwidth]{figures/Fig3.png}
  \caption{Correspondence between European urban density structures and grids produced with the spatial generator.} 
 \label{fig:densityTypes}
 \end{figure} %
@@ -322,7 +325,8 @@ We obtain a very strong sensitivity to initial spatial conditions for the Sugars
 %%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/relativedistance_metaparams.png}
+	%\includegraphics[width=0.8\textwidth]{figuresraw/relativedistance_metaparams.png}
+	\includegraphics[width=0.8\textwidth]{figures/Fig4.png}
 \caption{\textbf{Relative distances of phase diagrams by initial spatial grids described by their generator parameters.} Relative distance as a function of generator parameters $\alpha$ (strength of preferential attachment) and $\beta$ (strength of diffusion process).}
 \label{fig:sugarscape-distance-meta}
 \end{figure}
@@ -340,7 +344,8 @@ Another way of quantifying the density grids, instead of looking at the generato
 %%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/relativedistance_morphspace.png}
+	%\includegraphics[width=0.8\textwidth]{figuresraw/relativedistance_morphspace.png}
+	\includegraphics[width=0.8\textwidth]{figures/Fig5.png}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids.} Relative distance as a function of two first principal components of the morphological space (see text). Black point correspond to the reference spatial configuration. Green frame and blue frame give respectively the first and second particular phase diagrams shown in Fig.~\ref{fig:sugarscape-phasediagrams}.}
 \label{fig:sugarscape-distance-pca}
 \end{figure}
@@ -408,8 +413,9 @@ We now check the sensitivity in terms of qualitative behavior of phase diagrams.
 %%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.48\textwidth]{figures/phasediagram_id27_maxSugar110}
-\includegraphics[width=0.48\textwidth]{figures/phasediagram_id0_maxSugar110}
+%\includegraphics[width=0.48\textwidth]{figuresraw/phasediagram_id27_maxSugar110}
+%\includegraphics[width=0.48\textwidth]{figuresraw/phasediagram_id0_maxSugar110}
+	\includegraphics[width=\textwidth]{figures/Fig6.png}
 \caption{\textbf{Examples of phase diagrams.} We show two dimensional phase diagrams on $(P,s_-)$, both at fixed $s_+ = 110$. (Left) Green frame, obtained with $\alpha = 0.79$, $n=2$, $\beta = 0.14$, $N=157$; (Right) Blue frame, obtained with $\alpha = 2.56$, $n=3$, $\beta = 0.13$, $N=128$.}
 \label{fig:sugarscape-phasediagrams}
 \end{figure}
@@ -495,8 +501,9 @@ We give in Fig.~\ref{fig:stylized-generator} plots roughly summarizing the behav
 %%%%%%%%%%%%%%
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.49\linewidth]{figures/alpha_beta_examples.png}
-    \includegraphics[width=0.47\linewidth]{figures/alpha_beta_schemas.png}
+	%\includegraphics[width=0.49\linewidth]{figuresraw/alpha_beta_examples.png}
+    %\includegraphics[width=0.47\linewidth]{figuresraw/alpha_beta_schemas.png}
+    \includegraphics[width=\textwidth]{figures/Fig7.png}
     \caption{\textbf{Stylized behavior of the density grid generator.} (Left) Examples of grids with their position in the $(\alpha,\beta)$ parameter space; (Right) Stylized interpretation of the forms obtained as a function of $\alpha$ and $\beta$.}\label{fig:stylized-generator}
 \end{figure}
 %%%%%%%%%%%%%%
@@ -570,8 +577,9 @@ The Fig.~\ref{fig:schelling-distance-meta} gives the phase diagrams distances as
 %%%%%%%%%%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_metaparams_mean.png}
-\includegraphics[width=0.48\textwidth]{figures/schelling-relativedistance_morphspace_mean.png}
+%\includegraphics[width=0.48\textwidth]{figuresraw/schelling-relativedistance_metaparams_mean.png}
+%\includegraphics[width=0.48\textwidth]{figuresraw/schelling-relativedistance_morphspace_mean.png}
+\includegraphics[width=\textwidth]{figures/Fig8.png}
 \caption{\textbf{Relative distances of phase diagrams to the reference across grids for the Schelling model.} Each point corresponds to a spatial configuration and colour gives the relative distance to one of the phase diagrams. We show them in the generator parameter space (Left) and in the reduced morphological space (Right).\label{fig:schelling-distance-meta}}
 \end{figure}
 %%%%%%%%%%%%%
