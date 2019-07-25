@@ -77,12 +77,46 @@ Juste Raimbault and co-authors%\\
 
 \textbf{Response to reviewers}
 
+Resubmit 15 Aug. 2019\\
+
+We want to thank the two reviewers for their thorough evaluation and discussion of our paper, as well as the challenging questions they asked. We have revised the manuscript in a way that addresses most of the comments. In this response, we first want to address the two main questions that arose for both reviews. The first one (A) relates to the original mis-specification/ambiguities between the social and spatial components of the modelling process. The second one (B) relates to the contribution of the approach in terms of potential use for model makers, for domain experts and in operational contexts.
+
+ \medskip
+A. In terms of the ambiguity between the social and spatial component 
+\begin{itemize}
+\item A.1. We have precised and clarified the argument of the paper (mainly in introduction) by qualifying our contribution, which is to provide an operational framework for studying the influence of geometric structures of space on the results of a geosimulation model. We have thus distinguished two effects of geographical space in simulation modelling: the ones that are part of the model, reflecting for example the role played by distance on decreasing agents' perception or potential social interactions; and the ones which act as geometric structures "on which" the social elements simulated interact, i.e. geometric constraints of the simulation. The first type of effects is addressed by traditional modelling. Our original contribution is to tackle the second type. \comment[CC]{done in 1.5 and 1.8}
+ 
+\item A.2. We have clarified the terms used in our paper introduction to distinguish between: {\bf sociospatial systems} (i.e. groups of social agents whose behaviour is constrained by their position in geographical space. This term refers to empirical systems, which are the targets of the modelling process), {\bf interactions} (what happens between agents and between agents and their environment, in the model as well as in the empirical system) and {\bf geometric structure}, a term we reserve for qualifying the geometric outputs of the spatial generator which are used as initial spatial conditions in the model. When we talk about the generator we actually used in the paper, we call it a "density grid generator" because the is the only geometric structure it generates, whereas a "spatial generator" could potentially generate graph or point structures. \comment[CC]{done in 1.5}
+
+
+ \item A.3. We have modified figure 1 to express the clarified approach visually. Naming the generator parameter "gamma" has helped reduced the confusion that the term 'meta-parameter' was inducing. We have also replaced the expressions "quantitative results" by "sensitivity analysis" and "qualitative results" by "variations by types of geometric structure", in the figure as in the subsections of the paper. \comment[CC]{done}
+\end{itemize}
+
+ \medskip
+B. To highlight limitations as well as promising perspectives of improvement, answer the concern about the genericity of the method and expose its links with the conceptual and empirical domains:
+
+ \begin{itemize}
+ 
+  \item B.1. We have added a discussion of how segregation indicators can themselves be influenced by geometric structures (because they give the same weight to cells of different density). This is a limitation of the method as it is but also an avenue for promoting stronger indicators in empirical research.  \comment{il faut reprendre ces elements dans l'article}
+  
+  \item B.2. To inform the interactions between empirics, concepts and models as discussed by Livet et al., 2010, We added a paragraph in conclusion, discussing how our approach allows to go back to questioning empirical cases from the model and questioning our concepts (for example how 'neighbourhood' is modelled since Schelling compared to the meaning of neighbourhood in empirical/theoretical social sciences). \comment{il faut reprendre ces elements dans l'article}
+  
+  \item B.3. As a perspective to reduce this bias, we could compute ego-neighbourhoods rather than a regular grid (another paper). We could also in another paper vary the size of grid and its cell shape (cf. MAUP), but also generate other types of geometric structures to feed into geosimulation models (for example networks). \comment{il faut reprendre ces elements dans l'article}
+\end{itemize}
 
 \bigskip
 
+\textbf{to do list:}
 
+ {\bf Sociospatial system} pour parler des systèmes empiriques. \comment[MLT]{Done}\\
+ {\bf interactions} pour parler de ce qui se passe dans le modele.\\
+  {\bf geometric structures} pour parler des outputs issus du générateur.\\
+  + parler de "density grid generator" quand on développe le nôtre. \\
+  caser" Jessop (2008) points in particular to the interdependence between social phenomena and the spatial environment where they take place. We model the social system as the interaction dynamics of agents and spatial units. The spatial generator produces the geometric support for these interactions." in intro 1.4 \\
+  
+  
 %We now turn to point-by-point responses to referees comments.
-
+\medskip
 \textbf{Point-by-point response to referees comments:}
 
 \medskip
@@ -96,34 +130,51 @@ Juste Raimbault and co-authors%\\
 \begin{enumerate}
  % The methodology described is very convincing as it allows the utilisation of a tool that takes the spatial conditions – as causes or effects or intermediates – actually explicitly into account. With this approach, the paper convincingly outlines a pragmatic application by creating typical spatial compositions in urban contexts that is monocentric, polycentric or discontinuous cities. From this methodological perspective of reviewing, it would be helpful to add some more information to approaches/techniques used within the tool of the spatial generator. For example, paragraph 2.8 mentions four dimensions of spatial structure but leave the reader alone with just the terms. Either describe these or omit it.
    \item \comment[JR]{will add some description on urban form indicators etc.}
-   
-  %This also applies to the three segregation indexes: what exactly do they measure?
-  \item 
+   \item To describe more the spatial generator we used in a few sentences (JR) + situate this one among the many possible ways of making a spatial generator as Young2002 (FLN/MLT).
+   %This also applies to the three segregation indexes: what exactly do they measure?
+  \item Describe segregation index in a few sentences \comment[CC]{done in section "case study models"}
   
-  % The description of the spatial generator’s procedure, outlined in paragraph 2.7, would also benefit if more information is added, for example, to delineate the terms “strength of attrac! tion” (attraction in which respect?) and “strength of the diffusion process” (is strength equal to intensity? If so, is it then in space and/or time?). 
+  % The description of the spatial generator’s procedure, outlined in paragraph 2.7, would also benefit if more information is added, for example, to delineate the terms “strength of attraction” (attraction in which respect?) and “strength of the diffusion process” (is strength equal to intensity? If so, is it then in space and/or time?). 
   \item \comment[JR]{will add more precision in the description of the generator}
 
   %While the methodological part of the paper is convincing the theoretical and epistemological background is less so. In short, the paper would improve significantly, if most of the geographical and empirical associations would be left out. Even claimed by the author(s), the approach has not much to do with the empirical growth or development of cities, just because the approach reduces cities’ growth to the growth itself, omitting issues such as historical genesis, cultural differentiation, economic background political and legal circumstances, etc. 
-  \item \comment[JR]{most of this empirical literature was added because of one CEUS reviewer, no ?}
+  \item \comment[JR]{most of this empirical literature was added because of one CEUS reviewer, no ?}\comment[MLT]{If we want to keep this part to please everyone (like our former reviewer), we could explicitly mention that we model the growth of a city (in terms of population density) which is the results of a bunch of dynamics ... and not the dynamics themselves?}\comment[CC] We have clarified the semantic terms used in sections 1.5 to 1.8 and in the figure 1. \comment[FLN]{ qui montre que la démarche méta est ici appliquée à un domaine empirique qu'il aide à explorer mais d'autres domaines peuvent s'emparer de la démarche méta.}
+\item show disagreement with omitting empirical/geographical but demonstrate helps understand geographical question but the is generic and valuable for it.
+
 
   % The problem, from a geographical point of view, is that the paper switches between “geographical” and “spatial” without making any differentiation. In so doing, the author(s) runs immediately into the problem of adequate definitions. In paragraph 1.2 the definition of geographical systems as “social agents interacting with one another, within a limited portion of space” is misleading. First, it is a tautology (geographical systems in space); secondly, geographical cannot be described with social agents, because geographical systems are composed of spatial units, their relations, and a spatially defined system border. Social systems, in turn, might be described with humans as elements, their relations, and again a socially defined system border. Moreover, with respect to sociological system theory (Luhmann 1993), space does not add any knowledge to the nature of social systems. This approach can be (and I would add: has to be) criticised, however, not by interming! ling fuzzily the social with the geographical, as happened with this definition. 
-  \item \comment[JR]{by spatial we indeed mean some kind of spatial container for agents right ? which is far from geographical in the sense he puts it indeed}
+  \item \comment[JR]{by spatial we indeed mean some kind of spatial container for agents right ? which is far from geographical in the sense he puts it indeed}\comment[MLT]{use sociospatial system instead? The term is broadly used in the literature to describe the interdependence between social phenomena and their spatial environment. We could also quote \hyperlink{https://journals.sagepub.com/doi/abs/10.1068/d9107}{Jessop et al. 2008}}
+\item cf. comment A
+\item reprendre tout le papier pour éliminer les termes indéfinis "space", "pattern" etc. + en conclu mentionner que ça s'applique aux automates cellulaires (sans agents) et aux modèles écologiques (agents-arbres).
+  \item in conclusion, we need to clarify the answer to the question "do geometric structure influence sociospatial systems dynamics" by saying it depends on the model. ≠ black\&white and we can demonstrate it. The nature of social systems is a given (in the model mu, which is not the contribution of this paper) and we explore the consequence of geometric structures on the spatial expression of social systems.
+  
 
   % Then, in paragraph 1.3, the complexity of systems with respect to segregation is also problematically described. Emergent behaviour that may lead to segregation is first and foremost a social process, taking social interactions at the local scale (income, housing costs, etc.) and/or at the macro scale (laws, rules, economic system, cultural attitudes, etc.) into account. These interactions can then be associated with the material and relational dimension of geographical spaces. The question remains: what is the role of geographical systems? In this respect, the paper offers some relevant clues such as the MAUP problem or the “uncertain geographic context problem”. 
-  \item 
+  \item see comment A. cite Banos, 2012
 
   % The problem of setting space and geography as synonymous continues in paragraphs 1.9 and following. What is described here as “spatial system shape” is the geometry of spaces but not the geography of spaces. 
   % -> yes indeed
-  \item 
+  \item see comment A. 
 
   % Even more critically is the arbitrary conflation of social and spatial units as happened in paragraph 2.1, as geographical entities are described with “people, housing, networks, etc.” One is inevitably asking oneself: do geographical entities comprise of simply everything? Obviously not, but the paper seems to argue this way. 
-  \item 
+  \item see comment A. 
 
-  % Due to this, attempts to explain the growth of existing cities should be avoided. The approach is reductionist and has its strength in reflecting growth at an abstract level nevertheless. The concluding remark in paragraph 5.1 “With the Schelling experiment, we found … that polycentric and discontinuous cities appear systematically more segregated than compact cities …” is elusive. Either it is a trivial fact, simply because polycentric cities have more centres and thus, by nature, more opportunities from which segregation can originate. Or, the results can be used as a starting point to dig deeper in geographical reasons, taking social, economic, cultural, and political, but also topographical issues into consideration. This geographical reasoning, however, is outside of the scope of this paper. 
-  \item \comment[JR]{I rather agree that it is quite reductionist, and that the discussion may be valid only at very abstract levels (on which we were not explicit maybe ?) - maybe make these conclusions more moderate}
+  % Due to this, attempts to explain the growth of existing cities should be avoided.
+  \item we agree. it's not the point of the paper, only the metaphore of the spatial generator. + supprimer la ref à "urban growth" dans le texte et dire d'inspiration urban science mais dont seules les grilles finales nous intéressent. On aurait pu utiliser des generator issus de graphes, de percolation etc.
+  The core of the paper is not this, it's the approach of including gamma and applying to mu to understand systems better, whatever gamma and whatever mu in whatever knowledge domain.
+  
+ \item in discussion, mention that it's one isolated example of geometry but other cases could be thought of as well, using networks and graphs, but also empirical shape files.
+ 
+  %The approach is reductionist and has its strength in reflecting growth at an abstract level nevertheless. The concluding remark in paragraph 5.1 “With the Schelling experiment, we found … that polycentric and discontinuous cities appear systematically more segregated than compact cities …” is elusive. Either it is a trivial fact, simply because polycentric cities have more centres and thus, by nature, more opportunities from which segregation can originate. Or, the results can be used as a starting point to dig deeper in geographical reasons, taking social, economic, cultural, and political, but also topographical issues into consideration. This geographical reasoning, however, is outside of the scope of this paper. 
+  \item \comment[JR]{I rather agree that it is quite reductionist, and that the discussion may be valid only at very abstract levels (on which we were not explicit maybe ?) - maybe make these conclusions more moderate} \comment[MLT]{I kind of disagree with the idea that it is straightforward that centralised cities produce more segregation as it is not a direct parameter of the model but an output. Plus: what argument would he or she have to state that a big center would be automatically less segregated that several smaller ones? And I believe that explaining why polycentric cities are more segregated than others is out of the scope of the paper. But we could add his or her comment in the discussion section, saying that we hove we have convinced people to add spatial sensitivity analysis during the exploration of their model and that specialist of the thematics would see the opportunity to dig deeper into our results?}
+  
+  \item in discussion, say that indeed the indicators can themselves be influenced by geometric structures (cf. comment B) but on the processes, there is nothing obvious about the influence of structures on behavioural spatial patterns (if you imagine a model with no interactions between agents for example) + it's a difference between the model and its potential addition to the real systems. cf. B
+  
+  \item rewrite 1.11 \& 1.12 which is misleading
 
    % Formal issues that have to be solved: the numbering of paragraphs is not coherent. The reference of Wheeler (2006) is missing the source of the article.
-   \item 
+    \item check jasss style for paragraph numbering (Tous)
+ 
 
 \end{enumerate}
 
@@ -143,21 +194,29 @@ Juste Raimbault and co-authors%\\
 \begin{enumerate}
 
   % While the different outcomes of the two implementation exercises are not the main point, I would suggest authors to provide some more elaborated explanations. The two models have different behavioural assumptions and represent a different 'interaction' context. How can be extrapolate and isolate spatial effects when models have different logics and theoretical purposes? 
-  \item 
+  \item see above comment A, discussion has been amended and details added.
 
-  % In 4.1, the authors suggest potential developments and point to certain limitations. While limitations are well-discussed, readers who are not specialist of spatial models could benefit from a more comprehensive discussion on potential applications and extensions. For instance, it would be useful to have suggestions on how to use this methodology to run empirical models. Suppose to have a nice dataset and a case of a urban context to be modelled. Could the exploration of different spatial configurations even be used to run 'counter-factual' or 'what if' tests on actual spatial configurations? 
-  \item \comment[JR]{this is a relevant remark but far beyond the scope of the paper, as an extension of what we did but with perturbation of real datasets / sensitivity to noise - Julien wanted to begin working on that actually and it should be integrated into spatialdata at some point - we also are supposed to implement such a perturbator to test the 4city model}
+  % In 4.1, the authors suggest potential developments and point to certain limitations. While limitations are well-discussed, readers who are not specialist of spatial models could benefit from a more comprehensive discussion on potential applications and extensions.
+  \item see comment B
+  
+  %For instance, it would be useful to have suggestions on how to use this methodology to run empirical models. Suppose to have a nice dataset and a case of a urban context to be modelled. Could the exploration of different spatial configurations even be used to run 'counter-factual' or 'what if' tests on actual spatial configurations? 
+  \item \comment[JR]{this is a relevant remark but far beyond the scope of the paper, as an extension of what we did but with perturbation of real datasets / sensitivity to noise - Julien wanted to begin working on that actually and it should be integrated into spatialdata at some point - we also are supposed to implement such a perturbator to test the 4city model} cf. comment B.3
+  
+  \item it as not explicit enough and we revised the presentation of our approach (which is generic and not empirical) in intro (especially fig. 1). We thank reviewer 2 for highlighting this limitation.
 
-  % Furthermore, there are now examples of spatial models that go beyond administrative neighborhoods and overimposed spatial boundaries, i.e., egohoods (e.g., https://onlinelibrary.wiley.com/doi/abs/10.1111/1745-9125.12006), whcih could be interesting to see implemented in ABM. Spatial econometrics based on empirical dataset is developing fast. It would be useful to understand how these models can enrich ABM and vice-versa. 
-  \item 
+  % Furthermore, there are now examples of spatial models that go beyond administrative neighborhoods and overimposed spatial boundaries, i.e., egohoods (e.g., https://onlinelibrary.wiley.com/doi/abs/10.1111/1745-9125.12006), which could be interesting to see implemented in ABM. 
+  \item cf. discussion of egohoods in conclusion (comment B)
+  
+  %Spatial econometrics based on empirical dataset is developing fast. It would be useful to understand how these models can enrich ABM and vice-versa. 
+   \item this is very interesting to inform the interactions between empirics, concepts and models as discussed by Livet et al., 2010. We need to add a paragraph about this discussion in conclusion and how our approach allows to go back to questioning empirical cases from the model and questioning our concepts ('neighbourhood'). cf. comment B
 
   % Furthermore, even among limitations, perhaps authors could discuss data limitations and the fact that social processes (networks, mobility) cannot conflate with spatial dynamics. Here, it is a bit misleading to call "generator parameters" ONLY the spatial ones! 
-  \item 
-
-  % In this respect, I would encourage authors to further develop their closing section, which now does not stimulate readers to imagine implications of authors' findings and message to their own research. I would expand this section to provide a more detailed discussion on implications for model makers, experts on social geography and urban scholars who work with ABM, non-specialist in geography who would like to base their models in more proper geographical constraints. And perhaps, authors could suggest future line of research that could show-case their argument. 
-  \item 
+ \item we have clarified this issue in intro but referring to different terms and figure 1 which differentiates between the mu model and gama parameters. (comment A)
+  %In this respect, I would encourage authors to further develop their closing section, which now does not stimulate readers to imagine implications of authors' findings and message to their own research. I would expand this section to provide a more detailed discussion on implications for model makers, experts on social geography and urban scholars who work with ABM, non-specialist in geography who would like to base their models in more proper geographical constraints. And perhaps, authors could suggest future line of research that could show-case their argument. 
+  \item cf. new discussion/conclusion and comment B
 
 %I appreciate that models are fully available to readers. 
+\item We do too!
 
 \end{enumerate}
 
