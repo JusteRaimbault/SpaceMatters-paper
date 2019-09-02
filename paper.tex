@@ -129,8 +129,6 @@
 % Abstract and keywords
 
 
-%\comment[FL]{le titre de l'article ce serait presque "geometry" matters? non?} bof ca parle moins
-
 \begin{abstract}
 Although simulation models of socio-spatial systems in general and agent-based models in particular represent a fantastic opportunity to explore socio-spatial behaviours and to test a variety of scenarios for public policy, the validity of generative models is uncertain unless their results are proven robust and representative of 'real-world' conditions. Sensitivity analysis usually includes the analysis of the effect of stochasticity on the variability of results, as well as the effects of small parameter changes. However, initial spatial conditions are usually not modified systematically in socio-spatial models, thus leaving unexplored the effect of initial spatial arrangements on the interactions of agents with one another as well as with their environment. In this article, we present a method to assess the effect of variation of some initial spatial conditions on simulation models, using a systematic geometric structures generator in order to create density grids with which socio-spatial simulation models are initialised. We show, with the example of two classical agent-based models (Schelling's models of segregation and Sugarscape's model of unequal societies) and a straightforward open-source work-flow using high performance computing, that the effect of initial spatial arrangements is significant on the two models. We wish to illustrate the potential interest of adding spatial sensitivity analysis during the exploration of models for both modellers and thematic specialists.
 \end{abstract}
@@ -144,16 +142,6 @@ Space, Initial conditions, Sensitivity, Agent-Based Models
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start of  paragraph numbering. Please leave this untouched
 \parano{}
-
-
-
-%%%%%%%
-%% Highlights
-%
-% - We investigate the sensitivity of geosimulation models to initial spatial conditions.
-% - We generate stylized population density grids.
-% - We assess the sensitivity of two classical agent-based models, Schelling's model and Sugarscape's model.
-% - Strong quantitative and qualitative effects of spatial initial conditions are shown for these models.
 
 
 
@@ -275,7 +263,7 @@ We use a ad-hoc implementation of the Schelling model, both in Scala for perform
 
 \subsubsection{Sugarscape}
 
-Sugarscape is a model of resource extraction which simulates the unequal distribution of wealth within a heterogenous population \cite{EpsteinAxtell1996}. Although it "is designed to study the interaction of many plausible social mechanisms" \cite[p.125]{Axtelletal1996}, we refer in this paper to the first (and simplest) version of the model, where "processes allow its agents to look for, move to, and eat a resource ("sugar") which grows on its $[...]$ array of cells". Agents of different vision scopes and different metabolisms harvest a self-regenerating resource available heterogeneously in the initial landscape, they settle and collect this resource, which leads some of them to survive and others to perish. The main parameters of this model are the number of agents, their minimal and maximal resource levels. In an urban environment, Sugarscape can be used to model how the spatial distribution of any type of goods or services can influence the spread of wealth among inhabitants. Following \cite{batty2005agents}, it can be considered as a metaphor of an urban system. We extend the implementation with agents wealth distribution of \cite{li2009netlogo}. The outcome of the model is measured by a Gini index of inequality for resource distribution. We are interested in testing the impact of the spatial distribution of the resource, using the generated grids.
+Sugarscape is a model of resource extraction which simulates the unequal distribution of wealth within a heterogenous population \citep{EpsteinAxtell1996}. Although it "is designed to study the interaction of many plausible social mechanisms" \cite[p.125]{Axtelletal1996}, we refer in this paper to the first (and simplest) version of the model, where "processes allow its agents to look for, move to, and eat a resource ("sugar") which grows on its $[...]$ array of cells". Agents of different vision scopes and different metabolisms harvest a self-regenerating resource available heterogeneously in the initial landscape, they settle and collect this resource, which leads some of them to survive and others to perish. The main parameters of this model are the number of agents, their minimal and maximal resource levels. In an urban environment, Sugarscape can be used to model how the spatial distribution of any type of goods or services can influence the spread of wealth among inhabitants. Following \cite{batty2005agents}, it can be considered as a metaphor of an urban system. We extend the implementation with agents wealth distribution of \cite{li2009netlogo}. The outcome of the model is measured by a Gini index of inequality for resource distribution. We are interested in testing the impact of the spatial distribution of the resource, using the generated grids.
 
 
 \subsection{Experiment design}
